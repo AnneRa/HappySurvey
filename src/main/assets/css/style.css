@@ -15,3 +15,9 @@ header p{
 	margin: 0;
 }
 
+#log-in_container {
+      margin: auto;
+      width: auto;
+      padding: 128px;
+    }
+
