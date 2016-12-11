@@ -1,24 +1,16 @@
 var happySurvey = angular.module('happySurvey',['ui.router', 'ngAnimate', 'ngSanitize', 'ngMaterial']);
 
-/*funktioniert noch nicht*/
-happySurvey.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-	$urlRouterProvider.otherwise('/home');
+happySurvey.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider ){
+	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider
-	.state('public', {
-		abstract:true,
-		templateUrl:'../src/main/index.html'
-		//template:"<ui-view/>"
-	})
-	.state('public.site', {
-		url:'/start',
-		templateUrl:'../src/main/views/hellopage.html'
-	});
-	
-	$stateProvider
-	.state('private', {
-		abstract:true,
-		template:"<ui-view/>"
-	});
-	
+		.state('private', {
+			url:'/',
+			templateUrl:'index.html',
+			template:'<ui-view></ui-view>'
+		})
+		.state('private.overviewAdmin', {
+			url:'/overviewAdmin',
+			templateUrl:'views/overviewAdmin.html'
+		});
 }]);
