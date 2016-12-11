@@ -8,17 +8,12 @@ function RoutesManager($stateProvider, $urlRouterProvider) {
 	var signinState = {
 			name: 'signin',
 			url: '/signin',
-			templateUrl: '../views/signin.template.html'
+			templateUrl: '../views/partial-signin.html'
 	}
 	
-	var homeState = {
-			name: 'home',
-			url: '/',
-			templateUrl: '../index.html'
-	}
+	
 	
 	$stateProvider.state(signinState);
-	$stateProvider.state(homeState);
 	
 	$urlRouterProvider.otherwise('/');
 	
