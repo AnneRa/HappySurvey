@@ -8,12 +8,12 @@ body{
 	margin: 5px auto;
 	width:70px;
 }
-
+/* 
 header p{
 	text-align: center;
 	font-size: 18px;
-	margin: 0;
-}
+	margin: 0; 
+}*/
 
 #log-in_container {
       margin: auto;
