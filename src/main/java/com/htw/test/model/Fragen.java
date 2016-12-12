@@ -16,14 +16,17 @@ import javax.persistence.Table;
 public class Fragen {
 
 	@Id
-	@Column(name = "FRAGE_ID")
+	@Column(name = "Frage_ID")
 	private int id;
 
-	@Column(name = "FRAGE_TEXT")
+	@Column(name = "Text")
 	private String text;
 
 	@OneToOne
 	private Typ typ;
+	
+	@OneToOne
+	private Gruppen gruppen;
 	
 	//######################################################################
     // GETTERS & SETTERS

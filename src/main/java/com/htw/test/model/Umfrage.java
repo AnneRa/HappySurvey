@@ -1,5 +1,6 @@
 package com.htw.test.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,30 +11,35 @@ import javax.persistence.Table;
 public class Umfrage {
 
 	@Id
-	@Column(name = "id")
+	@Column(name = "Umfrage_ID")
 	private int id;
 
-	@Column(name = "name")
+	@Column(name = "Name")
 	private String name;
 
-	@Column(name = "beschr")
+	@Column(name = "Beschr")
 	private String beschr;
 
-	@Column(name = "intro")
+	@Column(name = "Intro")
 	private String intro;
 
-	@Column(name = "stardat")
-	private long startdat;
+	@Column(name = "Stardat")
+	private  String startdat;
 
-	@Column(name = "enddat")
-	private long enddat;
+	@Column(name = "Enddat")
+	private String enddat;
+	
+	/*#### LOGO ####*/
 
-	@Column(name = "logo")
-	private char logo;
+	/*@Column(name = "logo")
+	private char logo;*/
 
 	public Umfrage() {
 
 	}
+	
+	//######################################################################
+    // GETTERS & SETTERS
 
 	public int getId() {
 		return id;
@@ -67,28 +73,30 @@ public class Umfrage {
 		this.intro = intro;
 	}
 
-	public long getStartdat() {
+	public String getStartdat() {
 		return startdat;
 	}
 
-	public void setStartdat(long startdat) {
+	public void setStartdat(String startdat) {
 		this.startdat = startdat;
 	}
 
-	public long getEnddat() {
+	public String getEnddat() {
 		return enddat;
 	}
 
-	public void setEnddat(long enddat) {
+	public void setEnddat(String enddat) {
 		this.enddat = enddat;
 	}
+	
+	/*#### LOGO ####*/
 
-	public char getLogo() {
+	/*public char getLogo() {
 		return logo;
 	}
 
 	public void setLogo(char ologo) {
 		logo = ologo;
-	}
+	}*/
 
 }

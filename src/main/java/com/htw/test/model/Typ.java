@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Typ {
 	
 	@Id
-	@Column(name = "TYPID")
+	@Column(name = "TYP_ID")
 	private int id;
 	
 	@Column(name = "BEZEICHNUNG")

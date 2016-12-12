@@ -14,10 +14,10 @@ public class Teilnehmer {
 	@Column (name = "TEILNEHMER_ID")
 	private int id;
 
-	@Column(name = "MAIL")
+	@Column(name = "Mail")
 	private String mail;
 
-	@Column(name = "STATUS")
+	@Column(name = "Status")
 	private String status;
 
 	@ManyToOne

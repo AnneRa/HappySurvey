@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Gruppen {
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "Gruppen_ID")
 	private int id;
 
 	@Column(name = "NAME")
