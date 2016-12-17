@@ -1,11 +1,46 @@
-<div id="log-in_container" class="container">
-		<form class="form-horizontal" ng-submit="login();" name="logInForm">
+<div id="login">
+	<div class="mdl-card mdl-shadow--6dp">
+		
+		<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+			<h2 class="mdl-card__title-text">Log In</h2>
+		</div>
+	 	
+	 	<div class="mdl-card__supporting-text">
+			<form action="#" ng-submit="login();" name="logInForm">
+				
+				<!-- Text input-->
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="email" id="email" name="email" 
+							placeholder="example@email.com"
+							ng-model="email" ng-blur="upper();">
+					<label class="mdl-textfield__label" for="Email">Email</label>
+				</div>
+				
+				<!-- Password input-->
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="password" id="passwordinput" name="passwordinput"
+							placeholder="***" ng-model="password"/>
+					<label class="mdl-textfield__label" for="passwordinput">Passwort</label>
+				</div>
+			</form>
+		</div>
+		
+		<!-- Button -->
+		<div class="mdl-card__actions mdl-card--border">
+			<label for="signin"></label>
+			<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="signin" name="signin">Log in</button>
+		</div>
+	
+	</div>
+</div>
+
+<!-- <div id="log-in_container" class="container">
+		<form class="form-horizontal mdl-card" ng-submit="login();" name="logInForm">
 			<fieldset>
 
-				<!-- Form Name -->
-				<legend>Sign In</legend>
-
-				<!-- Text input-->
+				
+				<legend>Sign In</legend> 
+				
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="Email">Email</label>
 					<div class="col-md-4">
@@ -17,9 +52,6 @@
 
 				</div>
 
-
-
-				<!-- Password input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="passwordinput">Password
 					</label>
@@ -30,7 +62,6 @@
 					</div>
 				</div>
 
-				<!-- Button -->
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="signin"></label>
 					<div class="col-md-4">
@@ -41,4 +72,4 @@
 
 			</fieldset>
 		</form>
-	</div>
+	</div>  -->

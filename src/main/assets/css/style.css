@@ -14,11 +14,11 @@ header{
 	width:70px;
 }
 
-#log-in_container {
-      margin: auto;
-      width: auto;
-      padding: 128px;
-    }
+#login{
+	display:flex;
+	justify-content:center;
+	margin-top: 50px;
+}
 
 table#overviewTable{
 	margin:auto;
