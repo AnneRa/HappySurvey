@@ -2,6 +2,11 @@
 	font-family: 'Raleway', sans-serif;
 	font-size:20px;
 }*/
+header{
+	border-bottom: solid;
+	border-color:black;
+	border-width: 0.5px;
+}
 
 #header-logo{
 	display:block;
@@ -9,11 +14,19 @@
 	width:70px;
 }
 
+<<<<<<< HEAD
 #log-in_container {
       margin: auto;
       width: auto;
       padding: 128px;
     }
+=======
+#login{
+	display:flex;
+	justify-content:center;
+	margin-top: 50px;
+}
+>>>>>>> Lauren
 
 table#overviewTable{
 	margin:auto;
