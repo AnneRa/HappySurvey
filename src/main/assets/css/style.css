@@ -2,18 +2,17 @@
 	font-family: 'Raleway', sans-serif;
 	font-size:20px;
 }*/
+header{
+	border-bottom: solid;
+	border-color:black;
+	border-width: 0.5px;
+}
 
 #header-logo{
 	display:block;
 	margin: 5px auto;
 	width:70px;
 }
-
-/*header p{
-	text-align: center;
-	font-size: 18px;
-	margin: 0; 
-}*/
 
 #log-in_container {
       margin: auto;
