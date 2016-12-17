@@ -3,7 +3,6 @@ var happySurvey = angular.module('happySurvey',['ui.router', 'ngAnimate', 'ngSan
 happySurvey.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider ){
 	$urlRouterProvider.otherwise('/');
 
-
 	//happySurvey.config(RoutesManager);
 
 //RoutesManager.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -21,6 +20,7 @@ happySurvey.config(['$urlRouterProvider', '$stateProvider', function($urlRouterP
 //	$urlRouterProvider.otherwise('/');
 	
 //}
+
 	$stateProvider
 		.state('private', {
 			url:'/',
@@ -31,5 +31,8 @@ happySurvey.config(['$urlRouterProvider', '$stateProvider', function($urlRouterP
 			url:'/overviewAdmin',
 			templateUrl:'views/overviewAdmin.html'
 		});
+
 }]);
+
+
 
