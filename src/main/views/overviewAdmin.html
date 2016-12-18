@@ -5,10 +5,12 @@
 		</button>
 	</div>
 	<div id="overviewButtons1">
-		<button id="overviewButton1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-			<i class="material-icons">add</i>
-			Neue Umfrage
-        </button>
+		<a href="#/newSurvey">
+			<button id="overviewButton1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="$location.path('#/newSurvey')">
+				<i class="material-icons">add</i>
+				Neue Umfrage
+	        </button>
+        </a>
         
 	    <button id="overviewButton1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 			<i class="material-icons">insert_chart</i>

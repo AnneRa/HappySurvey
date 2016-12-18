@@ -1,0 +1,29 @@
+<div class="md-grid">
+	<div class="md-cell md-cell--3-col">
+		<div class="group">
+			<label for="title">Titel der Umfrage</label> <input type="text"
+				class="form-control" id="title">
+		</div>
+		<div class="group">
+			<label for="description">Beschreibung</label> <input
+				ng-model="description" type="text" class="form-control"
+				id="description">
+		</div>
+		<div class="group">
+			<label for="startDate">Startdatum</label> <input
+				ng-model="startDate" type="date" class="form-control"
+				id="startDate">
+		</div>
+		<div class="group">
+			<label for="endDate">Enddatum</label> <input ng-model="endDate"
+				type="date" class="form-control" id="endDate">
+		</div>
+		<div class="mdl-card__actions mdl-card--border">
+			<label for="createSurvey"></label>
+			<button
+				class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+				id="createSurvey" name="createSurvey"
+				ng-click="createSurveyClicked()">Umfrage erstellen</button>
+		</div>
+	</div>
+</div>
