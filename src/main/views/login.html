@@ -9,17 +9,16 @@
 			<form action="#" ng-submit="login();" name="logInForm">
 				
 				<!-- Text input-->
-				<div class="mdl-textfield mdl-js-textfield">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 					<input class="mdl-textfield__input" type="email" id="email" name="email" 
-							placeholder="example@email.com"
 							ng-model="email" ng-blur="upper();">
-					<label class="mdl-textfield__label" for="Email">Email</label>
+					<label class="mdl-textfield__label" for="email">Email</label>
 				</div>
 				
 				<!-- Password input-->
-				<div class="mdl-textfield mdl-js-textfield">
+				<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 					<input class="mdl-textfield__input" type="password" id="passwordinput" name="passwordinput"
-							placeholder="***" ng-model="password"/>
+							 ng-model="password"/>
 					<label class="mdl-textfield__label" for="passwordinput">Passwort</label>
 				</div>
 			</form>
