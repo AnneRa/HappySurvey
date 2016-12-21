@@ -1,25 +1,27 @@
-<div class="md-grid">
-	<div class="md-cell md-cell--3-col">
-		<div class="group">
-			<label for="title">Titel der Umfrage</label> <input type="text"
-				class="form-control" id="title">
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--3-col">
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<label class="mdl-textfield__label" for="title">Titel der Umfrage</label>
+			 <input class="mdl-textfield__input" type="text" id="title">
 		</div>
-		<div class="group">
-			<label for="description">Beschreibung</label> <input
-				ng-model="description" type="text" class="form-control"
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<label class="mdl-textfield__label" for="description">Beschreibung</label>
+			<input
+				ng-model="description" type="text" class="mdl-textfield__input"
 				id="description">
 		</div>
-		<div class="group">
-			<label for="startDate">Startdatum</label> <input
-				ng-model="startDate" type="date" class="form-control"
-				id="startDate">
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<label class="mdl-textfield__label" for="startDate">Startdatum</label>
+			<div>
+					<input ng-model="startDate" type="date"  class="mdl-textfield__input" id="startDate">
+			</div>
+
 		</div>
-		<div class="group">
-			<label for="endDate">Enddatum</label> <input ng-model="endDate"
-				type="date" class="form-control" id="endDate">
+		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<label class="mdl-textfield__label" for="endDate">Enddatum</label>
+			<input ng-model="endDate" type="date" class="mdl-textfield__input" id="endDate">
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
-			<label for="createSurvey"></label>
 			<button
 				class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 				id="createSurvey" name="createSurvey"
