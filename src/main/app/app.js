@@ -5,7 +5,8 @@ happySurvey.config(['$routeProvider', function($routeProvider){
 	$routeProvider
 		.otherwise('/home')
 		.when('/home', {
-			templateUrl: 'views/overviewAdmin.html'
+			templateUrl: 'views/overviewAdmin.html',
+			controller: 'overviewAdminController'
 		}) 
 		.when('/login', {
 			templateUrl: 'views/login.html',
