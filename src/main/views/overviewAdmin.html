@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="overviewAdminController as oACtrl">
 	<div id="buttonLogout">
 		<button class="mdl-button mdl-js-button mdl-button--icon">
 			<i class="material-icons">exit_to_app</i>
@@ -28,12 +28,12 @@
 	    </tr>
 	  </thead>
 	  <tbody>
-	    <tr ng-repeat="">
-	      <td class="mdl-data-table__cell--non-numeric">{{}}</td>
-    	  <td class="mdl-data-table__cell--non-numeric">{{}}</td>
-	      <td class="mdl-data-table__cell--non-numeric">{{}}</td>
-	      <td class="mdl-data-table__cell--non-numeric">{{}}</td>
-	      <td class="mdl-data-table__cell--non-numeric">{{}}</td>
+	    <tr ng-repeat="s in oACtrl.surveys">
+	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
+    	  <td class="mdl-data-table__cell--non-numeric"><span ng-bind="s.id"></span></td>
+	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
+	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
+	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
 	    </tr>
 	  </tbody>
 	</table>
@@ -43,7 +43,7 @@
 			<i class="material-icons">content_copy</i>
 		</button>
 		
-		<button id="overviewButton2" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
+		<button type="button" ng-click="oACtrl.remove(s.id)" id="overviewButton2" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
 	 		<i class="material-icons">delete</i>
 		</button>
 	</div>	

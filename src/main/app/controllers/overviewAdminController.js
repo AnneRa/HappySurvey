@@ -6,7 +6,6 @@ happySurvey.controller('overviewAdminController', ['$scope', 'UmfrageRepository'
 	this.submit = submit;
 	this.edit = edit;
 	this.remove = remove;
-	this.reset = reset;
 	
 	fetchAllSurveys();
 	
@@ -40,14 +39,6 @@ happySurvey.controller('overviewAdminController', ['$scope', 'UmfrageRepository'
 					console.error('Error while deleting Survey');
 				}
 			);
-	}
-	
-	function remove(id){
-		console.log('id to be deleted', id);
-		if(this.umfrage.id === id){
-			reset();
-		}
-		deleteSurvey(id);
 	}
 	
 }]);
