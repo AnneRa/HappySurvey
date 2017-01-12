@@ -1,7 +1,6 @@
 package com.htw.test.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import com.htw.test.model.Umfrage;
 import com.htw.test.repositories.UmfrageRepository;
 
 @RestController
-@RequestMapping("/api/v1")
+// @RequestMapping("/api/v1")
 public class RestDataController {
 
 	@Autowired
@@ -52,13 +51,8 @@ public class RestDataController {
 	@ResponseBody
 	public ResponseEntity<Umfrage> addUmfrage(@PathVariable int id) {
 
-		// Werte Übergeben
 		Umfrage tst = new Umfrage();
 		tst.setId(id);
-		tst.setBeschr("Test");
-		tst.setEnddat("10.06.2016");
-		tst.setStartdat("10.05.2016");
-		tst.setName("cooler shice");
 
 		Umfrage saved = umfrageRepository.save(tst);
 		return ResponseEntity.status(HttpStatus.CREATED).body(saved);

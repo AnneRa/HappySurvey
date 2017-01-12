@@ -1,9 +1,14 @@
 package com.htw.test.model;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,92 +16,184 @@ import javax.persistence.Table;
 public class Umfrage {
 
 	@Id
-	@Column(name = "Umfrage_ID")
+	@Column(name = "id")
 	private int id;
 
-	@Column(name = "Name")
+	@Column(name = "name")
 	private String name;
 
-	@Column(name = "Beschr")
+	@Column(name = "beschr")
 	private String beschr;
 
-	@Column(name = "Intro")
+	@Column(name = "intro")
 	private String intro;
 
-	@Column(name = "Stardat")
+	@Column(name = "stardat")
 	private  String startdat;
 
-	@Column(name = "Enddat")
+	@Column(name = "enddat")
 	private String enddat;
 	
-	/*#### LOGO ####*/
-
-	/*@Column(name = "logo")
-	private char logo;*/
-
+	@OneToMany(mappedBy = "umfrage", cascade = { CascadeType.ALL })
+	private List<Gruppe> gruppen;
+	
+	/******************************************************************************************************
+	 * 
+	 */
 	public Umfrage() {
-
+		gruppen = new ArrayList<>();
 	}
 	
-	//######################################################################
-    // GETTERS & SETTERS
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
+	/******************************************************************************************************
+	 * @param id
+	 * @param name
+	 * @param beschr
+	 * @param intro
+	 * @param startdat
+	 * @param enddat
+	 */
+	public Umfrage(Integer id, String name, String beschr, String intro, String startdat, String enddat){
+		this();
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getBeschr() {
-		return beschr;
-	}
-
-	public void setBeschr(String beschr) {
 		this.beschr = beschr;
-	}
-
-	public String getIntro() {
-		return intro;
-	}
-
-	public void setIntro(String intro) {
 		this.intro = intro;
-	}
-
-	public String getStartdat() {
-		return startdat;
-	}
-
-	public void setStartdat(String startdat) {
 		this.startdat = startdat;
-	}
-
-	public String getEnddat() {
-		return enddat;
-	}
-
-	public void setEnddat(String enddat) {
 		this.enddat = enddat;
 	}
 	
-	/*#### LOGO ####*/
-
-	/*public char getLogo() {
-		return logo;
+	/*****************************************************************************************************
+	 * 
+	 * @return
+	 */
+	public int getId() {
+		return id;
+	}
+	
+	/***************************************************************************************************
+	 * 
+	 * @param id
+	 */
+	public Umfrage setId(int id) {
+		this.id = id;
+		return this;
+	}
+	
+	/***************************************************************************************************
+	 * 
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
+	
+	/**************************************************************************************************
+	 * 
+	 * @param name
+	 */
+	public Umfrage setName(String name) {
+		this.name = name;
+		return this;
+	}
+	
+	/**************************************************************************************************
+	 * 
+	 * @return
+	 */
+	public String getBeschr() {
+		return beschr;
+	}
+	
+	/************************************************************************************************
+	 * 
+	 * @param beschr
+	 */
+	public Umfrage setBeschr(String beschr) {
+		this.beschr = beschr;
+		return this;
 	}
 
-	public void setLogo(char ologo) {
-		logo = ologo;
-	}*/
+	/************************************************************************************************
+	 * 
+	 * @return
+	 */
+	public String getIntro() {
+		return intro;
+	}
+	
+	/************************************************************************************************
+	 * 
+	 * @param intro
+	 */
+	public Umfrage setIntro(String intro) {
+		this.intro = intro;
+		return this;
+	}
+
+	/************************************************************************************************
+	 * 
+	 * @return
+	 */
+	public String getStartdat() {
+		return startdat;
+	}
+	
+	/***********************************************************************************************
+	 * 
+	 * @param startdat
+	 */
+	public Umfrage setStartdat(String startdat) {
+		this.startdat = startdat;
+		return this;
+	}
+	
+	/**********************************************************************************************
+	 * 
+	 * @return
+	 */
+	public String getEnddat() {
+		return enddat;
+	}
+	
+	/**********************************************************************************************
+	 * 
+	 * @param enddat
+	 */
+	public Umfrage setEnddat(String enddat) {
+		this.enddat = enddat;
+		return this;
+	}
+	
+	/**********************************************************************************************
+	 * 
+	 * @return
+	 */
+	public List<Gruppe> getGruppen(){
+		return gruppen;
+	}
+	
+	/*********************************************************************************************
+	 * 
+	 * @param gruppen
+	 */
+	public Umfrage setGruppen(List<Gruppe> gruppen){
+		this.gruppen = gruppen;
+		return this;
+	}
+	
+	/*********************************************************************************************
+	 * 
+	 * @param gruppe
+	 */
+	public Umfrage addGruppe(Gruppe gruppe){
+		if (!gruppen.contains(gruppe)){
+			gruppen.add(gruppe);
+		}
+		
+		if (gruppe != null && gruppe.getUmfrage() != this){
+			gruppe.setUmfrage(this);
+		}
+		return this;
+	}
 
 }

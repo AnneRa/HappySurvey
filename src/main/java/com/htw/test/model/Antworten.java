@@ -21,7 +21,7 @@ public class Antworten {
 	private Teilnehmer teilnehmer;
 	
 	@OneToOne
-	private Fragen fragen;
+	private Frage fragen;
 	
 /*	@OneToOne
 	private Typ typ;
@@ -53,11 +53,11 @@ public class Antworten {
 		this.teilnehmer = teilnehmer;
 	}
 
-	public Fragen getFragen() {
+	public Frage getFragen() {
 		return fragen;
 	}
 
-	public void setFragen(Fragen fragen) {
+	public void setFragen(Frage fragen) {
 		this.fragen = fragen;
 	}
 

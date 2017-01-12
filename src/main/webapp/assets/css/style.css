@@ -1,0 +1,52 @@
+body{
+	background-color: white;
+}
+
+header{
+	border-bottom: solid;
+	border-color:black;
+	border-width: 0.5px;
+}
+
+#header-logo{
+	display:block;
+	margin: 5px auto;
+	width:70px;
+}
+
+#login{
+	display:flex;
+	justify-content:center;
+	margin-top: 50px;
+}
+
+table#overviewTable{
+	margin:auto;
+	margin-top:50px;
+}
+
+div#overviewButtons2{
+	width:40%;
+	margin:auto;	
+}
+
+#overviewButton2{
+	margin:5px;
+	margin-top:25px;
+}
+
+button#overviewButton1{
+	margin: auto;
+	margin-top: 25px;
+    display: block;
+    width: 20%;
+}
+
+#buttonLogout{
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 10px;
+	margin-right: 30px;
+}
+
+
