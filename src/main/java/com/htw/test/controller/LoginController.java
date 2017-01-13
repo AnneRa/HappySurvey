@@ -2,23 +2,46 @@ package com.htw.test.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.htw.test.model.AdminUsers;
+import com.htw.test.model.Umfrage;
+import com.htw.test.repositories.AdminUsersRepository;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class LoginController {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
-
-    @RequestMapping(value = "/signin", method = RequestMethod.GET)
-    public ModelAndView getLoginPage(@RequestParam Optional<String> error) {
-        LOGGER.debug("Getting login page, error={}", error);
-        return new ModelAndView("signin", "error", error);
-    }
+	
+@Autowired
+private AdminUsersRepository adminUsersRepository;
+	
+	@RequestMapping(value = "/api/login", method= RequestMethod.POST)
+	public @ResponseBody ResponseEntity<String> myController(@RequestParam String name, @RequestParam String hash) {
+		
+		// Löschen wenn Datenbank nicht mehr gelöscht wird
+		AdminUsers anne = new AdminUsers();
+		anne.setUserName("anne@blah.de");
+		anne.setHash("24cb242811d57b6c8ab934ba17e4f41f");
+		AdminUsers saved = adminUsersRepository.save(anne);
+		
+		// Eigentliche Methode
+		AdminUsers adminUsers = adminUsersRepository.findOne(name);
+		if (adminUsers != null && adminUsers.getHash().equals(hash)) {
+			return ResponseEntity.status(HttpStatus.OK).body("");
+		}
+		return ResponseEntity.status(HttpStatus.FORBIDDEN).body("");
+	}
 
 }

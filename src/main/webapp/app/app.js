@@ -6,14 +6,15 @@ config.$inject = ['$routeProvider', '$locationProvider'];
 function config($routeProvider, $locationProvider) {
     $routeProvider
 	.when('/home', {
+		// Später gegen die richtige Home Seite für Teilnehmer ersetzen 
+		templateUrl: 'views/login.html',
+		controller: 'loginController'
+	})
+    .when('/admin/home', {
 		templateUrl: 'views/overviewAdmin.html',
 		controller: 'overviewAdminController'
 	}) 
-	.when('/admin', {
-		templateUrl: 'views/overviewAdmin.html',
-		controller: 'overviewAdminController'
-	}) 
-	.when('/login', {
+	.when('/admin/login', {
 		templateUrl: 'views/login.html',
 		controller: 'loginController'
 	})
@@ -21,8 +22,7 @@ function config($routeProvider, $locationProvider) {
 		templateUrl: 'views/newSurvey.html',
 		controller: 'newSurveyController'
 	})
-
-        .otherwise({ redirectTo: '/home' });
+	.otherwise({ redirectTo: '/home' });
 }
 
 // Sehr wichtig! Nicht löschen!
@@ -32,9 +32,9 @@ function run($rootScope, $location, $cookies, $http) {
     $rootScope.$on('$locationChangeStart', function (event, next, current) {
         // redirect to login page if not logged in and trying to access a restricted page
     	var restrictedPage = $location.path().search(/admin/i) != -1;
-        var loggedIn = $cookies.get('currentUser4916');
+        var loggedIn = $cookies.get('currentUser');
         if (restrictedPage && !loggedIn) {
-            $location.path('/login');
+            $location.path('/admin/login');
         }
     });
 }
