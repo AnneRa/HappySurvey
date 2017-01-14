@@ -49,4 +49,11 @@ button#overviewButton1{
 	margin-right: 30px;
 }
 
+.form-error-message {
+
+	padding: 8px;
+	margin: 16px;
+	color: white;
+	background-color: red;
+}
 
