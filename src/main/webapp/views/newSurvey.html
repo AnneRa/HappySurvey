@@ -1,25 +1,31 @@
 <div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--3-col">
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="title">Titel der Umfrage</label>
-			 <input class="mdl-textfield__input" type="text" id="title">
+		<div
+			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<label class="mdl-textfield__label" for="title">Titel der
+				Umfrage</label> <input class="mdl-textfield__input" type="text" id="title"
+				required>
 		</div>
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<div
+			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<label class="mdl-textfield__label" for="description">Beschreibung</label>
-			<input
-				ng-model="description" type="text" class="mdl-textfield__input"
-				id="description">
+			<input ng-model="description" type="text"
+				class="mdl-textfield__input" id="description">
 		</div>
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<div
+			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<label class="mdl-textfield__label" for="startDate">Startdatum</label>
 			<div>
-					<input ng-model="startDate" type="date"  class="mdl-textfield__input" id="startDate">
+				<input ng-model="startDate" type="date" class="mdl-textfield__input"
+					id="startDate" required >
 			</div>
 
 		</div>
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<div
+			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<label class="mdl-textfield__label" for="endDate">Enddatum</label>
-			<input ng-model="endDate" type="date" class="mdl-textfield__input" id="endDate">
+			 <input ng-model="endDate" type="date" class="mdl-textfield__input"
+				id="endDate" required>
 		</div>
 		<div class="mdl-card__actions mdl-card--border">
 			<button
