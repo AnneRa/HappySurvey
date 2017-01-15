@@ -31,10 +31,10 @@ private AdminUsersRepository adminUsersRepository;
 	public @ResponseBody ResponseEntity<String> myController(@RequestParam String name, @RequestParam String hash) {
 		
 		// Löschen wenn Datenbank nicht mehr gelöscht wird
-		AdminUsers anne = new AdminUsers();
-		anne.setUserName("anne@blah.de");
-		anne.setHash("24cb242811d57b6c8ab934ba17e4f41f");
-		AdminUsers saved = adminUsersRepository.save(anne);
+		AdminUsers admin = new AdminUsers();
+		admin.setUserName("admin@happysurvey.de");
+		admin.setHash("21232f297a57a5a743894a0e4a801fc3");
+		AdminUsers saved = adminUsersRepository.save(admin);
 		
 		// Eigentliche Methode
 		AdminUsers adminUsers = adminUsersRepository.findOne(name);
