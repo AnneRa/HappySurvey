@@ -1,11 +1,11 @@
 happySurvey.controller('overviewAdminController', ['$scope', 'UmfrageRepository', function($scope, UmfrageRepository){
 	
-	this.umfrage = {titel:'', id:null, start:'', ende:'', link:'' };
-	this.umfragen = [];
+	$scope.umfrage = {titel:'', id:null, start:'', ende:'', link:'' };
+	$scope.umfragen = [];
 	
-	this.submit = submit;
-	this.edit = edit;
-	this.remove = remove;
+	$scope.submit = submit;
+	$scope.edit = edit;
+	$scope.remove = remove;
 	
 	fetchAllSurveys();
 	
@@ -13,7 +13,7 @@ happySurvey.controller('overviewAdminController', ['$scope', 'UmfrageRepository'
 		UmfrageRepository.fetchAllSurveys()
 			.then(
 				function(d){
-					this.umfragen = d;
+					$scope.umfragen = d;
 				},
 				function(errResponse){
 					console.error('Error while fetching Surveys');
