@@ -57,3 +57,9 @@ button#overviewButton1{
 	background-color: red;
 }
 
+#greeting {
+	display:flex;
+	justify-content:center;
+	margin-top: 50px;
+}
+

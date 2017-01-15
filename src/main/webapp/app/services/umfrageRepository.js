@@ -2,6 +2,7 @@ happySurvey.factory('UmfrageRepository', ['$http', '$q', function($http, $q){
 	
 	var factory = {
 			fetchAllSurveys: fetchAllSurveys,
+			fetchSurvey: fetchSurvey,
 			createSurvey: createSurvey,
 			updateSurvey: updateSurvey,
 			deleteSurvey: deleteSurvey
@@ -9,6 +10,7 @@ happySurvey.factory('UmfrageRepository', ['$http', '$q', function($http, $q){
 	
 	return factory;
 	
+	//Please implement this function in backend
 	function fetchAllSurveys() {
 		var deferred = $q.defer();
 		$http.get('http://localhost:8080/HappySurvey/get/umfragen')
@@ -18,6 +20,22 @@ happySurvey.factory('UmfrageRepository', ['$http', '$q', function($http, $q){
 	            },
 	            function(errResponse){
 	                console.error('Error while fetching surveys');
+	                deferred.reject(errResponse);
+	            }
+            );
+		return deferred.promise;
+	}
+	
+	//Please implement this function in backend
+	function fetchSurvey(id) {
+		var deferred = $q.defer();
+		$http.get('http://localhost:8080/HappySurvey/get/umfragen/' + id)
+			.then(
+	            function (response) {
+	                deferred.resolve(response.data);
+	            },
+	            function(errResponse){
+	                console.error('Error while fetching survey' + id);
 	                deferred.reject(errResponse);
 	            }
             );
