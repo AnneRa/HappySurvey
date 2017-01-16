@@ -7,17 +7,14 @@ function config($routeProvider, $locationProvider) {
     $routeProvider
 	.when('/home', {
 		// Später gegen die richtige Home Seite für Teilnehmer ersetzen 
-		templateUrl: 'views/participant/survey_conduct_greeting.html',
-		controller: 'surveyConductController'
+		templateUrl: 'views/admin/login.html',
+		controller: 'loginController'
 	})
     .when('/admin/home', {
 		templateUrl: 'views/admin/overviewAdmin.html',
 		controller: 'overviewAdminController'
 	}) 
-	.when('/admin/login', {
-		templateUrl: 'views/admin/login.html',
-		controller: 'loginController'
-	})
+	
 	.when('/newSurvey', {
 		templateUrl: 'views/admin/newSurvey.html',
 		controller: 'newSurveyController'
