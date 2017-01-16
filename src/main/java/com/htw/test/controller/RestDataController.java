@@ -59,20 +59,16 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.OK).body(umfrage);
 	}
 
-	@RequestMapping(path = "/new/umfrage/{id}", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/new/umfrage", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Umfrage> addUmfrage(@PathVariable int id) {
-
+	//public ResponseEntity<Umfrage> addUmfrage(@PathVariable int id) {
+	public ResponseEntity<Umfrage> addUmfrage(@RequestBody Umfrage umf) {
+		
 		// Werte Übergeben
-		Umfrage tst = new Umfrage();
-		tst.setId(id);
-		tst.setBeschr("Test");
-		tst.setEnddat("10.06.2016");
-		tst.setStartdat("10.05.2016");
-		tst.setName("cooler shice");
-
-		Umfrage saved = umfrageRepository.save(tst);
+		Umfrage umfrage = new Umfrage(umf);
+		Umfrage saved = umfrageRepository.save(umfrage);
 		return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+
 	}
 
 	@RequestMapping(path = "/del/umfrage/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")

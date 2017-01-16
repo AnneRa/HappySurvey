@@ -2,22 +2,24 @@ package com.htw.test.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TEILNEHMER")
+@Table(name = "teilnehmer")
 public class Teilnehmer {
 
 	@Id
-	@Column (name = "TEILNEHMER_ID")
+	@GeneratedValue
+	@Column (name = "id")
 	private int id;
 
-	@Column(name = "Mail")
+	@Column(name = "mail")
 	private String mail;
 
-	@Column(name = "Status")
+	@Column(name = "status")
 	private String status;
 
 	@ManyToOne
