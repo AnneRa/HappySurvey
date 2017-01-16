@@ -1,4 +1,4 @@
-happySurvey.controller('newSurveyController', ['$scope', '$http' , function($scope, $http) {
+happySurvey.controller('newSurveyController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
 	'use strict';
 
@@ -9,9 +9,29 @@ happySurvey.controller('newSurveyController', ['$scope', '$http' , function($sco
 	endDate.setDate($scope.startDate.getDate() + 7);
 	$scope.endDate = endDate;
 
-	$scope.createSurveyClicked = function(){
+	$scope.createSurvey = function(){
 
-		// TODO implement
+		$http({
+    		method: "POST",
+    		url: "/HappySurvey/new/umfrage/{id}",
+    		params: {
+    			name: $scope.title,
+    			beschr: $scope.description,
+    			stardat: $scope.startDate,
+    			enddat: $scope.endDate
+    		}
+    	}).then(
+    			
+    		function success(response) {
+
+    			$location.path('/admin/home').replace();
+     			
+    		},
+    		
+    		function error(response) {
+   
+    		});
 	}
 
 }]);
+

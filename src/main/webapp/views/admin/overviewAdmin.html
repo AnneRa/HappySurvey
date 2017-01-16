@@ -1,50 +1,51 @@
-<div ng-controller="overviewAdminController as oACtrl">
-	<div id="buttonLogout">
+<div ng-controller="overviewAdminController as oACtrl" class="mdl-grid" style="display:block;">
+	<div id="logout">
 		<button class="mdl-button mdl-js-button mdl-button--icon">
 			<i class="material-icons">exit_to_app</i>
 		</button>
 	</div>
-	<div id="overviewButtons1">
-		<a href="#/newSurvey">
-			<button id="overviewButton1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-click="$location.path('#/newSurvey')">
+	<div class="mdl-cell mdl-cell--4-col" style="margin: auto;">
+		<div id="btn1">
+			<a ng-href="#/newSurvey" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				<i class="material-icons">add</i>
 				Neue Umfrage
-	        </button>
-        </a>
-        
-	    <button id="overviewButton1" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-			<i class="material-icons">insert_chart</i>
-			Auswertung erstellen
-        </button>
-	</div>
-	<table id="overviewTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-	  <thead>
-	    <tr>
-	      <th class="mdl-data-table__cell--non-numeric">Titel</th>
-	      <th class="mdl-data-table__cell--non-numeric">ID</th>
-	      <th class="mdl-data-table__cell--non-numeric">Start</th>
-	      <th class="mdl-data-table__cell--non-numeric">Ende</th>
-	      <th class="mdl-data-table__cell--non-numeric">Link</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <tr ng-repeat="s in oACtrl.surveys">
-	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
-    	  <td class="mdl-data-table__cell--non-numeric"><span ng-bind="s.id"></span></td>
-	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
-	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
-	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
-	    </tr>
-	  </tbody>
-	</table>
+	        </a>
 	
-	<div id="overviewButtons2">
-		<button id="overviewButton2" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
-			<i class="material-icons">content_copy</i>
-		</button>
+	        
+		    <a ng-href="" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				<i class="material-icons">insert_chart</i>
+				Auswertung erstellen
+	        </a>
+		</div>
+		<table id="table" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+		  <thead>
+		    <tr>
+		      <th class="mdl-data-table__cell--non-numeric">Titel</th>
+		      <th class="mdl-data-table__cell--non-numeric">ID</th>
+		      <th class="mdl-data-table__cell--non-numeric">Start</th>
+		      <th class="mdl-data-table__cell--non-numeric">Ende</th>
+		      <th class="mdl-data-table__cell--non-numeric">Link</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="s in oACtrl.surveys">
+		      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
+	    	  <td class="mdl-data-table__cell--non-numeric"><span ng-bind="s.id"></span></td>
+		      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
+		      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
+		      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
+		    </tr>
+		  </tbody>
+		</table>
 		
-		<button type="button" ng-click="oACtrl.remove(s.id)" id="overviewButton2" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
-	 		<i class="material-icons">delete</i>
-		</button>
-	</div>	
+		<div>
+			<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
+				<i class="material-icons">content_copy</i>
+			</button>
+			
+			<button type="button" ng-click="oACtrl.remove(s.id)"  class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
+		 		<i class="material-icons">delete</i>
+			</button>
+		</div>	
+	</div>
 </div>
