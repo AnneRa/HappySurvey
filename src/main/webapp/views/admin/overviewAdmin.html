@@ -1,4 +1,5 @@
-<div ng-controller="overviewAdminController as oACtrl">
+<!-- <div ng-controller="overviewAdminController as oACtrl"> -->
+
 	<div id="buttonLogout">
 		<button class="mdl-button mdl-js-button mdl-button--icon">
 			<i class="material-icons">exit_to_app</i>
@@ -20,17 +21,24 @@
 	<table id="overviewTable" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
 	  <thead>
 	    <tr>
-	      <th class="mdl-data-table__cell--non-numeric">Titel</th>
 	      <th class="mdl-data-table__cell--non-numeric">ID</th>
+	      <th class="mdl-data-table__cell--non-numeric">Titel</th>
 	      <th class="mdl-data-table__cell--non-numeric">Start</th>
 	      <th class="mdl-data-table__cell--non-numeric">Ende</th>
 	      <th class="mdl-data-table__cell--non-numeric">Link</th>
 	    </tr>
 	  </thead>
 	  <tbody>
+	   <tr>
+	            <td class="mdl-data-table__cell--non-numeric">643829</td>
+               <td class="mdl-data-table__cell--non-numeric">Bosch</td>
+                <td class="mdl-data-table__cell--non-numeric">01.01.2017</td>
+                <td class="mdl-data-table__cell--non-numeric">31.03.2017</td>
+               <td class="mdl-data-table__cell--non-numeric">8378hrjke89hkfdhk-434899789f</td>
+            </tr>
 	    <tr ng-repeat="s in oACtrl.surveys">
+	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind="s.id"></span></td>
 	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
-    	  <td class="mdl-data-table__cell--non-numeric"><span ng-bind="s.id"></span></td>
 	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
 	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
 	      <td class="mdl-data-table__cell--non-numeric"><span ng-bind=""></span></td>
@@ -42,9 +50,14 @@
 		<button id="overviewButton2" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
 			<i class="material-icons">content_copy</i>
 		</button>
-		
+		<!--  
 		<button type="button" ng-click="oACtrl.remove(s.id)" id="overviewButton2" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
 	 		<i class="material-icons">delete</i>
+		</button> -->
+		
+		<button ng-click="deleteSurveyClicked('1')" id="overviewButton2" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-button--primary">
+	 		<i class="material-icons">delete</i>
 		</button>
+		
 	</div>	
-</div>
+<!-- </div> -->

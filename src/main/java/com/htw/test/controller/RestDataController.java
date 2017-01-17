@@ -61,7 +61,6 @@ public class RestDataController {
 
 	@RequestMapping(path = "/new/umfrage", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	//public ResponseEntity<Umfrage> addUmfrage(@PathVariable int id) {
 	public ResponseEntity<Umfrage> addUmfrage(@RequestBody Umfrage umf) {
 		
 		// Werte Übergeben
@@ -82,7 +81,9 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
-	@RequestMapping(path = "/update/umfrage/{id}", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	
+	
+	@RequestMapping(path = "/update/umfrage/{id}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<Void> updateUmfrageById(@PathVariable int id, @RequestBody Umfrage update) {
 		Umfrage umfrage = umfrageRepository.findOne(id);
@@ -90,11 +91,19 @@ public class RestDataController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		umfrage.setName(update.getName());
+		umfrage.setBeschr(update.getBeschr());
+		umfrage.setIntro(update.getIntro());
+		umfrage.setStartdat(update.getStartdat());
+		umfrage.setEnddat(update.getEnddat());
 		umfrageRepository.save(umfrage);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
 
+	
+	/*#### FRAGE ####*/
+	
+	
 	/*************************************************************************************************************************
 	 *
 	 * @param gruppeId
@@ -149,47 +158,71 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(null);
 	}
 
-	/*****************************************************************************************************************************************************
-	 *
-	 * @param newGruppe
-	 * @return
-	 */
-	@RequestMapping(path = "/new/gruppen", method = RequestMethod.POST, consumes = "application/json; charset=utf-8",
-			produces = "application/json; charset=utf-8")
+	
+	/*#### Gruppe ####*/
+	
+	@RequestMapping(path = "/get/gruppen", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	//@ApiResponses(value = {
-			//@ApiResponse(code = 201, message = "New gruppe created.", response = Gruppe.class),
-			//@ApiResponse(code = 400, message = "Bad input.") })
-	public ResponseEntity<Gruppe> addGruppe(@RequestBody Gruppe newGruppe) {
+	public ResponseEntity<List<Gruppe>> getAllGruppen() {
+		List<Gruppe> gruppen = new ArrayList<Gruppe>();
+		for (Gruppe g : gruppeRepository.findAll()) {
 
-		if (gruppeRepository.exists(newGruppe.getId())) {
-			throw new IllegalArgumentException("Error: Gruppe " + newGruppe.getId() + " already exists.");
+			gruppen.add(g);
 		}
-
-		Gruppe savedGruppe = gruppeRepository.save(newGruppe);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedGruppe);
+		if (gruppen.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(gruppen);
 	}
 
-	/*****************************************************************************************************************************************************
-	 *
-	 * @param gruppeId
-	 * @param updatedGruppe
-	 * @return
-	 */
-	@RequestMapping(path = "/update/gruppen/{gruppeId}", method = RequestMethod.PUT, consumes = "application/json; charset=utf-8",
+	@RequestMapping(path = "/get/gruppe/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Gruppe> getGruppeById(@PathVariable int id) {
+		Gruppe gruppe = gruppeRepository.findOne(id);
+		if (gruppe == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(gruppe);
+	}
+	
+	@RequestMapping(path = "/new/gruppe", method = RequestMethod.POST, consumes = "application/json; charset=utf-8",
 			produces = "application/json; charset=utf-8")
 	@ResponseBody
-	//@ApiResponses(value = { @ApiResponse(code = 200, message = "Gruppe updated.", response = Gruppe.class) })
-	public ResponseEntity<Gruppe> updateGruppe(@PathVariable("GruppeId") Integer gruppeId,
-			@RequestBody Gruppe updatedGruppe) {
+	public ResponseEntity<Gruppe> addGruppe(@RequestBody Gruppe gru) {
 
-		if (!gruppeRepository.exists(gruppeId)) {
-			throw new EntityNotFoundException("Error: Control unit " + gruppeId + " does not exist.");
-		}
-
-		Gruppe savedGruppe = gruppeRepository.save(updatedGruppe);
-		return ResponseEntity.status(HttpStatus.OK).body(savedGruppe);
+		
+		// Werte Übergeben
+	    Gruppe gruppe = new Gruppe(gru);
+		Gruppe saved = gruppeRepository.save(gruppe);
+		return ResponseEntity.status(HttpStatus.CREATED).body(saved);
 	}
+
+
+	@RequestMapping(path = "/del/gruppe/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Void> deleteGruppeById(@PathVariable int id) {
+		Gruppe gruppe = gruppeRepository.findOne(id);
+		if (gruppe == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		gruppeRepository.delete(id);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
+	}
+
+	
+	@RequestMapping(path = "/update/gruppe/{id}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Void> updateGruppeById(@PathVariable int id, @RequestBody Gruppe update) {
+		Gruppe gruppe = gruppeRepository.findOne(id);
+		if (gruppe == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		gruppe.setName(update.getName());
+		gruppe.setUmfrage(update.getUmfrage());
+		gruppeRepository.save(gruppe);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
+	}
+
 
 
 

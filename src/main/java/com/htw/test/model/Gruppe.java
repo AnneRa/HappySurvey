@@ -35,7 +35,14 @@ public class Gruppe {
 	public Gruppe(){
 		fragen = new ArrayList<>();
 	}
-
+	/**********************************************************************************************************
+	 * 
+	 * @param gru
+	 */
+	public Gruppe(Gruppe gru){
+		this.name = gru.name;
+		this.umfrage = gru.umfrage;
+	}
 	/**********************************************************************************************************
 	 * 
 	 * @param name
