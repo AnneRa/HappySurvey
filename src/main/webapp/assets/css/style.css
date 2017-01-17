@@ -72,3 +72,11 @@ header{
 	padding: 0px;
 }
 
+#newQuestion {
+	display:flex;
+	justify-content:center;
+	margin-top: 5%;
+}
+
+
+
