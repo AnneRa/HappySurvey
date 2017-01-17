@@ -61,3 +61,14 @@ header{
 	margin: 16px;
 }
 
+#questionTypeLabel {
+	margin: 0px;
+	padding: 0px;
+}
+
+#optionalQuestion {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	padding: 0px;
+}
+

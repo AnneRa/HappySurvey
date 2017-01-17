@@ -1,29 +1,42 @@
 <div class="mdl-grid">
 	<div class="mdl-cell mdl-cell--3-col">
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<div class="mdl-card mdl-shadow--2dp">
+		<div
+			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 			<label class="mdl-textfield__label" for="title">Fragestellung</label>
-			 <input class="mdl-textfield__input" type="text" id="title">
+			<input class="mdl-textfield__input" type="text" id="title">
 		</div>
-		<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="description">erweiterte Beschreibung</label>
-			<input
-				ng-model="description" type="text" class="mdl-textfield__input"
-				id="description">
+		<div
+			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			<label class="mdl-textfield__label" for="description">erweiterte
+				Beschreibung</label> <input ng-model="description" type="text"
+				class="mdl-textfield__input" id="description">
 		</div>
-		<div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-			<select class="mdl-selectfield__select" id="questionType" name="questionType">
+		<div
+			class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+
+			<div id="questionTypeLabel">
+				<label class="mdl-selectfield__label" for="questionType">Fragetyp
+					auswählen</label>
+			</div>
+			<select class="mdl-selectfield__select" id="questionType"
+				name="questionType">
 				<option value=""></option>
 				<option value="option1">Lineare Skala</option>
 				<option value="option2">Multiple-Choice</option>
 				<option value="option3">Drop-Down</option>
 				<option value="option4">Textfeld</option>
-				
-			
 			</select>
-			<div class="mdl-selectfield__icon"><i class="material-icons">arrow_drop_down</i>
-			</div>
-			<label class="mdl-selectfield__label"
-			for="questionType">Fragetyp auswählen</label>
+		</div>
+
+		<div id="optionalQuestion">
+			<div>Optionale Frage</div>
+			<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+				for="switch-1"> <input type="checkbox" id="switch-1"
+				class="mdl-switch__input" checked>
+			</label>
 		</div>
 	</div>
+	</div>
 </div>
+
