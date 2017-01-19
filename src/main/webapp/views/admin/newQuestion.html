@@ -1,7 +1,10 @@
 <div class="mdl-grid" id="newQuestion">
-	<div class="mdl-cell mdl-cell--3-col">
-		<div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
+	<div
+		class="mdl-cell mdl-cell--6-col  mdl-grid mdl-card mdl-shadow--2dp mdl-card__supporting-text">
+		<div id="generalQuestionAttributes" class="mdl-cell mdl-cell--6-col">
+		<h4>Allgemeine Attribute</h4>
 			<form action="#" ng-submit="newQuestion();" name="newQuestionForm">
+				
 				<div
 					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 					<label class="mdl-textfield__label" for="title">Fragestellung</label>
@@ -21,12 +24,12 @@
 							auswählen</label>
 					</div>
 					<select class="mdl-selectfield__select mdl-cell--8-col"
-						id="questionType" name="questionType">
+						id="questionType" name="questionType" ng-model="questionType">
 						<option value=""></option>
-						<option value="option1">Lineare Skala</option>
-						<option value="option2">Multiple-Choice</option>
-						<option value="option3">Drop-Down</option>
-						<option value="option4">Textfeld</option>
+						<option value="linearScale">Lineare Skala</option>
+						<option value="multipleChoice">Multiple-Choice</option>
+						<option value="dropDown">Drop-Down</option>
+						<option value="textField">Textfeld</option>
 					</select>
 				</div>
 
@@ -57,6 +60,36 @@
 					id="newQuestion" name="newQuestion" ng-click="newQuestionClicked()">Speichern</button>
 			</form>
 		</div>
+		<div id="typeSpecificAttributes" class="mdl-cell mdl-cell--6-col">
+		<h4>Typ-Spezifische Attribute</h4>
+			<div ng-switch="questionType">
+				<div ng-switch-when="linearScale">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							id="leftSideDescription"> <label
+							class="mdl-textfield__label" for="leftSideDescription">Linke
+							Seite</label>
+					</div>
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							id="rightSideDescription"> <label
+							class="mdl-textfield__label" for="rightSideDescription">Rechte
+							Seite</label>
+					</div>
+				</div>
+				<div ng-switch-when="multipleChoice">
+					<h1>Tutorials</h1>
+					<p>Learn from examples.</p>
+				</div>
+				<div ng-switch-when="dropDown">
+					<h1>Cars</h1>
+					<p>Read about cars.</p>
+				</div>
+				<div ng-switch-when="textField"></div>
+			</div>
+		</div>
+
 	</div>
 </div>
-
