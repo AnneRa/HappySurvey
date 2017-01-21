@@ -1,0 +1,95 @@
+<div class="mdl-grid" id="newQuestion">
+	<div
+		class="mdl-cell mdl-cell--6-col  mdl-grid mdl-card mdl-shadow--2dp mdl-card__supporting-text">
+		<div id="generalQuestionAttributes" class="mdl-cell mdl-cell--6-col">
+		<h4>Allgemeine Attribute</h4>
+			<form action="#" ng-submit="newQuestion();" name="newQuestionForm">
+				
+				<div
+					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<label class="mdl-textfield__label" for="title">Fragestellung</label>
+					<input class="mdl-textfield__input" type="text" id="title">
+				</div>
+				<div
+					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<label class="mdl-textfield__label" for="description">erweiterte
+						Beschreibung</label> <input ng-model="description" type="text"
+						class="mdl-textfield__input" id="description">
+				</div>
+				<div
+					class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+
+					<div id="questionTypeLabel">
+						<label class="mdl-selectfield__label" for="questionType">Fragetyp
+							auswählen</label>
+					</div>
+					<select class="mdl-selectfield__select mdl-cell--8-col"
+						id="questionType" name="questionType" ng-model="questionType">
+						<option value=""></option>
+						<option value="linearScale">Lineare Skala</option>
+						<option value="multipleChoice">Multiple-Choice</option>
+						<option value="dropDown">Drop-Down</option>
+						<option value="textField">Textfeld</option>
+					</select>
+				</div>
+
+				<div id="optionalQuestion">
+					<div>Optionale Frage</div>
+					<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+						for="switch-1"> <input type="checkbox" id="switch-1"
+						class="mdl-switch__input" checked>
+					</label>
+				</div>
+				<div
+					class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+
+					<div id="questionTypeLabel">
+						<label class="mdl-selectfield__label" for="questionType">Fragegruppe
+							auswählen</label>
+					</div>
+					<select class="mdl-selectfield__select mdl-cell--8-col"
+						id="questionType" name="questionType">
+						<option value=""></option>
+						<option value="option1">Sinn</option>
+						<option value="option2">Glück</option>
+						<option value="option3">Gemeinschaft</option>
+					</select>
+				</div>
+				<button
+					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+					id="newQuestion" name="newQuestion" ng-click="newQuestionClicked()">Speichern</button>
+			</form>
+		</div>
+		<div id="typeSpecificAttributes" class="mdl-cell mdl-cell--6-col">
+		<h4>Typ-Spezifische Attribute</h4>
+			<div ng-switch="questionType">
+				<div ng-switch-when="linearScale">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							id="leftSideDescription"> <label
+							class="mdl-textfield__label" for="leftSideDescription">Linke
+							Seite</label>
+					</div>
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							id="rightSideDescription"> <label
+							class="mdl-textfield__label" for="rightSideDescription">Rechte
+							Seite</label>
+					</div>
+				</div>
+				<div ng-switch-when="multipleChoice">
+					<h1>Tutorials</h1>
+					<p>Learn from examples.</p>
+				</div>
+				<div ng-switch-when="dropDown">
+					<h1>Cars</h1>
+					<p>Read about cars.</p>
+				</div>
+				<div ng-switch-when="textField"></div>
+			</div>
+		</div>
+
+	</div>
+</div>

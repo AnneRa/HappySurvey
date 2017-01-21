@@ -44,9 +44,8 @@ header{
 /**/
 
 .form-error-message {
-
+	margin-top: 8px;
 	padding: 8px;
-	margin: 16px;
 	color: white;
 	background-color: red;
 }
@@ -60,4 +59,23 @@ header{
 #surveyDescription {
 	margin: 16px;
 }
+
+#questionTypeLabel {
+	margin: 0px;
+	padding: 0px;
+}
+
+#optionalQuestion {
+	margin-top: 8px;
+	margin-bottom: 8px;
+	padding: 0px;
+}
+
+#newQuestion {
+	display:flex;
+	justify-content:center;
+	margin-top: 5%;
+}
+
+
 
