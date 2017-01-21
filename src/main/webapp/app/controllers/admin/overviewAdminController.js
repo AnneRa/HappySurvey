@@ -1,7 +1,11 @@
 
-happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$location', function($scope, $http, $location) {
+happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$location','crumble', function($scope, $http, $location, crumble) {
 
 	'use strict';
+	
+	crumble.update({
+		  name: 'crumble'
+		});
 
 	
 	 //es fehlen get parameter 

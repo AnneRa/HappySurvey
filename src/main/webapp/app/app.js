@@ -1,5 +1,5 @@
 var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
-		'ngAnimate', 'ngSanitize', 'ngMaterial' ]);
+		'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble' ]);
 happySurvey.config(config);
 happySurvey.run(run);
 
@@ -8,19 +8,32 @@ function config($routeProvider, $locationProvider) {
 	$routeProvider.when('/home', {
 		// Später gegen die richtige Home Seite für Teilnehmer ersetzen 
 		templateUrl : 'views/admin/login.html',
-		controller : 'loginController'
+		controller : 'loginController',
+		label : 'Login'
 	}).when('/admin/home', {
 		templateUrl : 'views/admin/overviewAdmin.html',
-		controller : 'overviewAdminController'
+		controller : 'overviewAdminController',
+		label : 'Übersicht'
 	})
 	.when('/newSurvey', {
 		templateUrl : 'views/admin/newSurvey.html',
-		controller : 'newSurveyController'
+		controller : 'newSurveyController',
+		label: 'Neue Umfrage'
 	})
 	.when('/newQuestion', {
 		templateUrl : 'views/admin/newQuestion.html',
-		controller : 'newQuestionController'
+		controller : 'newQuestionController',
+		label : 'Neue Frage'
 	})
+	.when('/', {
+		redirectTo : '/home',
+		label : '/'
+	})
+	.when('/admin', {
+		redirectTo : '/admin/home',
+		label : 'Übersicht'
+	})
+	
 	.otherwise({
 		redirectTo : '/home'
 	});

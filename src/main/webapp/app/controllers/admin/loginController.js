@@ -1,6 +1,9 @@
-happySurvey.controller('loginController', ['$scope', '$http', '$cookies', '$location' , function($scope, $http, $cookies, $location) {
+happySurvey.controller('loginController', ['$scope', '$http', '$cookies', '$location', 'crumble' , function($scope, $http, $cookies, $location, crumble) {
 	
 	'use strict';
+	crumble.update({
+		  name: 'crumble'
+		});
 	
 	$scope.email = "";
     $scope.password = "";
