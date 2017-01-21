@@ -8,6 +8,8 @@ happySurvey.controller('newSurveyController', ['$scope', '$http', '$location', f
 	var endDate = new Date();
 	endDate.setDate($scope.startDate.getDate() + 7);
 	$scope.endDate = endDate;
+	
+	$scope.showError = false;
 
 	$scope.createSurvey = function(){
 
@@ -24,12 +26,12 @@ happySurvey.controller('newSurveyController', ['$scope', '$http', '$location', f
     			
     		function success(response) {
 
-    			$location.path('/admin/home').replace();
+    			$location.path('/success').replace();
      			
     		},
     		
     		function error(response) {
-   
+    			$scope.showError = true;
     		});
 	}
 

@@ -19,6 +19,11 @@ function config($routeProvider, $locationProvider) {
 		templateUrl: 'views/admin/newSurvey.html',
 		controller: 'newSurveyController'
 	})
+	
+	.when('/success', {
+		templateUrl: 'views/admin/success.html',
+		controller: 'updateTableCtrl'
+	})
 	.otherwise({ redirectTo: '/home' });
 }
 
