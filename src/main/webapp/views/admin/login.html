@@ -9,26 +9,21 @@
 			<form action="#" ng-submit="login();" name="logInForm">
 
 				<!-- Text input-->
-				<div
-					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					<input class="mdl-textfield__input" type="email" id="email"
-						name="email" ng-model="email" ng-blur="upper();"> <label
-						class="mdl-textfield__label" for="email">Email</label>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="email" placeholder="Email"
+						name="email" ng-model="email" ng-blur="upper();"> 
 				</div>
 
 				<!-- Password input-->
-				<div
-					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<div class="mdl-textfield mdl-js-textfield">
 					<input class="mdl-textfield__input" type="password"
-						id="passwordinput" name="passwordinput" ng-model="password" /> <label
-						class="mdl-textfield__label" for="passwordinput">Passwort</label>
+						placeholder="Passwort" name="passwordinput" ng-model="password" /> 
 				</div>
 
 				<!-- Button -->
 				<label for="signin"></label>
-				<button
-					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-					id="signin" name="signin" ng-click="loginClicked()">Log in</button>
+				<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+					    name="signin" ng-click="loginClicked()">Log in</button>
 					<div class="form-error-message" ng-show="showError">Benutzername
 					oder Passwort nicht korrekt!</div>
 			</form>

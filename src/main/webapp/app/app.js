@@ -1,3 +1,4 @@
+
 var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
 		'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble' ]);
 happySurvey.config(config);
@@ -25,9 +26,9 @@ function config($routeProvider, $locationProvider) {
 		label: 'Neue Umfrage'
 	})
 	
-	.when('/success', {
-		templateUrl: 'views/admin/success.html',
-		controller: 'overviewAdminController'
+	.when('/editSurvey', {
+		templateUrl: 'views/admin/editSurvey.html',
+		controller: 'editSurveyCtrl'
 	})
 	
 	.when('/newQuestion', {
