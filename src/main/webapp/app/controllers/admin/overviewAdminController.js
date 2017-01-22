@@ -4,10 +4,6 @@ happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$locatio
 	'use strict';
 		
 	$scope.surveys = [];
-	$scope.survey = {
-			name: 'survey.name',
-			beschr: 'survey.beschr'
-	};
 	
 	$scope.updateTable = function(){
 		$http.get("http://localhost:8080/HappySurvey/api/v1/get/umfragen")
@@ -26,6 +22,7 @@ happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$locatio
 		})
 	};
 	
+	//das ist nur ein versuch 
 	$scope.editSurvey = function(id){
 		$http.get("http://localhost:8080/HappySurvey/api/v1/get/umfrage/" + id)
 		.success(function(data){

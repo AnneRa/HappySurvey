@@ -28,7 +28,7 @@ function config($routeProvider, $locationProvider) {
 	
 	.when('/editSurvey', {
 		templateUrl: 'views/admin/editSurvey.html',
-		controller: 'editSurveyCtrl'
+		controller: 'newSurveyController'
 	})
 	
 	.when('/newQuestion', {
