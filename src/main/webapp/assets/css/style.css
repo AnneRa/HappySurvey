@@ -82,5 +82,10 @@ header{
 	display: none;
 }
 
+.right-floating {
+	position: absolute;
+	right: 0px;
+}
+
 
 
