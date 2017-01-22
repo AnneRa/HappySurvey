@@ -1,43 +1,44 @@
-<div class="mdl-grid">
-	<div class="mdl-cell mdl-cell--3-col" style="margin:auto;">
-		<div
-			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="title">Titel der
-				Umfrage</label> <input ng-model="umf.name" class="mdl-textfield__input" type="text" id="title"
-				required>
-		</div>
-		<div
-			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="description">Beschreibung</label>
-			<input ng-model="umf.beschr" type="text"
-				class="mdl-textfield__input" id="description">
-		</div>
-		<div
-			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="intro">Intro</label>
-			<input ng-model="umf.intro" type="text"
-				class="mdl-textfield__input" id="intro">
-		</div>
-		<div
-			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="startDate">Startdatum</label>
-			<div>
-				<input ng-model="umf.startdat" type="date" class="mdl-textfield__input"
-					id="startDate" required >
-			</div>
+<div>
+	<a ng-href="#/admin/home" class="mdl-button mdl-js-button mdl-button--icon" style="margin-left:5%;">
+		<i class="material-icons">arrow_back</i>
+	</a>
+</div>
 
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--3-col mdl-card mdl-shadow--6dp" style="margin:auto;">
+		<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+			<h2 class="mdl-card__title-text">Neue Umfrage</h2>
 		</div>
-		<div
-			class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-			<label class="mdl-textfield__label" for="endDate">Enddatum</label>
-			 <input ng-model="umf.enddat" type="date" class="mdl-textfield__input"
-				id="endDate" required>
-		</div>
-		<div class="mdl-card__actions mdl-card--border">
-			<button
-				class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-				id="createSurvey" name="createSurvey"
-				ng-click="createSurveyClicked()">Umfrage erstellen</button>
+		<div class="mdl-card__supporting-text">
+			<div class="mdl-textfield mdl-js-textfield">
+				 <input ng-model="umf.name" class="mdl-textfield__input" type="text"
+					placeholder="Titel der Umfrage" required>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				<input ng-model="umf.beschr" type="text" placeholder="Beschreibung"
+					class="mdl-textfield__input">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				<input ng-model="umf.intro" type="text" placeholder="Intro"
+					class="mdl-textfield__input">
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				<input ng-model="umf.startdat" type="date" class="mdl-textfield__input"
+						placeholder="Startdatum" required >	
+			</div>
+			<div class="mdl-textfield mdl-js-textfield">
+				 <input ng-model="umf.enddat" type="date" class="mdl-textfield__input"
+					placeholder="Enddatum" required>
+			</div>
+			<div class="mdl-card__actions mdl-card--border">
+				<button
+					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+					id="createSurvey" name="createSurvey"
+					ng-click="createSurveyClicked()">
+					<i class="material-icons">add</i>
+					Umfrage erstellen
+				</button>
+			</div>
 		</div>
 	</div>
 </div>

@@ -5,16 +5,20 @@ happySurvey.run(run);
 
 config.$inject = [ '$routeProvider', '$locationProvider' ];
 function config($routeProvider, $locationProvider) {
-	$routeProvider.when('/home', {
+	$routeProvider
+	.when('/home', {
 		// Später gegen die richtige Home Seite für Teilnehmer ersetzen 
 		templateUrl : 'views/admin/login.html',
 		controller : 'loginController',
 		label : 'Login'
-	}).when('/admin/home', {
+	})
+	
+	.when('/admin/home', {
 		templateUrl : 'views/admin/overviewAdmin.html',
 		controller : 'overviewAdminController',
 		label : 'Übersicht'
 	})
+	
 	.when('/newSurvey', {
 		templateUrl : 'views/admin/newSurvey.html',
 		controller : 'newSurveyController',
@@ -23,7 +27,7 @@ function config($routeProvider, $locationProvider) {
 	
 	.when('/success', {
 		templateUrl: 'views/admin/success.html',
-		controller: 'updateTableCtrl'
+		controller: 'overviewAdminController'
 	})
 	
 	.when('/newQuestion', {
