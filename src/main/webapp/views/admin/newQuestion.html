@@ -56,9 +56,16 @@
 						<option value="option3">Gemeinschaft</option>
 					</select>
 				</div>
+				<div>
 				<button
 					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-					id="newQuestion" name="newQuestion" ng-click="newQuestionClicked()">Speichern</button>
+					id="saveQuestion" name="saveQuestion" ng-click="newQuestionClicked()">Speichern</button>
+				<button
+					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+					id="preview" name="preview" ng-click="previewClicked()">
+					Vorschau
+				</button>
+				</div>
 			</form>
 		</div>
 		<div id="typeSpecificAttributes"
