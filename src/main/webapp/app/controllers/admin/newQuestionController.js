@@ -26,7 +26,7 @@ happySurvey.controller('newQuestionController', ['$scope', '$http' , function($s
 					  '<i class="material-icons">delete</i>' +
 					'</button>' +
 					'</div>';
-		 var dropDownAttributesElementsContainer = document.getElementById('dropDownAttributesElementsContainer');
+		 var dropDownAttributesElementsContainer = document.getElementById('choiceAttributesElementsContainer');
 		 dropDownAttributesElementsContainer.innerHTML += optionNew;
 		 
 		 var elementNew = document.getElementById(htmlElementId);
@@ -40,7 +40,7 @@ happySurvey.controller('newQuestionController', ['$scope', '$http' , function($s
 	
 	$scope.removeOptionClicked = function(optionId) {
 		
-		var parent = document.getElementById("dropDownAttributesElementsContainer");
+		var parent = document.getElementById("choiceAttributesElementsContainer");
 		var child = document.getElementById(optionId);
 		parent.removeChild(child);
 	}
@@ -49,14 +49,12 @@ happySurvey.controller('newQuestionController', ['$scope', '$http' , function($s
 		
 		var typeSpecificAttributesContainer = document.getElementById('typeSpecificAttributes');
 		var linearScaleSpecificAttributesContainer = document.getElementById('linearScaleSpecificAttributesContainer');
-		var multipleChoiceAttributesContainer = document.getElementById('multipleChoiceAttributesContainer');
-		var dropDownAttributesContainer = document.getElementById('dropDownAttributesContainer');
+		var choiceAttributesContainer = document.getElementById('choiceAttributesContainer');
 		var textFieldAttributesContainer = document.getElementById('textFieldAttributesContainer');
 		
 		typeSpecificAttributesContainer.style.display = 'none';
 		linearScaleSpecificAttributesContainer.style.display = 'none';
-		multipleChoiceAttributesContainer.style.display = 'none';
-		dropDownAttributesContainer.style.display = 'none';
+		choiceAttributesContainer.style.display = 'none';
 		textFieldAttributesContainer.style.display = 'none';
 		
 		var list = document.getElementById('questionType');
@@ -70,15 +68,11 @@ happySurvey.controller('newQuestionController', ['$scope', '$http' , function($s
 			break;
 		
 		case "multipleChoice":
-			multipleChoiceAttributesContainer.style.display = 'block';
+		case "dropDown":
+			choiceAttributesContainer.style.display = 'block';
 			typeSpecificAttributesContainer.style.display = 'block';
 			break;
-		
-		case "dropDown": 
-			dropDownAttributesContainer.style.display = 'block';
-			typeSpecificAttributesContainer.style.display = 'block';
-			break;
-		
+			
 		case "textField":
 			textFieldAttributesContainer.style.display = 'block';
 			break;
@@ -88,5 +82,4 @@ happySurvey.controller('newQuestionController', ['$scope', '$http' , function($s
 		}
 	
 	}
-
 }]);
