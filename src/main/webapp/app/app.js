@@ -31,11 +31,16 @@ function config($routeProvider, $locationProvider) {
 		controller: 'newSurveyController'
 	})
 	
+	.when('/overviewQuestions', {
+		templateUrl: 'views/admin/overviewQuestions.html'
+	})
+	
 	.when('/newQuestion', {
 		templateUrl : 'views/admin/newQuestion.html',
 		controller : 'newQuestionController',
 		label : 'Neue Frage'
 	})
+	
 	.when('/', {
 		redirectTo : '/home',
 		label : '/'

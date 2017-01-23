@@ -1,0 +1,61 @@
+<div class="mdl-grid" style="display:block;">
+
+	<div class="mdl-cell mdl-cell--8-col" style="margin: auto;">
+		<div class="btn-group">
+			<div class="btn-btn-group">
+				<a ng-href="#/newQuestion" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					<i class="material-icons">add</i>
+					Neue Frage
+	        	</a>
+        	</div>
+		</div>
+		
+		<div style="display:flex; justify-content:center; margin-bottom:1%;">
+			<button ng-click="order = 'gruppe'" class="mdl-button mdl-js-button mdl-button--primary mdl-shadow--2dp">
+				Sortieren nach Gruppe
+	       	</button>
+       	</div>
+		
+		<table class="overviewTable mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		  <thead>
+		    <tr> <!--  ng-repeat="| orderBy: order"-->
+		      <th class="mdl-data-table__cell--non-numeric">Titel</th>
+	    	  <th class="mdl-data-table__cell--non-numeric">Type</th>
+	    	  <th class="mdl-data-table__cell--non-numeric">Gruppe</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td class="mdl-data-table__cell--non-numeric"><span></span></td>
+		      <td class="mdl-data-table__cell--non-numeric"><span></span></td>
+		      <td class="mdl-data-table__cell--non-numeric"><span></span></td>
+		      <td>
+		      	<div class="btn-group">
+					<button ng-click="" class="mdl-button mdl-js-button mdl-button--icon">
+					  <i class="material-icons">delete</i>
+					</button>
+					<button ng-click="" class="mdl-button mdl-js-button mdl-button--icon">
+					  <i class="material-icons">create</i>
+					</button>	              
+	            </div>
+		      </td>
+		    </tr>
+		  </tbody>
+		</table>
+		
+		<div id="buttons">
+			<div class="question-button">
+				<a ng-href="#/admin/home" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					Zur Übersicht
+				</a>
+			</div>
+			
+			<div class="question-button">
+				<button ng-click="" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					Speichern
+	        	</button>
+        	</div>
+       	</div>
+	
+	</div>		
+</div>
