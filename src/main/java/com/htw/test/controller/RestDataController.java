@@ -3,6 +3,7 @@ package com.htw.test.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,10 +50,10 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.OK).body(umfragen);
 	}
 
-	@RequestMapping(path = "/get/umfrage/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/get/umfrage/{link}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Umfrage> getUmfrageById(@PathVariable int id) {
-		Umfrage umfrage = umfrageRepository.findOne(id);
+	public ResponseEntity<Umfrage> getUmfrageByLink(@PathVariable String link) {
+		Umfrage umfrage = umfrageRepository.findOne(link);
 		if (umfrage == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
@@ -63,6 +64,11 @@ public class RestDataController {
 	@ResponseBody
 	public ResponseEntity<Umfrage> addUmfrage(@RequestBody Umfrage umf) {
 		
+		   	UUID r1 = UUID.randomUUID();
+			UUID r2 = UUID.randomUUID();
+			String random_UUID = String.valueOf(r1+""+r2);
+			umf.setLink(random_UUID);
+			
 		// Werte Übergeben
 		Umfrage umfrage = new Umfrage(umf);
 		Umfrage saved = umfrageRepository.save(umfrage);
@@ -70,23 +76,23 @@ public class RestDataController {
 
 	}
 
-	@RequestMapping(path = "/del/umfrage/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/del/umfrage/{link}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Void> deleteumfrageById(@PathVariable int id) {
-		Umfrage umfrage = umfrageRepository.findOne(id);
+	public ResponseEntity<Void> deleteumfrageById(@PathVariable String link) {
+		Umfrage umfrage = umfrageRepository.findOne(link);
 		if (umfrage == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
-		umfrageRepository.delete(id);
+		umfrageRepository.delete(link);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
 	
 	
-	@RequestMapping(path = "/update/umfrage/{id}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/update/umfrage/{link}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Void> updateUmfrageById(@PathVariable int id, @RequestBody Umfrage update) {
-		Umfrage umfrage = umfrageRepository.findOne(id);
+	public ResponseEntity<Void> updateUmfrageById(@PathVariable String link, @RequestBody Umfrage update) {
+		Umfrage umfrage = umfrageRepository.findOne(link);
 		if (umfrage == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
@@ -146,7 +152,7 @@ public class RestDataController {
 			throw new EntityNotFoundException("Gruppe id " + gruppeId + " not found.");
 		}
 
-		Integer umfrage = frage.getUmfrageNr();
+		String umfrage = frage.getumfrageLink();
 		if (!umfrageRepository.exists(umfrage)) {
 			throw new EntityNotFoundException("Umfrage  " + umfrage + " not found.");
 		}

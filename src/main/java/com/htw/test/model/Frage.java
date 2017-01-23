@@ -24,7 +24,7 @@ public class Frage {
 	private String text;
 	
 	@Column(name = "umfrage")
-	private int umfrageNr;
+	private String umfrageLink;
 
 	@OneToOne
 	private Typ typ;
@@ -45,12 +45,12 @@ public class Frage {
 	 * @param text
 	 */
 	
-	public Frage(Integer id, String text, Typ typ, Integer umfrageNr){
+	public Frage(Integer id, String text, Typ typ, String umfrageLink){
 		this();
 		this.id = id;
 		this.text = text;
 		this.typ = typ;
-		this.umfrageNr = umfrageNr;
+		this.umfrageLink = umfrageLink;
 	}
 	
 	/*************************************************************************************************
@@ -105,16 +105,16 @@ public class Frage {
 	 * 
 	 * @return
 	 */
-	public int getUmfrageNr() {
-		return umfrageNr;
+	public String getumfrageLink() {
+		return umfrageLink;
 	}
 
 	/**********************************************************************************************
 	 * 
 	 * @param umfrageNr
 	 */
-	public void setUmfrageNr(int umfrageNr) {
-		this.umfrageNr = umfrageNr;
+	public void setumfrageLink(String umfrageLink) {
+		this.umfrageLink = umfrageLink;
 	}
 	
 	

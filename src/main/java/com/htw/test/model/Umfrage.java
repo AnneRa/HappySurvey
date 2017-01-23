@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "umfrage")
 public class Umfrage {
 
-	@Id
+	
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
@@ -35,6 +35,10 @@ public class Umfrage {
 
 	@Column(name = "enddat")
 	private String enddat;
+	
+	@Id
+	@Column(name = "link")
+	private String link;
 	
 	@OneToMany(mappedBy = "umfrage", cascade = { CascadeType.ALL })
 	private List<Gruppe> gruppen;
@@ -55,6 +59,7 @@ public class Umfrage {
 		this.intro = umf.intro;
 		this.startdat = umf.startdat;
 		this.enddat = umf.enddat;
+		this.link = umf.link;
 	}
 	
 	/*****************************************************************************************************
@@ -162,7 +167,23 @@ public class Umfrage {
 	/**********************************************************************************************
 	 * 
 	 * @return
-	 */
+	 */public String getLink() {
+			return link;
+		}
+		
+		/**********************************************************************************************
+		 * 
+		 * @param enddat
+		 */
+		public Umfrage setLink(String link) {
+			this.link = link;
+			return this;
+		}
+		
+		/**********************************************************************************************
+		 * 
+		 * @return
+		 */
 	public List<Gruppe> getGruppen(){
 		return gruppen;
 	}

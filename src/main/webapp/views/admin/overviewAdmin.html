@@ -44,13 +44,13 @@
 		      <td class="mdl-data-table__cell--non-numeric"><span type="text">{{survey.beschr}}</span></td>
 		      <td class="mdl-data-table__cell--non-numeric"><span type="date">{{survey.startdat | date}}</span></td>
 		      <td class="mdl-data-table__cell--non-numeric"><span type="date">{{survey.enddat | date}}</span></td>
-		      <td class="mdl-data-table__cell--non-numeric"><span type=""></span>{{}}</td>
+		      <td class="mdl-data-table__cell--non-numeric"><span type=""></span> localhost:8080/HappySurvey/#/getSurvey/{{survey.link}}</td>
 		      <td>
 		      	<div class="btn-group">
-					<button ng-click="deleteSurvey(survey.id)" class="mdl-button mdl-js-button mdl-button--icon">
+					<button ng-click="deleteSurvey(survey.link)" class="mdl-button mdl-js-button mdl-button--icon">
 					  <i class="material-icons">delete</i>
 					</button>
-					<button ng-click="editSurvey(survey.id)" class="mdl-button mdl-js-button mdl-button--icon">
+					<button ng-click="editSurvey(survey.link)" class="mdl-button mdl-js-button mdl-button--icon">
 					  <i class="material-icons">create</i>
 					</button>	
 					<button class="mdl-button mdl-js-button mdl-button--icon">

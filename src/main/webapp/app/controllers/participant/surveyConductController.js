@@ -1,26 +1,23 @@
-happySurvey.controller('surveyConductController', ['$scope', '$http', '$cookies', '$location' ,'UmfrageRepository', function($scope, $http, $cookies, $location, UmfrageRepository) {
-	
+
+happySurvey.controller('surveyConductController', ['$scope', '$http' , '$location', function($scope, $http, $location) {
+
 	'use strict';
+
+//	window.$scope = $scope;
+
+
+	$scope.survey = [];
+	var str = document.location.href;
+	var link = str.split('/').pop();
 	
-	$scope.surveyTitle = "loading data...";
-	$scope.surveyDescription = "loading data...";
+	$scope.getSurvey = function(){
+		$http.get("http://localhost:8080/HappySurvey/api/v1/get/umfrage/" +link)
+		.success( function (data) { 
+			$scope.survey = data;
+		})
+	};
 	
-	//Beispiel-Id für eine Beispiel-Umfrage
-	fetchSurvey("jujzfkzizikzk");
+	$scope.getSurvey();
 	
-	
-	function fetchSurvey(id){
-		UmfrageRepository.fetchSurvey(id)
-			.then(
-				function(d){
-					$scope.umfragen = d;
-				},
-				function(errResponse){
-					console.error('Error while fetching Survey' + id);
-				}
-			);
-	}
-	
-	
-    
 }]);
+
