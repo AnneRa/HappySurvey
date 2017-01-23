@@ -14,6 +14,10 @@ header{
 	width:6%;
 }
 
+.button-color{
+	color:white !important;
+}
+
 /* login template*/
 
 #login{
@@ -29,7 +33,14 @@ header{
 	justify-content: flex-end;
 }
 
-#btn-group{
+#btn1{
+	display: flex;
+	flex-direction: column;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.btn-group{
 	margin:2%;
 }
 
@@ -43,9 +54,35 @@ div.btn-btn-group input{
 	margin-bottom:10px;
 }
 
-#overviewTable{
+.overviewTable{
 	width: 100%;
-	margin-bottom: 1%;
+	margin-bottom: 10%;
+}
+
+/*login.html*/
+
+/* new survey template */
+
+.button-container{
+	display:flex;
+	justify-content:center;
+}
+
+.button-position{
+	display: flex;
+	align-items: center;
+}
+
+/* overview questions template */
+
+#buttons{
+	display: flex;
+	justify-content: center;
+	margin-top: 2%;
+}
+
+.question-button{
+	margin:1%;
 }
 
 /**/
@@ -57,6 +94,8 @@ div.btn-btn-group input{
 	background-color: red;
 }
 
+/*survey_conduct_greeting.html*/
+
 #greeting {
 	display:flex;
 	justify-content:center;
@@ -66,7 +105,7 @@ div.btn-btn-group input{
 #surveyDescription {
 	margin: 16px;
 }
-
+/*newQuestion.html*/
 #questionTypeLabel {
 	margin: 0px;
 	padding: 0px;
