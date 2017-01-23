@@ -1,5 +1,5 @@
 
-happySurvey.controller('newSurveyController', ['$scope', '$http' , '$location', function($scope, $http, $location) {
+happySurvey.controller('newSurveyController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
 	'use strict';
 
@@ -13,8 +13,7 @@ happySurvey.controller('newSurveyController', ['$scope', '$http' , '$location', 
 		.finally( function () { 
 			$location.path('/admin/home').replace();		
 		})
-
-	}
+	};
 
 }]);
 
