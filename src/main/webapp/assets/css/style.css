@@ -29,26 +29,19 @@ header{
 	justify-content: flex-end;
 }
 
-#btn-group{
-	margin:2%;
+#btn1{
+	display: flex;
+	flex-direction: column;
+	margin-top: 5%;
+	margin-bottom: 5%;
 }
 
-.btn-btn-group{
-	display:flex; 
-	justify-content:center; 
-}
-
-div.btn-btn-group input{
-	margin-top: 30px;
-	margin-bottom:10px;
-}
-
-#overviewTable{
+#table{
 	width: 100%;
-	margin-bottom: 1%;
+	margin-bottom: 10%;
 }
 
-/**/
+/*login.html*/
 
 .form-error-message {
 	margin-top: 8px;
@@ -56,6 +49,8 @@ div.btn-btn-group input{
 	color: white;
 	background-color: red;
 }
+
+/*survey_conduct_greeting.html*/
 
 #greeting {
 	display:flex;
@@ -66,7 +61,7 @@ div.btn-btn-group input{
 #surveyDescription {
 	margin: 16px;
 }
-
+/*newQuestion.html*/
 #questionTypeLabel {
 	margin: 0px;
 	padding: 0px;
