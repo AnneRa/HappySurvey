@@ -14,6 +14,10 @@ header{
 	width:6%;
 }
 
+.button-color{
+	color:white !important;
+}
+
 /* login template*/
 
 #login{
@@ -29,7 +33,7 @@ header{
 	justify-content: flex-end;
 }
 
-#btn-group{
+.btn-group{
 	margin:2%;
 }
 
@@ -43,9 +47,33 @@ div.btn-btn-group input{
 	margin-bottom:10px;
 }
 
-#overviewTable{
+.overviewTable{
 	width: 100%;
 	margin-bottom: 1%;
+}
+
+/* new survey template */
+
+.button-container{
+	display:flex;
+	justify-content:center;
+}
+
+.button-position{
+	display: flex;
+	align-items: center;
+}
+
+/* overview questions template */
+
+#buttons{
+	display: flex;
+	justify-content: center;
+	margin-top: 2%;
+}
+
+.question-button{
+	margin:1%;
 }
 
 /**/

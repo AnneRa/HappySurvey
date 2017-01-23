@@ -8,11 +8,11 @@ happySurvey.controller('newSurveyController', ['$scope', '$http', '$location', f
 	$scope.umf.enddat = new Date();
 	$scope.umf.enddat.setDate($scope.umf.startdat.getDate() + 7);
 	
-	$scope.createSurveyClicked = function(){
+	$scope.saveSurvey = function(){
 		$http.post("http://localhost:8080/HappySurvey/api/v1/new/umfrage", $scope.umf)
-		.finally( function () { 
-			$location.path('/admin/home').replace();		
-		})
+		//.finally( function () { 
+		//	$location.path('/admin/home').replace();		
+		//})
 	};
 
 }]);
