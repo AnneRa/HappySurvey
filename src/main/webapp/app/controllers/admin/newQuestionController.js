@@ -19,9 +19,8 @@ happySurvey.controller('newQuestionController', ['$scope', '$http' , function($s
 		
 		var htmlElementId = "mca_option_container" + $scope.numberOfOptions;
 		
-		 var optionNew = '<div id="' + htmlElementId + '" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="optionNumber">' +
-					'<label class="mdl-textfield__label" for="mca_option' + $scope.numberOfOptions + '">Auswahl ' + $scope.numberOfOptions + '</label>' + 
-					'<input class="mdl-textfield__input" type="text" id="mca_option' + $scope.numberOfOptions + '">' +
+		 var optionNew = '<div id="' + htmlElementId + '" class="mdl-textfield" id="optionNumber">' +
+					'<input class="mdl-textfield__input" type="text" placeholder="Auswahl ' + $scope.numberOfOptions + '" id="mca_option' + $scope.numberOfOptions + '">' +
 					'<button class="mdl-button mdl-js-button mdl-button--icon right-floating" ng-click="removeOptionClicked(' + htmlElementId + ')">' + 
 					  '<i class="material-icons">delete</i>' +
 					'</button>' +

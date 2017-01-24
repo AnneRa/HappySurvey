@@ -4,20 +4,19 @@
 		<div id="generalQuestionAttributes" class="mdl-cell mdl-cell--6-col">
 			<h4>Allgemeine Attribute</h4>
 			<form action="#" ng-submit="newQuestion();" name="newQuestionForm">
-
+					
 				<div
-					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					<label class="mdl-textfield__label" for="title">Fragestellung</label>
-					<input class="mdl-textfield__input" type="text" id="title">
+					class="mdl-textfield mdl-js-textfield">
+					<input ng-model="frage.fragestellung" class="mdl-textfield__input" type="text" id="fragestellung"
+					placeholder="Fragestellung" required>
 				</div>
 				<div
-					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-					<label class="mdl-textfield__label" for="description">erweiterte
-						Beschreibung</label> <input ng-model="description" type="text"
-						class="mdl-textfield__input" id="description">
+					class="mdl-textfield mdl-js-textfield">
+					<input ng-model="description" type="text" class="mdl-textfield__input" id="description" placeholder="erweiterte Beschreibung" required>
 				</div>
+				
 				<div
-					class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+					class="mdl-selectfield mdl-js-selectfield">
 
 					<div id="questionTypeLabel">
 						<label class="mdl-selectfield__label" for="questionType">Fragetyp
@@ -60,11 +59,6 @@
 				<button
 					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 					id="saveQuestion" name="saveQuestion" ng-click="newQuestionClicked()">Speichern</button>
-				<button
-					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-					id="preview" name="preview" ng-click="previewClicked()">
-					Vorschau
-				</button>
 				</div>
 			</form>
 		</div>
@@ -74,34 +68,31 @@
 				<h4>Typ-Spezifische Attribute</h4>
 				<div id="linearScaleSpecificAttributesContainer"
 					class="typeSpecificAttributesContainer">
+					
 					<div
-						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<label class="mdl-textfield__label" for="leftSideDescription">Linke
-							Seite</label> <input class="mdl-textfield__input" type="text"
-							id="leftSideDescription">
+						class="mdl-textfield mdl-js-textfield">
+						<input ng-model="linke.Seite" class="mdl-textfield__input" type="text"
+							id="leftSideDescription" placeholder="Linke Seite" required>
 
 					</div>
 					<div
-						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<label class="mdl-textfield__label" for="rightSideDescription">Rechte
-							Seite</label> <input class="mdl-textfield__input" type="text"
-							id="rightSideDescription">
+						class="mdl-textfield mdl-js-textfield">
+						<input ng-model="rechte.Seite" class="mdl-textfield__input" type="text"
+							id="rightSideDescription" placeholder="Rechte Seite" required>
 					</div>
 				</div>
 				<div id="choiceAttributesContainer" class="typeSpecificAttributesContainer">
 					
 					<div id="choiceAttributesElementsContainer">
 					<div
-						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<label class="mdl-textfield__label" for="mca_option1">Auswahl
-							1</label> <input class="mdl-textfield__input" type="text"
-							id="mca_option1">
+						class="mdl-textfield mdl-js-textfield">
+						<input ng-model="mca_option1" class="mdl-textfield__input" type="text"
+							id="mca_option1" placeholder="Auswahl 1" required>
 					</div>
 					<div
-						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						<label class="mdl-textfield__label" for="mca_option2">Auswahl
-							2</label> <input class="mdl-textfield__input" type="text"
-							id="mca_option2">
+						class="mdl-textfield mdl-js-textfield">
+						<input ng-model="mca_option2" class="mdl-textfield__input" type="text"
+							id="mca_option2" placeholder="Auswahl 2" required>
 					</div>
 					
 					</div>
