@@ -4,19 +4,19 @@
 		<div id="generalQuestionAttributes" class="mdl-cell mdl-cell--6-col">
 			<h4>Allgemeine Attribute</h4>
 			<form action="#" ng-submit="newQuestion();" name="newQuestionForm">
-					
-				<div
-					class="mdl-textfield mdl-js-textfield">
-					<input ng-model="frage.fragestellung" class="mdl-textfield__input" type="text" id="fragestellung"
-					placeholder="Fragestellung" required>
+
+				<div class="mdl-textfield mdl-js-textfield">
+					<input ng-model="frage.fragestellung" class="mdl-textfield__input"
+						type="text" id="fragestellung" placeholder="Fragestellung"
+						required>
 				</div>
-				<div
-					class="mdl-textfield mdl-js-textfield">
-					<input ng-model="description" type="text" class="mdl-textfield__input" id="description" placeholder="erweiterte Beschreibung" required>
+				<div class="mdl-textfield mdl-js-textfield">
+					<input ng-model="description" type="text"
+						class="mdl-textfield__input" id="description"
+						placeholder="erweiterte Beschreibung" required>
 				</div>
-				
-				<div
-					class="mdl-selectfield mdl-js-selectfield">
+
+				<div class="mdl-selectfield mdl-js-selectfield">
 
 					<div id="questionTypeLabel">
 						<label class="mdl-selectfield__label" for="questionType">Fragetyp
@@ -56,9 +56,10 @@
 					</select>
 				</div>
 				<div>
-				<button
-					class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-					id="saveQuestion" name="saveQuestion" ng-click="newQuestionClicked()">Speichern</button>
+					<button
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+						id="saveQuestion" name="saveQuestion"
+						ng-click="newQuestionClicked()">Speichern</button>
 				</div>
 			</form>
 		</div>
@@ -68,35 +69,37 @@
 				<h4>Typ-Spezifische Attribute</h4>
 				<div id="linearScaleSpecificAttributesContainer"
 					class="typeSpecificAttributesContainer">
-					
-					<div
-						class="mdl-textfield mdl-js-textfield">
-						<input ng-model="linke.Seite" class="mdl-textfield__input" type="text"
-							id="leftSideDescription" placeholder="Linke Seite" required>
+
+					<div class="mdl-textfield mdl-js-textfield">
+						<input ng-model="linke.Seite" class="mdl-textfield__input"
+							type="text" id="leftSideDescription" placeholder="Linke Seite"
+							required>
 
 					</div>
-					<div
-						class="mdl-textfield mdl-js-textfield">
-						<input ng-model="rechte.Seite" class="mdl-textfield__input" type="text"
-							id="rightSideDescription" placeholder="Rechte Seite" required>
+					<div class="mdl-textfield mdl-js-textfield">
+						<input ng-model="rechte.Seite" class="mdl-textfield__input"
+							type="text" id="rightSideDescription" placeholder="Rechte Seite"
+							required>
 					</div>
 				</div>
-				<div id="choiceAttributesContainer" class="typeSpecificAttributesContainer">
-					
-					<div id="choiceAttributesElementsContainer">
-					<div
-						class="mdl-textfield mdl-js-textfield">
-						<input ng-model="mca_option1" class="mdl-textfield__input" type="text"
-							id="mca_option1" placeholder="Auswahl 1" required>
+				<div id="choiceAttributesContainer"
+					class="typeSpecificAttributesContainer">
+
+					<div id="choiceAttributesElementsContainer"
+						ng-repeat="option in options">
+						<div class="mdl-textfield mdl-js-textfield">
+							<input class="mdl-textfield__input" type="text"
+								id="mca_option{{$index + 1}}" placeholder="Auswahl {{($index + 1)}}" value="{{option}}">
+									
+							<button
+								class="mdl-button mdl-js-button mdl-button--icon right-floating"
+								ng-click="$parent.removeOptionClicked('{{$option}}')">
+								<i class="material-icons">delete</i>
+							</button>
+						</div>
+
 					</div>
-					<div
-						class="mdl-textfield mdl-js-textfield">
-						<input ng-model="mca_option2" class="mdl-textfield__input" type="text"
-							id="mca_option2" placeholder="Auswahl 2" required>
-					</div>
-					
-					</div>
-					<button ng-click="addOptionClicked()"
+					<button name="addOption" ng-click="addOptionClicked()"
 						class="mdl-button mdl-button--fab mdl-button--colored">
 						<i class="material-icons">add</i>
 					</button>
