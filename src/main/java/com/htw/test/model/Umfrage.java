@@ -37,7 +37,7 @@ public class Umfrage {
 	private String enddat;
 	
 	@Id
-	@Column(name = "link")
+	@Column(name = "UmfrageLink")
 	private String link;
 	
 	@OneToMany(mappedBy = "umfrage", cascade = { CascadeType.ALL })

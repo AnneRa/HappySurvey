@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Gruppe {
 
 	@Id
-	@Column(name = "GruppenId")
+	@Column(name = "GruppeId")
 	private int id;
 
 	@Column(name = "GruppenName")
@@ -40,6 +40,7 @@ public class Gruppe {
 	 * @param gru
 	 */
 	public Gruppe(Gruppe gru){
+		this.id = gru.id;
 		this.name = gru.name;
 		this.umfrage = gru.umfrage;
 	}

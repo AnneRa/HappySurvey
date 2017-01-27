@@ -17,13 +17,13 @@ import javax.persistence.Table;
 public class Frage {
 
 	@Id
-	@Column(name = "frageId")
+	@Column(name = "FrageId")
 	private int id;
 
 	@Column(name = "text")
 	private String text;
 	
-	@Column(name = "umfrage")
+	@Column(name = "UmfrageLink")
 	private String umfrageLink;
 
 	@OneToOne

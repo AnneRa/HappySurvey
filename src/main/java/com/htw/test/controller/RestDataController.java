@@ -18,9 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.common.collect.Lists;
 import com.htw.test.model.Frage;
 import com.htw.test.model.Gruppe;
+import com.htw.test.model.Typ;
 import com.htw.test.model.Umfrage;
 import com.htw.test.repositories.FrageRepository;
 import com.htw.test.repositories.GruppeRepository;
+import com.htw.test.repositories.TypRepository;
 import com.htw.test.repositories.UmfrageRepository;
 
 import io.swagger.annotations.ApiResponses;
@@ -31,7 +33,11 @@ public class RestDataController {
 
 	@Autowired
 	private UmfrageRepository umfrageRepository;
+	@Autowired
+	private TypRepository typRepository;
+	@Autowired
 	private FrageRepository frageRepository;
+	@Autowired
 	private GruppeRepository gruppeRepository;
 
 	/*#### UMFRAGE ####*/
@@ -105,7 +111,71 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
+	/*#### FRAGETYP ####*/
 
+	@RequestMapping(path = "/get/typen", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<List<Typ>> getAllTypen() {
+		List<Typ> typen = new ArrayList<Typ>();
+		for (Typ t : typRepository.findAll()) {
+
+			typen.add(t);
+		}
+		if (typen.isEmpty()) {
+			return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(null);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(typen);
+	}
+
+	@RequestMapping(path = "/get/typ/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Typ> getTypById(@PathVariable int id) {
+		Typ typ = typRepository.findOne(id);
+		if (typ == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(typ);
+	}
+
+	@RequestMapping(path = "/new/typ", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Typ> addTyp(@RequestBody Typ t) {
+				
+		// Werte Übergeben
+		Typ typ = new Typ(t);
+		Typ saved = typRepository.save(typ);
+		return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+
+	}
+
+	@RequestMapping(path = "/del/typ/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Void> deleteTypById(@PathVariable int id) {
+		Typ typ = typRepository.findOne(id);
+		if (typ == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		typRepository.delete(id);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
+	}
+
+	
+	
+	@RequestMapping(path = "/update/typ/{id}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Void> updateTypById(@PathVariable int id, @RequestBody Typ update) {
+		Typ typ = typRepository.findOne(id);
+		if (typ == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		typ.setBezeichnung(update.getBezeichnung());
+		typ.setFormat(update.getFormat());
+		typ.setWert1(update.getWert1());
+		typ.setWert2(update.getWert2());
+
+		typRepository.save(typ);
+		return ResponseEntity.status(HttpStatus.OK).body(null);
+	}
 	
 	/*#### FRAGE ####*/
 	
@@ -115,7 +185,7 @@ public class RestDataController {
 	 * @param gruppeId
 	 * @return
 	 */
-	@RequestMapping(path = "get/fragen/{gruppeId}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/get/fragen/{gruppeId}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<List<Frage>> getUmfrage(@PathVariable("gruppenId") Integer gruppeId)
 	{
