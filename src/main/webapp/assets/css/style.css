@@ -151,4 +151,8 @@ div.btn-btn-group input{
 	color: white;
 }
 
+.hidden-by-default{
+	display: none;
+}
+
 

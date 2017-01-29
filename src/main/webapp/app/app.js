@@ -48,7 +48,7 @@
                    label : 'Übersicht'
            })
            .when('/getSurvey/:link', {
-        	   		templateUrl : 'views/participant/survey_conduct_greeting.html',
+        	   		templateUrl : 'views/participant/survey_conduct.html',
         	   		controller: 'surveyConductController'
 	})
            
