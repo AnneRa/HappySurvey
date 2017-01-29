@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
+import com.htw.test.Links;
 import com.htw.test.model.Frage;
 import com.htw.test.model.Gruppe;
 import com.htw.test.model.Typ;
@@ -41,8 +42,18 @@ public class RestDataController {
 	private GruppeRepository gruppeRepository;
 
 	/*#### UMFRAGE ####*/
+	
+	@RequestMapping(path = "/getUmfrage/{link}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Umfrage> getUmfrageByLink(@PathVariable String link) {
+		Umfrage umfrage = umfrageRepository.findOne(Links.decodeLink(link));
+		if (umfrage == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(umfrage);
+	}
 
-	@RequestMapping(path = "/get/umfragen", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/umfragen", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<List<Umfrage>> getAllUmfragen() {
 		List<Umfrage> umfragen = new ArrayList<Umfrage>();
@@ -56,24 +67,24 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.OK).body(umfragen);
 	}
 
-	@RequestMapping(path = "/get/umfrage/{link}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/umfrage/{id}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Umfrage> getUmfrageByLink(@PathVariable String link) {
-		Umfrage umfrage = umfrageRepository.findOne(link);
+	public ResponseEntity<Umfrage> getUmfrageById(@PathVariable int id) {
+		Umfrage umfrage = umfrageRepository.findOne(id);
 		if (umfrage == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		return ResponseEntity.status(HttpStatus.OK).body(umfrage);
 	}
 
-	@RequestMapping(path = "/new/umfrage", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/umfrage", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<Umfrage> addUmfrage(@RequestBody Umfrage umf) {
 		
-		   	UUID r1 = UUID.randomUUID();
-			UUID r2 = UUID.randomUUID();
-			String random_UUID = String.valueOf(r1+""+r2);
-			umf.setLink(random_UUID);
+		   	//UUID r1 = UUID.randomUUID();
+			//UUID r2 = UUID.randomUUID();
+			//String random_UUID = String.valueOf(r1+""+r2);
+			//umf.setLink(random_UUID);
 			
 		// Werte Übergeben
 		Umfrage umfrage = new Umfrage(umf);
@@ -82,31 +93,31 @@ public class RestDataController {
 
 	}
 
-	@RequestMapping(path = "/del/umfrage/{link}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/umfrage/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Void> deleteumfrageById(@PathVariable String link) {
-		Umfrage umfrage = umfrageRepository.findOne(link);
+	public ResponseEntity<Void> deleteumfrageById(@PathVariable int id) {
+		Umfrage umfrage = umfrageRepository.findOne(id);
 		if (umfrage == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
-		umfrageRepository.delete(link);
+		umfrageRepository.delete(id);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
 	
 	
-	@RequestMapping(path = "/update/umfrage/{link}", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
+	@RequestMapping(path = "/umfrage", method = RequestMethod.PUT, produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Void> updateUmfrageById(@PathVariable String link, @RequestBody Umfrage update) {
-		Umfrage umfrage = umfrageRepository.findOne(link);
+	public ResponseEntity<Void> updateUmfrageById(@RequestBody Umfrage umf) {
+		Umfrage umfrage = umfrageRepository.findOne(umf.getId());
 		if (umfrage == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
-		umfrage.setName(update.getName());
-		umfrage.setBeschr(update.getBeschr());
-		umfrage.setIntro(update.getIntro());
-		umfrage.setStartdat(update.getStartdat());
-		umfrage.setEnddat(update.getEnddat());
+		umfrage.setName(umf.getName());
+		umfrage.setBeschr(umf.getBeschr());
+		umfrage.setIntro(umf.getIntro());
+		umfrage.setStartdat(umf.getStartdat());
+		umfrage.setEnddat(umf.getEnddat());
 		umfrageRepository.save(umfrage);
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
@@ -222,9 +233,9 @@ public class RestDataController {
 			throw new EntityNotFoundException("Gruppe id " + gruppeId + " not found.");
 		}
 
-		String umfrage = frage.getumfrageLink();
-		if (!umfrageRepository.exists(umfrage)) {
-			throw new EntityNotFoundException("Umfrage  " + umfrage + " not found.");
+		int umfrageId = frage.getUmfrageId();
+		if (!umfrageRepository.exists(umfrageId)) {
+			throw new EntityNotFoundException("Umfrage with id " + umfrageId + " not found.");
 		}
 
 

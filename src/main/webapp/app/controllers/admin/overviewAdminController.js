@@ -7,7 +7,7 @@ happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$locatio
 	$scope.surveys = [];
 	
 	$scope.updateTable = function(){
-		$http.get("http://localhost:8080/HappySurvey/api/v1/get/umfragen")
+		$http.get("http://localhost:8080/HappySurvey/api/v1/umfragen")
 		.success( function (data) { 
 			$scope.surveys = data;
 		})
@@ -15,21 +15,18 @@ happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$locatio
 	
 	$scope.updateTable();
 	
-	$scope.deleteSurvey = function(link){
-		$http.delete("http://localhost:8080/HappySurvey/api/v1/del/umfrage/" + link)
+	$scope.deleteSurvey = function(id){
+		$http.delete("http://localhost:8080/HappySurvey/api/v1/umfrage/" + id)
 		.success( function (data){
 			$scope.surveys = data;
 			$scope.updateTable();
 		})
 	};
+	 
+	$scope.editSurvey = function(id){
+
+		$location.path('/admin/editSurvey/' + id).replace();
 	
-	//das ist nur ein versuch 
-	$scope.editSurvey = function(link){
-		$http.get("http://localhost:8080/HappySurvey/api/v1/get/umfrage/" + link)
-		.success(function(data){
-			$location.path('/editSurvey').replace();
-			$scope.survey = data;			
-		})
 	};
 	
 }]);

@@ -7,7 +7,7 @@
 	<div class="mdl-cell mdl-cell--8-col" style="margin: auto;">
 		<div class="btn-group">
 			<div class="btn-btn-group">
-				<a ng-href="#/newSurvey" class="button-color mdl-cell mdl-cell--4-col mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				<a ng-href="#/admin/newSurvey" class="button-color mdl-cell mdl-cell--4-col mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					<i class="material-icons">add</i>
 					Neue Umfrage
 	        	</a>
@@ -47,10 +47,10 @@
 		      <td class="mdl-data-table__cell--non-numeric"><span type=""></span> localhost:8080/HappySurvey/#/getSurvey/{{survey.link}}</td>
 		      <td>
 		      	<div class="btn-group">
-					<button ng-click="deleteSurvey(survey.link)" class="mdl-button mdl-js-button mdl-button--icon">
+					<button ng-click="deleteSurvey(survey.id)" class="mdl-button mdl-js-button mdl-button--icon">
 					  <i class="material-icons">delete</i>
 					</button>
-					<button ng-click="editSurvey(survey.link)" class="mdl-button mdl-js-button mdl-button--icon">
+					<button ng-click="editSurvey(survey.id)" class="mdl-button mdl-js-button mdl-button--icon">
 					  <i class="material-icons">create</i>
 					</button>	
 					<button class="mdl-button mdl-js-button mdl-button--icon">

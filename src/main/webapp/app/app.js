@@ -19,21 +19,21 @@
                    label : 'Übersicht'
            })
            
-           .when('/newSurvey', {
-                   templateUrl : 'views/admin/newSurvey.html',
-                   controller : 'newSurveyController',
+           .when('/admin/newSurvey', {
+                   templateUrl : 'views/admin/surveyAdministration.html',
+                   controller : 'surveyController',
                    label: 'Neue Umfrage'
            })
            
-           .when('/editSurvey', {
-                   templateUrl: 'views/admin/editSurvey.html',
-                   controller: 'newSurveyController'
+           .when('/admin/editSurvey/:id', {
+                   templateUrl: 'views/admin/surveyAdministration.html',
+                   controller: 'surveyController'
            })
-           .when('/overviewQuestions', {
+           .when('/admin/overviewQuestions', {
 		templateUrl: 'views/admin/overviewQuestions.html'
 	})
            
-           .when('/newQuestion', {
+           .when('/admin/newQuestion', {
                    templateUrl : 'views/admin/newQuestion.html',
                    controller : 'newQuestionController',
                    label : 'Neue Frage'
@@ -48,8 +48,8 @@
                    label : 'Übersicht'
            })
            .when('/getSurvey/:link', {
-        	  templateUrl : 'views/participant/survey_conduct_greeting.html',
-		controller: 'surveyConductController'
+        	   		templateUrl : 'views/participant/survey_conduct_greeting.html',
+        	   		controller: 'surveyConductController'
 	})
            
            .otherwise({
@@ -70,59 +70,3 @@
                    }
            });
    }
-
-	/*
-	
-<<<<<<< HEAD
-=======
-	.when('/newSurvey', {
-		templateUrl : 'views/admin/newSurvey.html',
-		controller : 'newSurveyController',
-		label: 'Neue Umfrage'
-	})
-	
-	.when('/editSurvey', {
-		templateUrl: 'views/admin/editSurvey.html',
-		controller: 'newSurveyController'
-	})
-	
-	.when('/overviewQuestions', {
-		templateUrl: 'views/admin/overviewQuestions.html'
-	})
-	
-	.when('/newQuestion', {
-		templateUrl : 'views/admin/newQuestion.html',
-		controller : 'newQuestionController',
-		label : 'Neue Frage'
-	})
-	
-	.when('/', {
-		redirectTo : '/home',
-		label : '/'
-	})
-
-	.when('/admin', {
-		redirectTo : '/admin/home',
-		label : 'Übersicht'
-	})
-	
-	.otherwise({
-		redirectTo : '/home'
-	});
-}
-
-// Sehr wichtig! Nicht löschen!
-run.$inject = [ '$rootScope', '$location', '$cookies', '$http' ];
-function run($rootScope, $location, $cookies, $http) {
-
-	$rootScope.$on('$locationChangeStart', function(event, next, current) {
-		// redirect to login page if not logged in and trying to access a restricted page
-		var restrictedPage = $location.path().search(/admin/i) != -1;
-		var loggedIn = $cookies.get('currentUser');
-		if (restrictedPage && !loggedIn) {
-			$location.path('/admin/login');
-		}
-	});
-}
->>>>>>> refs/remotes/origin/devNeu
-*/

@@ -23,8 +23,8 @@ public class Frage {
 	@Column(name = "text")
 	private String text;
 	
-	@Column(name = "UmfrageLink")
-	private String umfrageLink;
+	@Column(name = "UmfrageId")
+	private int umfrageId;
 
 	@OneToOne
 	private Typ typ;
@@ -45,12 +45,12 @@ public class Frage {
 	 * @param text
 	 */
 	
-	public Frage(Integer id, String text, Typ typ, String umfrageLink){
+	public Frage(Integer id, String text, Typ typ, int umfrageId){
 		this();
 		this.id = id;
 		this.text = text;
 		this.typ = typ;
-		this.umfrageLink = umfrageLink;
+		this.umfrageId = umfrageId;
 	}
 	
 	/*************************************************************************************************
@@ -101,21 +101,7 @@ public class Frage {
 		this.typ = typ;
 	}
 	
-	/**********************************************************************************************
-	 * 
-	 * @return
-	 */
-	public String getumfrageLink() {
-		return umfrageLink;
-	}
 
-	/**********************************************************************************************
-	 * 
-	 * @param umfrageNr
-	 */
-	public void setumfrageLink(String umfrageLink) {
-		this.umfrageLink = umfrageLink;
-	}
 	
 	
 	
@@ -128,6 +114,14 @@ public class Frage {
 		if (gruppe != null && !gruppe.getFragen().contains(this)){
 			gruppe.addFrage(this);
 		}
+	}
+
+	public int getUmfrageId() {
+		return umfrageId;
+	}
+
+	public void setUmfrageId(int umfrageId) {
+		this.umfrageId = umfrageId;
 	}
 	
 	

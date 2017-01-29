@@ -4,4 +4,4 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.htw.test.model.Umfrage;
 
-public interface UmfrageRepository extends CrudRepository<Umfrage, String>{}
+public interface UmfrageRepository extends CrudRepository<Umfrage, Integer>{}

@@ -12,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.htw.test.Links;
+
 @Entity
 @Table(name = "umfrage")
 public class Umfrage {
 
-	
+	@Id
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
@@ -35,10 +37,6 @@ public class Umfrage {
 
 	@Column(name = "enddat")
 	private String enddat;
-	
-	@Id
-	@Column(name = "UmfrageLink")
-	private String link;
 	
 	@OneToMany(mappedBy = "umfrage", cascade = { CascadeType.ALL })
 	private List<Gruppe> gruppen;
@@ -59,7 +57,6 @@ public class Umfrage {
 		this.intro = umf.intro;
 		this.startdat = umf.startdat;
 		this.enddat = umf.enddat;
-		this.link = umf.link;
 	}
 	
 	/*****************************************************************************************************
@@ -164,21 +161,10 @@ public class Umfrage {
 		return this;
 	}
 	
-	/**********************************************************************************************
-	 * 
-	 * @return
-	 */public String getLink() {
-			return link;
-		}
-		
-		/**********************************************************************************************
-		 * 
-		 * @param enddat
-		 */
-		public Umfrage setLink(String link) {
-			this.link = link;
-			return this;
-		}
+	public String getLink() {
+		return Links.createLink(id);
+	}
+	
 		
 		/**********************************************************************************************
 		 * 
