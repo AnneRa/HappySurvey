@@ -3,7 +3,14 @@ happySurvey.controller('surveyConductController', ['$scope', '$http' , '$locatio
 
 	'use strict';
 	
-	$scope.survey = {};
+	
+	//TODO: später wieder löschen
+	$scope.survey = {
+			"name":"Beispielumfrage",
+			"intro":"Ich würde mich freuen, wenn Sie an der Umfrage teilnehmen",
+			"description":"Die ist eine Beispielbeschreibung für die Beispielumfrage"
+	};
+	
 	
 	$http.get("api/v1/getUmfrage/" + $routeParams.link)
 	.success( function ( response ) { 
