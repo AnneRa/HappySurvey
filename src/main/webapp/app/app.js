@@ -48,9 +48,13 @@
                    label : 'Übersicht'
            })
            .when('/getSurvey/:link', {
-        	   		templateUrl : 'views/participant/survey_conduct.html',
-        	   		controller: 'surveyConductController'
-	})
+        	   		templateUrl: 'views/participant/survey_intro.html',
+        	   		controller: 'surveyIntroController'
+           })
+           .when('/conductSurvey/:link', {
+        	   	templateUrl: 'views/participant/survey_conduct.html',
+        	   	controller: 'surveyConductController'  
+           })
            
            .otherwise({
                    redirectTo : '/home'
