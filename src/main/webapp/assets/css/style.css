@@ -155,4 +155,10 @@ div.btn-btn-group input{
 	display: none;
 }
 
+#greetingCard {
+	display:flex;
+	justify-content:center;
+	margin-top: 5%;
+}
+
 
