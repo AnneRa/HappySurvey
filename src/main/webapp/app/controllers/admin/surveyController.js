@@ -1,10 +1,11 @@
 
-happySurvey.controller('surveyController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams) {
+happySurvey.controller('surveyController', ['$scope', '$http', '$location', '$routeParams', '$mdToast', function($scope, $http, $location, $routeParams, $mdToast) {
 
 	'use strict';
 	
 	$scope.umf = {};
 	$scope.editMode = false;
+	
 
 	// Ist id nicht verfügbar, wird eine neue Umfrage erstellt
 	if ( $routeParams.id != undefined ) {
@@ -35,10 +36,15 @@ happySurvey.controller('surveyController', ['$scope', '$http', '$location', '$ro
 	}
 	
 	$scope.saveSurvey = function(){
+
 		if ( $scope.editMode ) {
+
 			$http.put("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview)		
+
 		} else {
+			
 			$http.post("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview)
+
 		}		
 	};
 

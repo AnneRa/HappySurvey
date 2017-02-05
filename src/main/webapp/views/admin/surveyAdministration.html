@@ -18,12 +18,12 @@
 						placeholder="Titel der Umfrage" required>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					<input ng-model="umf.beschr" type="text" placeholder="Beschreibung"
-						class="mdl-textfield__input">
+					<textarea rows="3" ng-model="umf.beschr" type="text" placeholder="Beschreibung"
+						class="mdl-textfield__input"></textarea>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					<input ng-model="umf.intro" type="text" placeholder="Intro"
-						class="mdl-textfield__input">
+					<textarea rows="3" ng-model="umf.intro" type="text" placeholder="Intro"
+						class="mdl-textfield__input"></textarea>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
 					<input ng-model="umf.startdat" type="date" class="mdl-textfield__input"
@@ -46,10 +46,9 @@
 	
 	<div class="mdl-cell mdl-cell--4-col button-container">
 		<div class="button-position">
+
 			
-			<!-- <a ng-href="#/overviewQuestions" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-			  Weiter
-			</a> -->
+			<a ng-href="#/overviewQuestions" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 			
 			<button ng-click="saveSurvey()" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 			Speichern & Weiter

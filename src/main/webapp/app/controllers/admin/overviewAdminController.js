@@ -1,5 +1,4 @@
-
-happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$location', function($scope, $http, $location) {
+happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$location', '$mdToast', function($scope, $http, $location, $mdToast) {
 
 	'use strict';
 
@@ -20,7 +19,12 @@ happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$locatio
 		.success( function (data){
 			$scope.surveys = data;
 			$scope.updateTable();
-		})
+		});
+		
+		$mdToast.show( $mdToast.simple()
+			    .textContent('Umfrage wurde gelöscht!')
+			    .hideDelay(4000)
+		);
 	};
 	 
 	$scope.editSurvey = function(id){

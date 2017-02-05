@@ -1,5 +1,6 @@
-var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
-                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble' ]);
+    var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
+                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble', 'ngMessages' ]);
+
     happySurvey.config(config);
     happySurvey.run(run);
     
@@ -60,9 +61,13 @@ var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
                    label : 'Übersicht'
            })
            .when('/getSurvey/:link', {
-        	   		templateUrl : 'views/participant/survey_conduct_greeting.html',
-        	   		controller: 'surveyConductController'
-	})
+        	   		templateUrl: 'views/participant/survey_intro.html',
+        	   		controller: 'surveyIntroController'
+           })
+           .when('/conductSurvey/:link', {
+        	   	templateUrl: 'views/participant/survey_conduct.html',
+        	   	controller: 'surveyConductController'  
+           })
            
            .otherwise({
                    redirectTo : '/home'

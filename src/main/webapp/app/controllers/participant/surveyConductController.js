@@ -3,7 +3,6 @@ happySurvey.controller('surveyConductController', ['$scope', '$http' , '$locatio
 
 	'use strict';
 	
-	$scope.survey = {};
 	
 	$http.get("api/v1/getUmfrage/" + $routeParams.link)
 	.success( function ( response ) { 

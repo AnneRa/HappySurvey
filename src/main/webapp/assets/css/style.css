@@ -102,10 +102,12 @@ div.btn-btn-group input{
 	margin-top: 50px;
 }
 
-#surveyDescription {
+.contentText {
 	margin: 16px;
 }
+
 /*newQuestion.html*/
+
 #questionTypeLabel {
 	margin: 0px;
 	padding: 0px;
@@ -149,6 +151,16 @@ div.btn-btn-group input{
 
 .md-inverse {
 	color: white;
+}
+
+.hidden-by-default{
+	display: none;
+}
+
+#greetingCard {
+	display:flex;
+	justify-content:center;
+	margin-top: 5%;
 }
 
 
