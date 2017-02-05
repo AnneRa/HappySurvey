@@ -1,4 +1,4 @@
-    var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
+var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
                     'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble' ]);
     happySurvey.config(config);
     happySurvey.run(run);
@@ -29,11 +29,23 @@
                    templateUrl: 'views/admin/surveyAdministration.html',
                    controller: 'surveyController'
            })
-           .when('/admin/overviewQuestions', {
-		templateUrl: 'views/admin/overviewQuestions.html'
-	})
            
-           .when('/admin/newQuestion', {
+           .when('/admin/:id/questions', {
+        	   		templateUrl: 'views/admin/overviewQuestions.html',
+        	   		controller: 'overviewQuestionsController'
+           })
+           
+           .when('/admin/:id/groups', {
+        	   		templateUrl: 'views/admin/overviewGroups.html',
+        	   		controller: 'overviewGroupsController'
+           })
+           
+           .when('/admin/:id/newQuestion', {
+                   templateUrl : 'views/admin/newQuestion.html',
+                   controller : 'newQuestionController',
+                   label : 'Neue Frage'
+           })
+           .when('/admin/:id/editQuestion/:questionId', {
                    templateUrl : 'views/admin/newQuestion.html',
                    controller : 'newQuestionController',
                    label : 'Neue Frage'

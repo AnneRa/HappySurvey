@@ -6,7 +6,10 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,13 +19,15 @@ import javax.persistence.Table;
 public class Gruppe {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "GruppeId")
-	private int id;
+	private long id;
 
 	@Column(name = "GruppenName")
 	private String name;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="UmfrageId")
 	private Umfrage umfrage;
 
 	@OneToMany(mappedBy = "gruppe", cascade = CascadeType.ALL)
@@ -33,6 +38,7 @@ public class Gruppe {
 	 * 
 	 */
 	public Gruppe(){
+		super();
 		fragen = new ArrayList<>();
 	}
 	/**********************************************************************************************************
@@ -40,35 +46,21 @@ public class Gruppe {
 	 * @param gru
 	 */
 	public Gruppe(Gruppe gru){
-		this.id = gru.id;
 		this.name = gru.name;
 		this.umfrage = gru.umfrage;
 	}
-	/**********************************************************************************************************
-	 * 
-	 * @param name
-	 * @param id
-	 */
-	public Gruppe(String name, Integer id){
-		this();
-		this.name = name;
-		this.id = id;
+	
+	public Gruppe(Umfrage umf){
+		this.name = "Standard Gruppe";
+		this.umfrage = umf;
 	}
-
+	
 	/**********************************************************************************************************
 	 * 
 	 * @return
 	 */
-	public Integer getId(){
+	public long getId(){
 		return id;
-	}
-
-	/*********************************************************************************************************
-	 * 
-	 * @param id
-	 */
-	public void setId(int id){
-		this.id = id;
 	}
 
 	/********************************************************************************************************
@@ -91,9 +83,9 @@ public class Gruppe {
 	 * 
 	 * @return
 	 */
-	public Umfrage getUmfrage() {
+/*	public Umfrage getUmfrage() {
 		return umfrage;
-	}
+	}*/
 	
 	/*****************************************************************************************************
 	 * 
@@ -101,9 +93,6 @@ public class Gruppe {
 	 */
 	public void setUmfrage(Umfrage umfrage) {
 		this.umfrage = umfrage;
-		if (umfrage != null && !umfrage.getGruppen().contains(this)){
-			umfrage.addGruppe(this);
-		}
 	}
 
 	/*****************************************************************************************************
@@ -113,30 +102,5 @@ public class Gruppe {
 	public List<Frage> getFragen(){
 		return fragen;
 	}
-	
-	/*****************************************************************************************************
-	 * 
-	 * @param fragen
-	 */
-	public void setFragen(List<Frage> fragen){
-		this.fragen = fragen;
-	}
-	
-	/*****************************************************************************************************
-	 * 
-	 * @param frage
-	 */
-	public void addFrage(Frage frage){
-		if(!fragen.contains(frage)){
-			fragen.add(frage);
-		}
-		
-		if(frage != null && frage.getGruppe() != this){
-			frage.setGruppe(this);
-		}
-	}
-	
-
-
 
 }

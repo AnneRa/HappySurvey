@@ -21,7 +21,7 @@ public class Umfrage {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private int id;
+	private long id;
 
 	@Column(name = "name")
 	private String name;
@@ -38,7 +38,7 @@ public class Umfrage {
 	@Column(name = "enddat")
 	private String enddat;
 	
-	@OneToMany(mappedBy = "umfrage", cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "umfrage")
 	private List<Gruppe> gruppen;
 	
 	/******************************************************************************************************
@@ -63,17 +63,8 @@ public class Umfrage {
 	 * 
 	 * @return
 	 */
-	public int getId() {
+	public long getId() {
 		return id;
-	}
-	
-	/***************************************************************************************************
-	 * 
-	 * @param id
-	 */
-	public Umfrage setId(int id) {
-		this.id = id;
-		return this;
 	}
 	
 	/***************************************************************************************************
@@ -174,28 +165,4 @@ public class Umfrage {
 		return gruppen;
 	}
 	
-	/*********************************************************************************************
-	 * 
-	 * @param gruppen
-	 */
-	public Umfrage setGruppen(List<Gruppe> gruppen){
-		this.gruppen = gruppen;
-		return this;
-	}
-	
-	/*********************************************************************************************
-	 * 
-	 * @param gruppe
-	 */
-	public Umfrage addGruppe(Gruppe gruppe){
-		if (!gruppen.contains(gruppe)){
-			gruppen.add(gruppe);
-		}
-		
-		if (gruppe != null && gruppe.getUmfrage() != this){
-			gruppe.setUmfrage(this);
-		}
-		return this;
-	}
-
 }

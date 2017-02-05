@@ -1,0 +1,53 @@
+<div class="mdl-grid" style="display:block;">
+
+	<div class="mdl-cell mdl-cell--8-col" style="margin: auto;">
+		<div class="btn-group">
+			<div class="btn-btn-group">
+				<button ng-click="addGroup()" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					<i class="material-icons">add</i>
+					Neue Gruppe
+	        	</button>
+        	</div>
+		</div>
+		
+		<table class="overviewTable mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+		  <thead>
+		    <tr> <!--  ng-repeat="| orderBy: order"-->
+		      <th class="mdl-data-table__cell--non-numeric">Name</th>
+	    	  <th class="mdl-data-table__cell--non-numeric">Fragen</th>
+	    	  <!-- <th class="mdl-data-table__cell--non-numeric">&nbsp;</th> -->
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr ng-repeat="gruppe in umf.gruppen">
+		      <td class="mdl-data-table__cell--non-numeric"><input type="text" id="q{{gruppe.id}}" ng-model="gruppe.name"></td>
+		      <td class="mdl-data-table__cell--non-numeric"><span>{{gruppe.fragen.length}}</span></td>
+		      
+		      <!-- <td>
+		      	<div class="btn-group">
+					<button ng-click="" class="mdl-button mdl-js-button mdl-button--icon">
+					  <i class="material-icons">edit</i>
+					</button>	              
+	            </div>
+		      </td> -->
+		      
+		    </tr>
+		  </tbody>
+		</table>
+		
+		<div id="buttons">
+			<div class="question-button">
+				<a ng-href="#/admin/home" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					Zur Übersicht
+				</a>
+			</div>
+			
+			<div class="question-button">
+				<button ng-click="saveGroups()" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					Speichern & Weiter
+	        	</button>
+        	</div>
+       	</div>
+	
+	</div>		
+</div>

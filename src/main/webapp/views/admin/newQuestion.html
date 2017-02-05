@@ -5,15 +5,15 @@
 			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
 				<h4 class="mdl-card__title-text">Allgemeine Attribute</h4>
 			</div>
-			<form action="#" ng-submit="newQuestion();" name="newQuestionForm">
+			<form name="newQuestionForm">
 
 				<div class="mdl-textfield mdl-js-textfield">
-					<input ng-model="frage.fragestellung" class="mdl-textfield__input"
+					<input ng-model="frage.text" class="mdl-textfield__input"
 						type="text" id="fragestellung" placeholder="Fragestellung"
 						required>
 				</div>
 				<div class="mdl-textfield mdl-js-textfield">
-					<input ng-model="description" type="text"
+					<input ng-model="frage.info" type="text"
 						class="mdl-textfield__input" id="description"
 						placeholder="erweiterte Beschreibung" required>
 				</div>
@@ -25,43 +25,46 @@
 							auswählen</label>
 					</div>
 					<select class="mdl-selectfield__select mdl-cell--8-col"
-						id="questionType" name="questionType" ng-model="questionType"
+						id="questionType" name="questionType" ng-model="frage.type"
 						ng-change="onQuestionTypeChanged()">
 						<option value=""></option>
-						<option value="linearScale">Lineare Skala</option>
+<!-- 						<option value="linearScale">Lineare Skala</option>
 						<option value="multipleChoice">Multiple-Choice</option>
 						<option value="dropDown">Drop-Down</option>
 						<option value="textField">Textfeld</option>
-					</select>
+ -->
+ 						<option value="1">Lineare Skala</option>
+						<option value="2">Multiple-Choice</option>
+						<option value="3">Drop-Down</option>
+						<option value="4">Textfeld</option>
+
+ 					</select>
 				</div>
 
 				<div id="optionalQuestion">
 					<div>Optionale Frage</div>
 					<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-						for="switch-1"> <input type="checkbox" id="switch-1"
-						class="mdl-switch__input" checked>
+						for="switch-1" ng-class="frage.optional ? 'is-checked' : ''"> <input type="checkbox" id="switch-1"
+						class="mdl-switch__input" ng-model="frage.optional">
 					</label>
 				</div>
 				<div
 					class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-
+	
 					<div id="questionTypeLabel">
 						<label class="mdl-selectfield__label" for="questionType">Fragegruppe
 							auswählen</label>
 					</div>
 					<select class="mdl-selectfield__select mdl-cell--8-col"
-						id="questionType" name="questionType">
-						<option value=""></option>
-						<option value="option1">Sinn</option>
-						<option value="option2">Glück</option>
-						<option value="option3">Gemeinschaft</option>
+						id="questionType" name="questionType" ng-model="groupIndex">
+						<option ng-repeat="gruppe in gruppen" value="{{gruppe.id}}">{{gruppe.name}}</option>
 					</select>
 				</div>
 				<div>
 					<button
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 						id="saveQuestion" name="saveQuestion"
-						ng-click="newQuestionClicked()">Speichern</button>
+						 ng-click="saveQuestion();">Speichern</button>
 				</div>
 			</form>
 		</div>
@@ -75,13 +78,13 @@
 					class="typeSpecificAttributesContainer">
 
 					<div class="mdl-textfield mdl-js-textfield">
-						<input ng-model="linke.Seite" class="mdl-textfield__input"
+						<input ng-model="frage.optionen[0]" class="mdl-textfield__input"
 							type="text" id="leftSideDescription" placeholder="Linke Seite"
 							required>
 
 					</div>
 					<div class="mdl-textfield mdl-js-textfield">
-						<input ng-model="rechte.Seite" class="mdl-textfield__input"
+						<input ng-model="frage.optionen[1]" class="mdl-textfield__input"
 							type="text" id="rightSideDescription" placeholder="Rechte Seite"
 							required>
 					</div>
@@ -90,7 +93,7 @@
 					class="typeSpecificAttributesContainer">
 
 					<div id="choiceAttributesElementsContainer"
-						ng-repeat="option in options">
+						ng-repeat="option in frage.optionen">
 						<div class="mdl-textfield mdl-js-textfield">
 							<input class="mdl-textfield__input" type="text"
 								id="mca_option{{$index + 1}}" placeholder="Auswahl {{($index + 1)}}" value="{{option}}">

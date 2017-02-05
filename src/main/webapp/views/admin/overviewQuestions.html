@@ -3,7 +3,7 @@
 	<div class="mdl-cell mdl-cell--8-col" style="margin: auto;">
 		<div class="btn-group">
 			<div class="btn-btn-group">
-				<a ng-href="#/newQuestion" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				<a ng-href="#/admin/{{umfId}}/newQuestion" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					<i class="material-icons">add</i>
 					Neue Frage
 	        	</a>
@@ -18,23 +18,23 @@
 		
 		<table class="overviewTable mdl-data-table mdl-js-data-table mdl-shadow--2dp">
 		  <thead>
-		    <tr> <!--  ng-repeat="| orderBy: order"-->
+		    <tr>
 		      <th class="mdl-data-table__cell--non-numeric">Titel</th>
 	    	  <th class="mdl-data-table__cell--non-numeric">Type</th>
 	    	  <th class="mdl-data-table__cell--non-numeric">Gruppe</th>
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr>
-		      <td class="mdl-data-table__cell--non-numeric"><span></span></td>
-		      <td class="mdl-data-table__cell--non-numeric"><span></span></td>
-		      <td class="mdl-data-table__cell--non-numeric"><span></span></td>
+		    <tr ng-repeat="question in questions">
+		      <td class="mdl-data-table__cell--non-numeric"><span>{{question.text}}</span></td>
+		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{decodeType(question.type)}}</td>
+		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{question.groupName}}</td>
 		      <td>
 		      	<div class="btn-group">
-					<button ng-click="" class="mdl-button mdl-js-button mdl-button--icon">
+					<button ng-click="delQuestion(question.id)" class="mdl-button mdl-js-button mdl-button--icon">
 					  <i class="material-icons">delete</i>
 					</button>
-					<button ng-click="" class="mdl-button mdl-js-button mdl-button--icon">
+					<button ng-click="modQuestion(question.id)" class="mdl-button mdl-js-button mdl-button--icon">
 					  <i class="material-icons">create</i>
 					</button>	              
 	            </div>
@@ -50,11 +50,14 @@
 				</a>
 			</div>
 			
-			<div class="question-button">
+			
+<!-- 			<div class="question-button">
 				<button ng-click="" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					Speichern
 	        	</button>
         	</div>
+ -->        	
+        	
        	</div>
 	
 	</div>		

@@ -13,8 +13,8 @@ public class Teilnehmer {
 
 	@Id
 	@GeneratedValue
-	@Column (name = "id")
-	private int id;
+	@Column (name = "teilnehmerId")
+	private long id;
 
 	@Column(name = "mail")
 	private String mail;
@@ -22,18 +22,15 @@ public class Teilnehmer {
 	@Column(name = "status")
 	private String status;
 
-	@ManyToOne
-	private Umfrage umfrage;
-
 
 	//######################################################################
 	// GETTERS & SETTERS
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -53,13 +50,6 @@ public class Teilnehmer {
 		this.status = status;
 	}
 
-	public Umfrage getUmfrage() {
-		return umfrage;
-	}
-
-	public void setUmfrage(Umfrage umfrage) {
-		this.umfrage = umfrage;
-	}
 
 
 

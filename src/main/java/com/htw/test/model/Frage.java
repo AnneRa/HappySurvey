@@ -1,11 +1,15 @@
 package com.htw.test.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -17,113 +21,104 @@ import javax.persistence.Table;
 public class Frage {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "FrageId")
-	private int id;
+	private long id;
 
 	@Column(name = "text")
 	private String text;
-	
-	@Column(name = "UmfrageId")
-	private int umfrageId;
 
-	@OneToOne
-	private Typ typ;
+	@Column(name = "info")
+	private String info;
 	
-	@ManyToOne
+	@Column(name = "optional")
+	private boolean optional;
+	
+	@Column(name = "questionType")
+	private byte type;
+	
+	@OneToMany(mappedBy = "frage", cascade = CascadeType.ALL)
+	private List<FrageOptionen> optionen;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="GruppenId")
 	private Gruppe gruppe;
 	
-	/****************************************************************************************************
-	 * 
-	 */
-	public Frage(){
-		
+	public Frage() {
+		super();
 	}
 	
-	/***************************************************************************************************
-	 * 
-	 * @param frageid
-	 * @param text
-	 */
-	
-	public Frage(Integer id, String text, Typ typ, int umfrageId){
-		this();
-		this.id = id;
-		this.text = text;
-		this.typ = typ;
-		this.umfrageId = umfrageId;
+	public Frage(Gruppe gruppe, Frage frage) {
+		this.gruppe = gruppe;
+		this.info = frage.info;
+		this.text = frage.text;
+		this.type = frage.type;
+		this.optional = frage.optional;
+		this.optionen = new ArrayList<>();;
 	}
-	
-	/*************************************************************************************************
-	 * 
-	 * @return
-	 */
-	public int getId() {
+
+	public long getId() {
 		return id;
 	}
-	
-	/************************************************************************************************
-	 * 
-	 * @param id
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	/************************************************************************************************
-	 * 
-	 * @return
-	 */
+
 	public String getText() {
 		return text;
 	}
-	
-	/***********************************************************************************************
-	 * 
-	 * @param text
-	 */
+
 	public void setText(String text) {
 		this.text = text;
 	}
 
-	/**********************************************************************************************
-	 * 
-	 * @return
-	 */
-	public Typ getTyp() {
-		return typ;
-	}
-
-	/**********************************************************************************************
-	 * 
-	 * @param typ
-	 */
-	public void setTyp(Typ typ) {
-		this.typ = typ;
-	}
-	
-
-	
-	
-	
-	public Gruppe getGruppe(){
-		return gruppe;
-	}
-	
-	public void setGruppe(Gruppe gruppe){
+	public void setGruppe(Gruppe gruppe) {
 		this.gruppe = gruppe;
-		if (gruppe != null && !gruppe.getFragen().contains(this)){
-			gruppe.addFrage(this);
-		}
 	}
 
-	public int getUmfrageId() {
-		return umfrageId;
+	public byte getType() {
+		return type;
 	}
 
-	public void setUmfrageId(int umfrageId) {
-		this.umfrageId = umfrageId;
+	public void setType(byte type) {
+		this.type = type;
+	}
+
+	public List<FrageOptionen> getOptionen() {
+		return optionen;
+	}
+
+	public void setOptionen(List<FrageOptionen> optionen) {
+		this.optionen = optionen;
 	}
 	
-	
+	public void addOption(FrageOptionen option) {
+		this.optionen.add(option);
+	}
 
+	public boolean isOptional() {
+		return optional;
+	}
+
+	public void setOptional(boolean optional) {
+		this.optional = optional;
+	}
+
+	public String getInfo() {
+		return info;
+	}
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	
+	public String getGroupName() {
+		return this.gruppe.getName();
+	}
+	
+	public long getGroupId() {
+		return this.gruppe.getId();
+	}
+	
+	public void clearOptions(){
+		this.optionen.clear();
+	}
+	
 }

@@ -25,19 +25,21 @@ happySurvey.controller('surveyController', ['$scope', '$http', '$location', '$ro
 		
 	}
 	
+	function openSurveyOverview(response){
+		
+		$scope.umf = response;
+		$scope.umf.startdat = new Date($scope.umf.startdat);
+		$scope.umf.enddat = new Date($scope.umf.enddat);
+		$location.path('/admin/' + $scope.umf.id + '/groups')
+		
+	}
 	
 	$scope.saveSurvey = function(){
-		console.log($scope.umf);
 		if ( $scope.editMode ) {
-			
-			$http.put("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf)
-			
+			$http.put("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview)		
 		} else {
-			$http.post("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf)
-			//.finally( function () { 
-			//	$location.path('/admin/home').replace();		
-			//})
-		}
+			$http.post("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview)
+		}		
 	};
 
 }]);

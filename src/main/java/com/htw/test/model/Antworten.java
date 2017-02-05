@@ -2,17 +2,19 @@ package com.htw.test.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ANTWORTEN")
+@Table(name = "antowrten")
 public class Antworten {
 
 	@Id
-	@Column(name = "ANTWORTEN_ID")
-	private int id;
+	@GeneratedValue
+	@Column(name = "antwortenId")
+	private long id;
 	
 	@Column(name = "Wert")
 	private String wert;
@@ -23,17 +25,14 @@ public class Antworten {
 	@OneToOne
 	private Frage fragen;
 	
-/*	@OneToOne
-	private Typ typ;
-	*/
 	//######################################################################
     // GETTERS & SETTERS
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

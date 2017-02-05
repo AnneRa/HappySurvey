@@ -37,7 +37,7 @@
 					<button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
 						ng-click="saveSurvey()">
 						<i class="material-icons">add</i>
-						Speichern
+						Speichern & Weiter
 					</button>
 				</div>
 			</div>
@@ -46,9 +46,15 @@
 	
 	<div class="mdl-cell mdl-cell--4-col button-container">
 		<div class="button-position">
-			<a ng-href="#/overviewQuestions" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+			
+			<!-- <a ng-href="#/overviewQuestions" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 			  Weiter
-			</a>
+			</a> -->
+			
+			<button ng-click="saveSurvey()" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+			Speichern & Weiter
+			</button>
+			
 		</div>
 	</div>
 </div>
