@@ -25,7 +25,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="question in questions">
+		    <tr ng-repeat="question in questions | orderBy: 'Gruppe'">
 		      <td class="mdl-data-table__cell--non-numeric"><span>{{question.text}}</span></td>
 		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{decodeType(question.type)}}</td>
 		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{question.groupName}}</td>
@@ -46,18 +46,10 @@
 		<div id="buttons">
 			<div class="question-button">
 				<a ng-href="#/admin/home" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-					Zur Übersicht
+					Zum Home-Bereich
 				</a>
 			</div>
 			
-			
-<!-- 			<div class="question-button">
-				<button ng-click="" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-					Speichern
-	        	</button>
-        	</div>
- -->        	
-        	
        	</div>
 	
 	</div>		

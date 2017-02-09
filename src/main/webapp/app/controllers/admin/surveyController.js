@@ -39,11 +39,19 @@ happySurvey.controller('surveyController', ['$scope', '$http', '$location', '$ro
 
 		if ( $scope.editMode ) {
 
-			$http.put("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview)		
+			$http.put("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview);
+			$mdToast.show( $mdToast.simple()
+				    .textContent('Umfrage wurde geändert!')
+				    .hideDelay(4000)
+			);
 
 		} else {
 			
-			$http.post("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview)
+			$http.post("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview);
+			$mdToast.show( $mdToast.simple()
+				    .textContent('Umfrage wurde erstellt!')
+				    .hideDelay(4000)
+			);
 
 		}		
 	};
