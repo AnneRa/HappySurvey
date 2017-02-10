@@ -1,5 +1,5 @@
     var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
-                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble', 'ngMessages','ui.bootstrap', 'ngTouch' ]);
+                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble', 'ngMessages', 'ngTouch' ]);
 
     happySurvey.config(config);
     happySurvey.run(run);
