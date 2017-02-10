@@ -1,5 +1,5 @@
     var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
-                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'crumble', 'ngMessages' ]);
+                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages', 'ng-breadcrumbs' ]);
 
     happySurvey.config(config);
     happySurvey.run(run);
@@ -7,59 +7,62 @@
     config.$inject = [ '$routeProvider', '$locationProvider' ];
     function config($routeProvider, $locationProvider) {
             $routeProvider
-           .when('/home', {
+           .when('/login', {
                    // Später gegen die richtige Home Seite für Teilnehmer ersetzen 
                    templateUrl : 'views/admin/login.html',
                    controller : 'loginController',
-                   label : 'Login'
            })
            
            .when('/admin/home', {
                    templateUrl : 'views/admin/overviewAdmin.html',
                    controller : 'overviewAdminController',
-                   label : 'Übersicht'
+                   label : 'Home'
            })
            
            .when('/admin/newSurvey', {
                    templateUrl : 'views/admin/surveyAdministration.html',
                    controller : 'surveyController',
-                   label: 'Neue Umfrage'
+                   label: 'Umfrage anlegen'
            })
            
            .when('/admin/editSurvey/:id', {
                    templateUrl: 'views/admin/surveyAdministration.html',
-                   controller: 'surveyController'
+                   controller: 'surveyController',
+                   label: 'Umfrage ändern'
            })
            
            .when('/admin/:id/questions', {
         	   		templateUrl: 'views/admin/overviewQuestions.html',
-        	   		controller: 'overviewQuestionsController'
+        	   		controller: 'overviewQuestionsController',
+        	   		label:'Alle Fragen'
            })
            
            .when('/admin/:id/groups', {
         	   		templateUrl: 'views/admin/overviewGroups.html',
-        	   		controller: 'overviewGroupsController'
+        	   		controller: 'overviewGroupsController',
+        	   		label:'Alle Gruppen'
            })
            
            .when('/admin/:id/newQuestion', {
                    templateUrl : 'views/admin/newQuestion.html',
                    controller : 'newQuestionController',
-                   label : 'Neue Frage'
+                   label:'Neue Frage'
            })
+           
            .when('/admin/:id/editQuestion/:questionId', {
                    templateUrl : 'views/admin/newQuestion.html',
-                   controller : 'newQuestionController',
-                   label : 'Neue Frage'
+                   controller : 'newQuestionController'
            })
+           
            .when('/', {
-                   redirectTo : '/home',
-                   label : '/'
+                   redirectTo : '/login',
            })
    
            .when('/admin', {
                    redirectTo : '/admin/home',
-                   label : 'Übersicht'
+                   label : 'Home'
            })
+           
            .when('/getSurvey/:link', {
         	   		templateUrl: 'views/participant/survey_intro.html',
         	   		controller: 'surveyIntroController'
@@ -70,7 +73,7 @@
            })
            
            .otherwise({
-                   redirectTo : '/home'
+                   redirectTo : '/admin/home'
            });
    }
    

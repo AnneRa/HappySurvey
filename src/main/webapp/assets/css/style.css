@@ -26,12 +26,26 @@ header{
 	margin-top: 5%;
 }
 
-/* overview admin template*/
+/* index.html */
 
 #logout{
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
+	align-items: center;
 }
+
+.ab-nav.breadcrumb{
+	list-style: none !important;
+	display: flex !important;
+	justify-content: space-around !important;
+}
+
+.margin-right-xs{
+	color: green !important;
+}
+
+
+/* overview admin template*/
 
 #btn1{
 	display: flex;
@@ -59,7 +73,6 @@ div.btn-btn-group input{
 	margin-bottom: 10%;
 }
 
-/*login.html*/
 
 /* new survey template */
 
@@ -94,7 +107,7 @@ div.btn-btn-group input{
 	background-color: red;
 }
 
-/*survey_conduct_greeting.html*/
+/* survey conduct greeting */
 
 #greeting {
 	display:flex;
@@ -106,7 +119,12 @@ div.btn-btn-group input{
 	margin: 16px;
 }
 
-/*newQuestion.html*/
+/* new Question */
+
+.back-btn{
+	margin: 1%;
+	padding-left: 4%;
+}
 
 #questionTypeLabel {
 	margin: 0px;
@@ -122,7 +140,6 @@ div.btn-btn-group input{
 #newQuestion {
 	display:flex;
 	justify-content:center;
-	margin-top: 5%;
 }
 
 .typeSpecificAttributesContainer {

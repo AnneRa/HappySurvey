@@ -16,7 +16,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-		<script type="text/javascript" src="assets/lib/angular/angular-crumble.js"></script>
+		<script type="text/javascript" src="assets/lib/angular/ng-breadcrumbs.min.js"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>
 		
 		
@@ -28,8 +28,9 @@
 		<script type="text/javascript" src="app/controllers/participant/surveyConductController.js"></script>
 		<script type="text/javascript" src="app/controllers/admin/overviewQuestionsController.js"></script>
 		<script type="text/javascript" src="app/controllers/admin/overviewGroupsController.js"></script>
-
-
+		<script type="text/javascript" src="app/controllers/admin/MainCtrl.js"></script>
+		
+		
 		<!-- Material Design Lite -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.green-light_green.min.css" />
@@ -42,17 +43,32 @@
 
 	</head>
 
-	<body>
+	<body ng-controller="MainCtrl">
 			
 		<header role="banner">
-	
-			<img id="header-logo" src="assets/img/Logo.png">
-	
+			<div class="mdl-grid">
+			
+				<div class="mdl-cell mdl-cell--2-col">
+					<ol class="ab-nav breadcrumb">
+					    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
+					      <a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
+					      <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+					    </li>
+				    </ol>
+			    </div>
+				
+				<div class="mdl-cell mdl-cell--8-col">
+					<img id="header-logo" src="assets/img/Logo.png">
+				</div>
+				
+				<div class="mdl-cell mdl-cell--2-col" id="logout">
+					<a ng-href ="#/login" class="mdl-button mdl-js-button mdl-button--icon" style="margin-right:5%;">
+						<i class="material-icons">exit_to_app</i>
+					</a>
+				</div>
+				
+			</div>
 		</header>
-		<ol>
-			<li ng-repeat="bc in crumble.trail"><a ng-href="#{{bc.path}}">{{bc.label}}</a>
-			</li>
-		</ol>
 	
 		<main ng-view></main>
 		
