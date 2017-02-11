@@ -67,9 +67,14 @@
         	   		templateUrl: 'views/participant/survey_intro.html',
         	   		controller: 'surveyIntroController'
            })
+           
            .when('/conductSurvey/:link', {
         	   	templateUrl: 'views/participant/survey_conduct.html',
         	   	controller: 'surveyConductController'  
+           })
+           
+           .when('/end/:link', {
+        	   	templateUrl: 'views/participant/finishSurvey.html',  
            })
            
            .otherwise({

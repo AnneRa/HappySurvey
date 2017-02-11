@@ -28,24 +28,35 @@ header{
 
 /* index.html */
 
+#nav-btn{
+	display: flex;
+	justify-content: space-between;
+}
+
 #logout{
 	display: flex;
-	justify-content: center;
+	justify-content: end;
 	align-items: center;
+	margin-right: 30px;
 }
 
 .ab-nav.breadcrumb{
 	list-style: none !important;
 	display: flex !important;
-	justify-content: space-around !important;
 }
 
 .margin-right-xs{
 	color: green !important;
+	padding-right: 15px;
 }
 
 
 /* overview admin template*/
+
+#table{
+	margin-right: 30px;
+	margin-left: 30px;
+}
 
 #btn1{
 	display: flex;
@@ -184,4 +195,18 @@ div.btn-btn-group input{
 	margin-top: 5%;
 }
 
+/* finish Survey */
 
+.finishContent{
+	text-align: center;
+}
+
+.finishContent input{
+	width: 300px;
+	height: 25px;
+}
+
+#input2{
+	width: 600px;
+	height: 200px;
+}
