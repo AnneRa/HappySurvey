@@ -14,13 +14,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.htw.test.Links;
+import com.htw.test.model.Antworten;
 import com.htw.test.model.Frage;
 import com.htw.test.model.FrageOptionen;
 import com.htw.test.model.Gruppe;
+import com.htw.test.model.Teilnehmer;
 import com.htw.test.model.Umfrage;
 import com.htw.test.repositories.FrageOptionenRepository;
 import com.htw.test.repositories.FrageRepository;
 import com.htw.test.repositories.GruppeRepository;
+import com.htw.test.repositories.TeilnehmerRepository;
 import com.htw.test.repositories.UmfrageRepository;
 
 @RestController
@@ -35,6 +38,8 @@ public class RestDataController {
 	private FrageOptionenRepository frageOptionenRepository;
 	@Autowired
 	private GruppeRepository gruppeRepository;
+	@Autowired
+	private TeilnehmerRepository teilnehmerRepository;
 	
 	/*#### UMFRAGE ####*/
 	
@@ -348,7 +353,33 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.OK).body(null);
 	}
 
+// BETA
+	
+	@RequestMapping(path = "/getTN/{antId}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Teilnehmer> getTNById(@PathVariable long antId) {
+		Teilnehmer teilnehmer = teilnehmerRepository.findOne(antId);
+		return ResponseEntity.status(HttpStatus.OK).body(teilnehmer);
+	}
 
+	@RequestMapping(path = "/setTN", method = RequestMethod.POST, consumes = "application/json; charset=utf-8",
+			produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<Teilnehmer> addTeilnehmer(@RequestBody Teilnehmer newTN) {
+		
+		Teilnehmer tn = new Teilnehmer(newTN.getMail());
+		
+		for ( Antworten ans : newTN.getAntworten() ) {
+			Frage newQuestion = frageRepository.findOne(ans.getFrage().getId());
+			Antworten newAns = new Antworten( tn, newQuestion, ans.getWert());
+			tn.addAnswer(newAns);
+		}
+		
+		//Teilnehmer newTN = new Teilnehmer(tn);
+		Teilnehmer saved = teilnehmerRepository.save(tn);
+		
+		return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+	}
 
-
+	
 }

@@ -54,7 +54,7 @@ public class Frage {
 		this.text = frage.text;
 		this.type = frage.type;
 		this.optional = frage.optional;
-		this.optionen = new ArrayList<>();;
+		this.optionen = new ArrayList<>();
 	}
 
 	public long getId() {

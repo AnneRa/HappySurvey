@@ -17,7 +17,7 @@
 		</div>
 		
 		<div style="display:flex; justify-content:center; margin-bottom:1%;">
-			<button ng-click="order = 'gruppe'" class="mdl-button mdl-js-button mdl-button--primary mdl-shadow--2dp">
+			<button ng-click="order = 'groupName'" class="mdl-button mdl-js-button mdl-button--primary mdl-shadow--2dp">
 				Sortieren nach Gruppe
 	       	</button>
        	</div>
@@ -31,7 +31,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr ng-repeat="question in questions | orderBy: 'Gruppe'">
+		    <tr ng-repeat="question in questions | orderBy: 'groupName'">
 		      <td class="mdl-data-table__cell--non-numeric"><span>{{question.text}}</span></td>
 		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{decodeType(question.type)}}</td>
 		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{question.groupName}}</td>

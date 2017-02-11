@@ -1,10 +1,15 @@
 package com.htw.test.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,19 +24,24 @@ public class Teilnehmer {
 	@Column(name = "mail")
 	private String mail;
 
-	@Column(name = "status")
-	private String status;
-
+	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+	private List<Antworten> antworten;
+	
+	public Teilnehmer(){
+		super();
+	}
+	
+	public Teilnehmer( String mail ) {
+		super();
+		this.mail = mail;
+		this.antworten = new ArrayList<>();
+	}
 
 	//######################################################################
 	// GETTERS & SETTERS
 
 	public long getId() {
 		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getMail() {
@@ -42,16 +52,12 @@ public class Teilnehmer {
 		this.mail = mail;
 	}
 
-	public String getStatus() {
-		return status;
+	public List<Antworten> getAntworten() {
+		return antworten;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void addAnswer( Antworten ans ) {
+		this.antworten.add(ans);
 	}
-
-
-
-
-
+	
 }

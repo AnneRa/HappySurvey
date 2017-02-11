@@ -2,13 +2,16 @@ package com.htw.test.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "antowrten")
+@Table(name = "antworten")
 public class Antworten {
 
 	@Id
@@ -19,21 +22,29 @@ public class Antworten {
 	@Column(name = "Wert")
 	private String wert;
 	
-	@OneToOne
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="teilnehmerId")
 	private Teilnehmer teilnehmer;
 	
-	@OneToOne
-	private Frage fragen;
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="frageId")
+	private Frage frage;
+	
+	public Antworten() {
+		super();
+	}
 	
 	//######################################################################
     // GETTERS & SETTERS
 
-	public long getId() {
-		return id;
+	public Antworten(Teilnehmer tn, Frage newQuestion, String wert2) {
+		this.teilnehmer = tn;
+		this.frage = newQuestion;
+		this.wert = wert2;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public long getId() {
+		return id;
 	}
 
 	public String getWert() {
@@ -44,21 +55,18 @@ public class Antworten {
 		this.wert = wert;
 	}
 
-	public Teilnehmer getTeilnehmer() {
-		return teilnehmer;
-	}
-
 	public void setTeilnehmer(Teilnehmer teilnehmer) {
 		this.teilnehmer = teilnehmer;
 	}
 
-	public Frage getFragen() {
-		return fragen;
+	public Frage getFrage() {
+		return frage;
 	}
 
-	public void setFragen(Frage fragen) {
-		this.fragen = fragen;
+	public void setFrage(Frage frage) {
+		this.frage = frage;
 	}
+
 
 /*	public Typ getTyp() {
 		return typ;
