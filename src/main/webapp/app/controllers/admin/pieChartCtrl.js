@@ -1,4 +1,4 @@
-happySurvey.controller('ChartCtrl', ['$scope', function ($scope){
+happySurvey.controller('pieChartCtrl', ['$scope', function ($scope){
 	
 	$scope.options = {
             chart: {
@@ -8,8 +8,6 @@ happySurvey.controller('ChartCtrl', ['$scope', function ($scope){
                 y: function(d){return d.y;},
                 showLabels: false,
                 duration: 500,
-                labelThreshold: 0.01,
-                labelSunbeamLayout: true,
                 legend: {
                     margin: {
                         top: 5,

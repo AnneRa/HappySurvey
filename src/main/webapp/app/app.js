@@ -56,7 +56,6 @@
            
            .when('/admin/charts', {
                    templateUrl : 'views/admin/charts.html',
-                   controller : 'ChartCtrl'
            })
            
            .when('/', {

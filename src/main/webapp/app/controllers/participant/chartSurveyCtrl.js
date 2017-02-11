@@ -8,8 +8,6 @@ happySurvey.controller('chartSurveyCtrl', ['$scope', function ($scope){
                 y: function(d){return d.y;},
                 showLabels: false,
                 duration: 500,
-                labelThreshold: 0.01,
-                labelSunbeamLayout: true,
                 legend: {
                     margin: {
                         top: 5,
