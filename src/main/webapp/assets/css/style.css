@@ -70,9 +70,13 @@ div.btn-btn-group input{
 
 .overviewTable{
 	width: 100%;
-	margin-bottom: 10%;
+	margin-bottom: 5%;
 }
 
+#saveGroup{
+	display: flex;
+	justify-content: center;
+}
 
 /* new survey template */
 
