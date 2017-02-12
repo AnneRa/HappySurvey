@@ -34,15 +34,15 @@ header{
 }
 
 #logout{
-	display: flex;
-	justify-content: end;
-	align-items: center;
+	margin-top: 14px;
+	margin-bottom: 14px;
 	margin-right: 30px;
 }
 
 .ab-nav.breadcrumb{
 	list-style: none !important;
 	display: flex !important;
+	
 }
 
 .margin-right-xs{
