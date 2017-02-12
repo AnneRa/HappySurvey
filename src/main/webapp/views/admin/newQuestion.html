@@ -1,12 +1,26 @@
+<div id="nav-btn">
+	<ol class="ab-nav breadcrumb">
+		<li
+			ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path"
+			ng-class="{ active: $last }"><a ng-if="!$last"
+			ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label"
+			class="margin-right-xs"></a> <span ng-if="$last"
+			ng-bind="breadcrumb.label"></span></li>
+	</ol>
+	<a ng-href="#/login" class="mdl-button mdl-js-button mdl-button--icon"
+		id="logout"> <i class="material-icons">exit_to_app</i>
+	</a>
+
+</div>
 <div class="back-btn">
-	<a ng-href="#/admin/{{gruppe.id}}/questions" class="mdl-button mdl-js-button mdl-button--fab">
-	  <i class="material-icons">arrow_back</i>
+	<a ng-href="#/admin/{{gruppe.id}}/questions"
+		class="mdl-button mdl-js-button mdl-button--fab"> <i
+		class="material-icons">arrow_back</i>
 	</a>
 </div>
-
 <div class="mdl-grid" id="newQuestion">
-
-	<div class="mdl-cell mdl-cell--6-col  mdl-grid mdl-card mdl-shadow--6dp mdl-card__supporting-text">
+	<div
+		class="mdl-cell mdl-cell--6-col  mdl-grid mdl-card mdl-shadow--6dp mdl-card__supporting-text">
 		<div id="generalQuestionAttributes" class="mdl-cell mdl-cell--6-col">
 			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
 				<h4 class="mdl-card__title-text">Allgemeine Attribute</h4>
@@ -34,29 +48,30 @@
 						id="questionType" name="questionType" ng-model="frage.type"
 						ng-change="onQuestionTypeChanged()">
 						<option value=""></option>
-<!-- 						<option value="linearScale">Lineare Skala</option>
+						<!-- 						<option value="linearScale">Lineare Skala</option>
 						<option value="multipleChoice">Multiple-Choice</option>
 						<option value="dropDown">Drop-Down</option>
 						<option value="textField">Textfeld</option>
  -->
- 						<option value="1">Lineare Skala</option>
+						<option value="1">Lineare Skala</option>
 						<option value="2">Multiple-Choice</option>
 						<option value="3">Drop-Down</option>
 						<option value="4">Textfeld</option>
 
- 					</select>
+					</select>
 				</div>
 
 				<div id="optionalQuestion">
 					<div>Optionale Frage</div>
 					<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-						for="switch-1" ng-class="frage.optional ? 'is-checked' : ''"> <input type="checkbox" id="switch-1"
-						class="mdl-switch__input" ng-model="frage.optional">
+						for="switch-1" ng-class="frage.optional ? 'is-checked' : ''">
+						<input type="checkbox" id="switch-1" class="mdl-switch__input"
+						ng-model="frage.optional">
 					</label>
 				</div>
 				<div
 					class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-	
+
 					<div id="questionTypeLabel">
 						<label class="mdl-selectfield__label" for="questionType">Fragegruppe
 							auswählen</label>
@@ -69,8 +84,7 @@
 				<div>
 					<button
 						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-						id="saveQuestion" name="saveQuestion"
-						 ng-click="saveQuestion();">Speichern</button>
+						id="saveQuestion" name="saveQuestion" ng-click="saveQuestion();">Speichern</button>
 				</div>
 			</form>
 		</div>
@@ -102,8 +116,9 @@
 						ng-repeat="option in frage.optionen">
 						<div class="mdl-textfield mdl-js-textfield">
 							<input class="mdl-textfield__input" type="text"
-								id="mca_option{{$index + 1}}" placeholder="Auswahl {{($index + 1)}}" value="{{option}}">
-									
+								id="mca_option{{$index + 1}}"
+								placeholder="Auswahl {{($index + 1)}}" value="{{option}}">
+
 							<button
 								class="mdl-button mdl-js-button mdl-button--icon right-floating"
 								ng-click="$parent.removeOptionClicked('{{option}}')">
