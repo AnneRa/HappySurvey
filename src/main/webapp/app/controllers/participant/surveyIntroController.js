@@ -3,6 +3,7 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 
 	'use strict';
 	
+<<<<<<< HEAD
 	var maxQuestions = 3;
 	var questions = [];
 	
@@ -13,6 +14,9 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 	$scope.page = -1;
 	$scope.action = "";
 	$scope.maxPages = 0;
+=======
+	$scope.umfrage = [];
+>>>>>>> branch 'devNeu' of https://studi.f4.htw-berlin.de/git/frey/HappySurvey.git
 	
 	$scope.processInput = function(){
 		switch($scope.action) {
@@ -71,6 +75,7 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 		}
 	};
 	
+<<<<<<< HEAD
 	$http.get("api/v1/getUmfrage/" + $routeParams.link)
 	.success( function ( res ) { 
 		$scope.survey = res;
@@ -88,6 +93,15 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 		}
 		$scope.maxPages = Math.ceil( $scope.questions.length / maxQuestions );
 	})
+=======
+	$scope.showSurvey = function(link){
+		$http.get("http://localhost:8080/HappySurvey/api/v1/getUmfrage/" + link)
+		.success( function ( response ) { 
+			$scope.umfrage = response;
+		})
+	};
+	
+>>>>>>> branch 'devNeu' of https://studi.f4.htw-berlin.de/git/frey/HappySurvey.git
 	
 }]);
 

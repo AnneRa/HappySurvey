@@ -1,5 +1,5 @@
     var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
-                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages', 'ng-breadcrumbs' ]);
+                    'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages', 'ng-breadcrumbs', 'nvd3']);
 
     happySurvey.config(config);
     happySurvey.run(run);
@@ -54,6 +54,10 @@
                    controller : 'newQuestionController'
            })
            
+           .when('/admin/charts', {
+                   templateUrl : 'views/admin/charts.html',
+           })
+           
            .when('/', {
                    redirectTo : '/login',
            })
@@ -67,9 +71,19 @@
         	   		templateUrl: 'views/participant/survey_intro.html',
         	   		controller: 'surveyIntroController'
            })
+           
            .when('/conductSurvey/:link', {
         	   	templateUrl: 'views/participant/survey_conduct.html',
         	   	controller: 'surveyConductController'  
+           })
+           
+           .when('/end/:link', {
+        	   	templateUrl: 'views/participant/finishSurvey.html'  
+           })
+           
+           .when('/chart/:link', {
+        	   	templateUrl: 'views/participant/chartSurvey.html',
+        	   	controller: 'chartSurveyCtrl'
            })
            
            .otherwise({

@@ -10,15 +10,19 @@
 		<script type="text/javascript" src="assets/lib/angular/angular.min.js"></script>
 		<script type="text/javascript" src="assets/lib/angular/angular-animate.min.js"></script>
 		<script type="text/javascript" src="assets/lib/angular/angular-route.min.js"></script>
+		<script type="text/javascript" src="assets/lib/angular/ng-breadcrumbs.min.js"></script>
 		
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
-		<script type="text/javascript" src="assets/lib/angular/ng-breadcrumbs.min.js"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-touch.js"></script>
-		
+
+		<script src="assets/lib/angular/d3.min.js"></script>
+		<script src="assets/lib/angular/nv.d3.min.js"></script> <!-- or use another assembly -->
+		<script src="assets/lib/angular/angular-nvd3.min.js"></script>
+		<link rel="stylesheet" href="assets/lib/angular/nv.d3.min.css">
 		
 	    <script src="app/app.js"></script>
 		<script type="text/javascript" src="app/controllers/admin/loginController.js"></script>
@@ -27,9 +31,14 @@
 		<script type="text/javascript" src="app/controllers/admin/newQuestionController.js"></script>
 		<script type="text/javascript" src="app/controllers/participant/surveyIntroController.js"></script>
 		<script type="text/javascript" src="app/controllers/participant/surveyConductController.js"></script>
+		<script type="text/javascript" src="app/controllers/participant/surveyIntroController.js"></script>
 		<script type="text/javascript" src="app/controllers/admin/overviewQuestionsController.js"></script>
 		<script type="text/javascript" src="app/controllers/admin/overviewGroupsController.js"></script>
 		<script type="text/javascript" src="app/controllers/admin/MainCtrl.js"></script>
+		<script type="text/javascript" src="app/controllers/admin/pieChartCtrl.js"></script>
+		<script type="text/javascript" src="app/controllers/admin/lineChartCtrl.js"></script>
+		<script type="text/javascript" src="app/controllers/participant/chartSurveyCtrl.js"></script>
+		
 		
 		
 		<!-- Material Design Lite -->
@@ -47,31 +56,10 @@
 	<body ng-controller="MainCtrl">
 			
 		<header role="banner">
-			<div class="mdl-grid">
-			
-				<div class="mdl-cell mdl-cell--2-col">
-					<ol class="ab-nav breadcrumb">
-					    <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
-					      <a ng-if="!$last" ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
-					      <span ng-if="$last" ng-bind="breadcrumb.label"></span>
-					    </li>
-				    </ol>
-			    </div>
-				
-				<div class="mdl-cell mdl-cell--8-col">
-					<img id="header-logo" src="assets/img/Logo.png">
-				</div>
-				
-				<div class="mdl-cell mdl-cell--2-col" id="logout">
-					<a ng-href ="#/login" class="mdl-button mdl-js-button mdl-button--icon" style="margin-right:5%;">
-						<i class="material-icons">exit_to_app</i>
-					</a>
-				</div>
-				
-			</div>
+			<img id="header-logo" src="assets/img/Logo.png">
 		</header>
 	
-		<main ng-view></main>
+		<main ng-view style="background-color:white;"></main>
 		
 	
 	</body>

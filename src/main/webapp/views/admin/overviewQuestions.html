@@ -31,7 +31,11 @@
 		    </tr>
 		  </thead>
 		  <tbody>
+<!-- <<<<<<< HEAD
 		    <tr ng-repeat="question in questions | orderBy: 'groupName'">
+======= -->
+		    <tr ng-repeat="question in questions | orderBy: order">
+>>>>>>> branch 'devNeu' of https://studi.f4.htw-berlin.de/git/frey/HappySurvey.git
 		      <td class="mdl-data-table__cell--non-numeric"><span>{{question.text}}</span></td>
 		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{decodeType(question.type)}}</td>
 		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{question.groupName}}</td>
