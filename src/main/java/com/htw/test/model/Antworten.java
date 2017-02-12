@@ -1,5 +1,9 @@
 package com.htw.test.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,13 +27,16 @@ public class Antworten {
 	@Column(name = "Wert")
 	private String wert;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="teilnehmerId")
 	private Teilnehmer teilnehmer;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="frageId")
 	private Frage frage;
+	
+	@OneToMany(mappedBy = "frageOption", cascade = CascadeType.ALL)
+	private List<MultipleChoiceAntworten> multipleChoiceAntworten;
 	
 	public Antworten() {
 		super();
@@ -37,10 +45,11 @@ public class Antworten {
 	//######################################################################
     // GETTERS & SETTERS
 
-	public Antworten(Teilnehmer tn, Frage newQuestion, String wert2) {
+	public Antworten(Teilnehmer tn, Frage newQuestion, Antworten ans) {
 		this.teilnehmer = tn;
 		this.frage = newQuestion;
-		this.wert = wert2;
+		this.wert = ans.getWert();
+		this.multipleChoiceAntworten = new ArrayList<>();
 	}
 
 	public long getId() {
@@ -67,13 +76,12 @@ public class Antworten {
 		this.frage = frage;
 	}
 
-
-/*	public Typ getTyp() {
-		return typ;
+	public List<MultipleChoiceAntworten> getMultipleChoiceAntworten() {
+			return multipleChoiceAntworten;
 	}
 
-	public void setTyp(Typ typ) {
-		this.typ = typ;
-	}*/
+	public void addMultipleChoice ( MultipleChoiceAntworten mca ) {
+		this.multipleChoiceAntworten.add(mca);
+	}
 	
 }

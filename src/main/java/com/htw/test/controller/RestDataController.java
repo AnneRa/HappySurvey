@@ -18,6 +18,7 @@ import com.htw.test.model.Antworten;
 import com.htw.test.model.Frage;
 import com.htw.test.model.FrageOptionen;
 import com.htw.test.model.Gruppe;
+import com.htw.test.model.MultipleChoiceAntworten;
 import com.htw.test.model.Teilnehmer;
 import com.htw.test.model.Umfrage;
 import com.htw.test.repositories.FrageOptionenRepository;
@@ -359,6 +360,14 @@ public class RestDataController {
 	@ResponseBody
 	public ResponseEntity<Teilnehmer> getTNById(@PathVariable long antId) {
 		Teilnehmer teilnehmer = teilnehmerRepository.findOne(antId);
+		Frage fra = teilnehmer.getAntworten().get(0).getFrage();
+		System.out.println(fra.getId());
+		System.out.println(fra.getText());
+		System.out.println(fra.getGroupId());
+		System.out.println(fra.getGroupName());
+		System.out.println(fra.getInfo());
+		System.out.println(fra.getOptionen().size());
+		System.out.println(fra.getType());
 		return ResponseEntity.status(HttpStatus.OK).body(teilnehmer);
 	}
 
@@ -370,12 +379,18 @@ public class RestDataController {
 		Teilnehmer tn = new Teilnehmer(newTN.getMail());
 		
 		for ( Antworten ans : newTN.getAntworten() ) {
-			Frage newQuestion = frageRepository.findOne(ans.getFrage().getId());
-			Antworten newAns = new Antworten( tn, newQuestion, ans.getWert());
+			Frage newQuestion = frageRepository.findOne(ans.getFrage().getId() );
+			Antworten newAns = new Antworten( tn, newQuestion, ans );
+			if (ans.getMultipleChoiceAntworten() != null) {
+				for ( MultipleChoiceAntworten mca : ans.getMultipleChoiceAntworten() ) {
+					FrageOptionen fo = frageOptionenRepository.findOne(mca.getFrageOption().getId());
+					MultipleChoiceAntworten newMCA = new MultipleChoiceAntworten( fo, newAns );
+					newAns.addMultipleChoice(newMCA);
+				}
+			}
 			tn.addAnswer(newAns);
 		}
 		
-		//Teilnehmer newTN = new Teilnehmer(tn);
 		Teilnehmer saved = teilnehmerRepository.save(tn);
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(saved);

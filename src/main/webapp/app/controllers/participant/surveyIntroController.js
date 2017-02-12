@@ -38,14 +38,30 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 	
 	function submitSurvey() {
 		
+		
+		console.log( JSON.stringify($scope.participant) );
+		
 		var ans = {};
 		ans.mail = $scope.participant.mail;
 		ans.antworten = [];
 		
 		for ( var prop in $scope.participant ) {
-			if ( prop != "mail") {
+			if ( prop != "mail" ) {
 				
-				var newObject = { "wert": $scope.participant[prop], "frage": { "id": prop } };
+				var newObject = {};
+				
+				if ( $scope.participant[prop] instanceof Object ) {
+					newObject = { "multipleChoiceAntworten": [], "frage": { "id": prop } };
+					var multiOptions = $scope.participant[prop].multi;
+					for ( var multiProp in multiOptions ) {		
+						if ( multiOptions[multiProp] == true ) {
+							var multiObject = { "frageOption": { "id": Number(multiProp) } };
+							newObject.multipleChoiceAntworten.push(multiObject);
+						}
+					}
+				} else {
+					newObject = { "wert": $scope.participant[prop], "frage": { "id": prop } };
+				}
 				ans.antworten.push(newObject);
 				
 			}
@@ -53,11 +69,13 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 			
 		}
 		
+		console.log( JSON.stringify(ans) );
+		
 		$http.post("http://localhost:8080/HappySurvey/api/v1/setTN", ans)
 		.success( function ( res ) { console.log(res);} );
 		
 		
-		console.log( JSON.stringify(ans) );
+		
 		
 	}
 	

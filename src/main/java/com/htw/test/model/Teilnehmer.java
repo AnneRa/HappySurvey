@@ -24,7 +24,7 @@ public class Teilnehmer {
 	@Column(name = "mail")
 	private String mail;
 
-	@OneToMany(mappedBy = "id", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "teilnehmer", cascade = CascadeType.ALL)
 	private List<Antworten> antworten;
 	
 	public Teilnehmer(){
