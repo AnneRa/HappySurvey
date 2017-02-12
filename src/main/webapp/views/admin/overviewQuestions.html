@@ -33,44 +33,6 @@
 				</a>
 			</div>
 		</div>
-<<<<<<< HEAD
-		
-		<div style="display:flex; justify-content:center; margin-bottom:1%;">
-			<button ng-click="order = 'groupName'" class="mdl-button mdl-js-button mdl-button--primary mdl-shadow--2dp">
-				Sortieren nach Gruppe
-	       	</button>
-       	</div>
-		
-		<table class="overviewTable mdl-data-table mdl-js-data-table mdl-shadow--2dp">
-		  <thead>
-		    <tr>
-		      <th class="mdl-data-table__cell--non-numeric">Titel</th>
-	    	  <th class="mdl-data-table__cell--non-numeric">Typ</th>
-	    	  <th class="mdl-data-table__cell--non-numeric">Gruppe</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-<!-- <<<<<<< HEAD
-		    <tr ng-repeat="question in questions | orderBy: 'groupName'">
-======= -->
-		    <tr ng-repeat="question in questions | orderBy: order">
->>>>>>> branch 'devNeu' of https://studi.f4.htw-berlin.de/git/frey/HappySurvey.git
-		      <td class="mdl-data-table__cell--non-numeric"><span>{{question.text}}</span></td>
-		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{decodeType(question.type)}}</td>
-		      <td class="mdl-data-table__cell--non-numeric"><span></span>{{question.groupName}}</td>
-		      <td>
-		      	<div class="btn-group">
-					<button ng-click="delQuestion(question.id)" class="mdl-button mdl-js-button mdl-button--icon">
-					  <i class="material-icons">delete</i>
-					</button>
-					<button ng-click="modQuestion(question.id)" class="mdl-button mdl-js-button mdl-button--icon">
-					  <i class="material-icons">create</i>
-					</button>	              
-	            </div>
-		      </td>
-		    </tr>
-		  </tbody>
-=======
 
 		<div
 			style="display: flex; justify-content: center; margin-bottom: 1%;">
@@ -107,7 +69,7 @@
 					</td>
 				</tr>
 			</tbody>
->>>>>>> branch 'devNeu' of https://studi.f4.htw-berlin.de/git/frey/HappySurvey.git
+
 		</table>
 
 	</div>
