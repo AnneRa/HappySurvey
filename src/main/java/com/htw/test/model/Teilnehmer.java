@@ -23,6 +23,8 @@ public class Teilnehmer {
 
 	@Column(name = "mail")
 	private String mail;
+	
+	
 
 	@OneToMany(mappedBy = "teilnehmer", cascade = CascadeType.ALL)
 	private List<Antworten> antworten;

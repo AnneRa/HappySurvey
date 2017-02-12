@@ -19,8 +19,13 @@ import com.htw.test.model.Frage;
 import com.htw.test.model.FrageOptionen;
 import com.htw.test.model.Gruppe;
 import com.htw.test.model.MultipleChoiceAntworten;
+import com.htw.test.model.ResAntwort;
+import com.htw.test.model.ResFrage;
+import com.htw.test.model.ResGruppe;
 import com.htw.test.model.Teilnehmer;
 import com.htw.test.model.Umfrage;
+import com.htw.test.model.ResUmfrage;
+import com.htw.test.repositories.AntwortRepository;
 import com.htw.test.repositories.FrageOptionenRepository;
 import com.htw.test.repositories.FrageRepository;
 import com.htw.test.repositories.GruppeRepository;
@@ -41,6 +46,8 @@ public class RestDataController {
 	private GruppeRepository gruppeRepository;
 	@Autowired
 	private TeilnehmerRepository teilnehmerRepository;
+	@Autowired
+	private AntwortRepository antwortRepository;
 	
 	/*#### UMFRAGE ####*/
 	
@@ -355,19 +362,58 @@ public class RestDataController {
 	}
 
 // BETA
+
+	@RequestMapping(path = "/getResults/{umfId}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
+	@ResponseBody
+	//public ResponseEntity<Teilnehmer> getResultsById(@PathVariable long umfId) {
+	public ResponseEntity<ResUmfrage> getResultsById(@PathVariable long umfId) {
+		
+		Umfrage umf = umfrageRepository.findOne(umfId);
+		ResUmfrage resUmf = new ResUmfrage(umf);
+		
+		for ( Gruppe grp : umf.getGruppen() ) {
+			ResGruppe resGrp = new ResGruppe( grp );
+			for ( Frage fra : grp.getFragen() ) {
+				ResFrage resFra = new ResFrage(fra);
+				switch(fra.getType()) {
+				
+				case 1:
+					resFra.setAverageValue( antwortRepository.getAverageResultForQuestionId(fra.getId()));
+					break;
+					
+				case 2:
+				case 3:
+					for ( FrageOptionen opt : fra.getOptionen() ) {
+						ResAntwort resAns = new ResAntwort( opt, antwortRepository.getCountsForQuestionOptionId(opt.getId()) );
+						resFra.appendPredefinedAnswer(resAns);
+					}
+					break;
+					
+				case 4:
+					resFra.setFreeTextEntries(antwortRepository.getTextsForQuestionId(fra.getId()));
+					break;
+				
+				}
+				resGrp.appendQuestion(resFra);
+			}
+			resUmf.appendGroup(resGrp);
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(resUmf);
+		
+	}
 	
 	@RequestMapping(path = "/getTN/{antId}", method = RequestMethod.GET, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<Teilnehmer> getTNById(@PathVariable long antId) {
+		
+		System.out.println(antwortRepository.getAverageResultForQuestionId(1));
+		String[] mydata = antwortRepository.getTextsForQuestionId(1);
+		for ( String data : mydata ) {
+			System.out.println(data);
+		}
+		
 		Teilnehmer teilnehmer = teilnehmerRepository.findOne(antId);
-		Frage fra = teilnehmer.getAntworten().get(0).getFrage();
-		System.out.println(fra.getId());
-		System.out.println(fra.getText());
-		System.out.println(fra.getGroupId());
-		System.out.println(fra.getGroupName());
-		System.out.println(fra.getInfo());
-		System.out.println(fra.getOptionen().size());
-		System.out.println(fra.getType());
 		return ResponseEntity.status(HttpStatus.OK).body(teilnehmer);
 	}
 
