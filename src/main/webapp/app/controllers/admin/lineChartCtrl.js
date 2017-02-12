@@ -3,7 +3,7 @@
 	 $scope.options = {
 	            chart: {
 	                type: 'discreteBarChart',
-	                height: 450,
+	                height: 400,
 	                margin : {
 	                    top: 100,
 	                    right: 100,

@@ -3,7 +3,7 @@ happySurvey.controller('pieChartCtrl', ['$scope', function ($scope){
 	$scope.options = {
             chart: {
                 type: 'pieChart',
-                height: 500,
+                height: 400,
                 x: function(d){return d.key;},
                 y: function(d){return d.y;},
                 showLabels: false,
