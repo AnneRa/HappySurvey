@@ -53,6 +53,14 @@ header{
 
 /* overview admin template*/
 
+.mdl-data-table td{
+	padding: 8px 10px !important;
+}
+
+.mdl-data-table th{
+	padding: 0 10px 0px 8px !important;
+}
+
 #table{
 	margin-right: 30px;
 	margin-left: 30px;
@@ -74,8 +82,12 @@ header{
 	justify-content:center; 
 }
 
+.btn-group button .material-icons{
+	color: green;
+}
+
 div.btn-btn-group input{
-	margin-top: 30px;
+	margin-top: 15px;
 	margin-bottom:10px;
 }
 
