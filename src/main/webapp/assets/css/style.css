@@ -130,10 +130,6 @@ div.btn-btn-group input{
 	margin-top: 50px;
 }
 
-.contentText {
-	margin: 16px;
-}
-
 /* new Question */
 
 .back-btn{
@@ -195,7 +191,7 @@ div.btn-btn-group input{
 	margin-top: 5%;
 }
 
-/* finish Survey */
+/* Survey Intro */
 
 .finishContent{
 	text-align: center;
@@ -210,3 +206,59 @@ div.btn-btn-group input{
 	width: 600px;
 	height: 200px;
 }
+
+.surveyContent{
+	display: flex;
+	justify-content: center;
+	margin-top: 2%;
+	margin-bottom:5%;
+}
+
+.questionInput{
+	text-align:center;
+}
+
+.questionInput input{
+	width:90%;
+}
+
+.contentText {
+	margin-right: 2%;
+	margin-left: 4%;
+}
+
+.firstQuestion{
+	padding-top:2%;
+}
+
+.mcAnswer{
+	margin-left:4%;
+}
+
+.linearAnswer{
+	text-align: center;
+}
+
+.questionCard{
+	margin-top: 2%;
+	margin-bottom: 5%;
+}
+
+.ddAnswer{
+	margin-left: 4%;
+	margin-right: 4%;
+}
+
+.ddAnswer select{
+	width:100%;
+}
+
+.infoText{
+	text-align:center;
+}
+
+.actionButtons{
+	text-align: center;
+	margin-top: 2%;
+}
+

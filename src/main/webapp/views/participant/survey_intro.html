@@ -1,90 +1,114 @@
-<form action="javascript:void(0)" ng-submit="processInput()">
-<div id="greetingCard" ng-hide="status>0">
-<!-- Greeting card is shown at the beginning -->
-	<div class="mdl-card mdl-shadow--2dp">
-		<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-			<h2 class="mdl-card__title-text" type="text">{{survey.name}}</h2>
-		</div>
-		<p class="contentText" type="text">{{survey.intro}}</p>
-		<p class="contentText" type="text">{{survey.beschr}}</p>
-
-
-	</div>
-</div>
+<div class="surveyContent">
+	<form action="javascript:void(0)" ng-submit="processInput()">
+		<div id="greetingCard" ng-hide="status>0">
 		
-<div ng-show="status==1" ng-repeat = "q in curQuestions">
-	<div class="mdl-card mdl-shadow--2dp">
-		<div ng-if="q.newGroup" class="mdl-card__title mdl-color--primary mdl-color-text--white">
-			<h2 class="mdl-card__title-text">{{q.gi}}/{{q.gm}}: {{q.groupName}}</h2>
+		<!-- Greeting card is shown at the beginning -->
+			<div class="mdl-card mdl-shadow--2dp">
+				<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+					<h2 class="mdl-card__title-text" type="text">{{survey.name}}</h2>
+				</div>
+				
+				<div>
+					<p class="firstQuestion contentText" type="text">{{survey.intro}}</p>
+					<p class="contentText" type="text">{{survey.beschr}}</p>
+				</div>
+			</div>
+			
 		</div>
-		<p class="contentText">{{q.qi}}/{{q.qm}}: {{q.text}}</p>
-		<p class="contentText">{{q.info}}</p>
-
-		<!-- Lineare Skala -->
-		<div ng-if="q.type == 1">
-			{{q.optionen[0].text}}
-			<input type="radio" value="1" ng-model="participant[q.id]">
-			<input type="radio" value="2" ng-model="participant[q.id]">
-			<input type="radio" value="3" ng-model="participant[q.id]">
-			<input type="radio" value="4" ng-model="participant[q.id]">
-			<input type="radio" value="5" ng-model="participant[q.id]">
-			<input type="radio" value="6" ng-model="participant[q.id]">
-			<input type="radio" value="7" ng-model="participant[q.id]">
-			<input type="radio" value="8" ng-model="participant[q.id]">
-			<input type="radio" value="9" ng-model="participant[q.id]">
-			<input type="radio" value="10" ng-model="participant[q.id]">
-			{{q.optionen[1].text}}
-		</div>
-
-		<!-- Multiple-Choice -->
-		<div ng-if="q.type == 2">
-			<div ng-repeat="o in q.optionen | orderBy: 'orderIndex'">
-				<label><input type="checkbox" ng-model="participant[q.id].multi[o.id]">{{o.text}}</label>
+				
+		<div ng-show="status==1" ng-repeat = "q in curQuestions">
+			<div class="questionCard mdl-card mdl-shadow--2dp">
+			
+				<div ng-if="q.newGroup" class="mdl-card__title mdl-color--primary mdl-color-text--white">
+					<h2 class="mdl-card__title-text">{{q.gi}}/{{q.gm}}: {{q.groupName}}</h2>
+				</div>
+				
+				<div>
+					<p class="firstQuestion contentText">{{q.qi}}/{{q.qm}}: {{q.text}}</p>
+					<p class="contentText">{{q.info}}</p>
+				</div>
+				
+				<!-- Lineare Skala -->
+				<div class="linearAnswer" ng-if="q.type == 1">
+					{{q.optionen[0].text}}
+					<input type="radio" value="1" ng-model="participant[q.id]">
+					<input type="radio" value="2" ng-model="participant[q.id]">
+					<input type="radio" value="3" ng-model="participant[q.id]">
+					<input type="radio" value="4" ng-model="participant[q.id]">
+					<input type="radio" value="5" ng-model="participant[q.id]">
+					<input type="radio" value="6" ng-model="participant[q.id]">
+					<input type="radio" value="7" ng-model="participant[q.id]">
+					<input type="radio" value="8" ng-model="participant[q.id]">
+					<input type="radio" value="9" ng-model="participant[q.id]">
+					<input type="radio" value="10" ng-model="participant[q.id]">
+					{{q.optionen[1].text}}
+				</div>
+		
+				<!-- Multiple-Choice -->
+				<div class="mcAnswer" ng-if="q.type == 2">
+					<div ng-repeat="o in q.optionen | orderBy: 'orderIndex'">
+						<label><input type="checkbox" ng-model="participant[q.id].multi[o.id]">{{o.text}}</label>
+					</div>
+				</div>
+				
+				<!-- Drop-Down -->
+				<div class="ddAnswer" ng-if="q.type == 3">
+					<select ng-required="!q.optional" ng-options="o.id as o.text for o in q.optionen | orderBy: 'orderIndex'" ng-model="participant[q.id]">
+					<option></option>
+					</select>
+				</div>
+				
+				<!-- Textfeld -->
+				<div class="questionInput" ng-if="q.type == 4">
+					<input ng-required="!q.optional" type="text" ng-model="participant[q.id]">
+				</div>
+		
 			</div>
 		</div>
 		
-		<!-- Drop-Down -->
-		<div ng-if="q.type == 3">
-			<select ng-required="!q.optional" ng-options="o.id as o.text for o in q.optionen | orderBy: 'orderIndex'" ng-model="participant[q.id]">
-			<option></option>
-			</select>
+		<div class="infoText" ng-show="status==2">
+			Daten abschicken oder zur&uuml;ck zum Bearbeiten.
 		</div>
 		
-		<!-- Textfeld -->
-		<div ng-if="q.type == 4">
-			<input ng-required="!q.optional" type="text" ng-model="participant[q.id]">
+		<div class="infoText" ng-show="status==3">
+			Danke f&uuml;r die Teilnahme.
 		</div>
-
-	</div>
-</div>
-
-<div ng-show="status==2">
-Daten abschicken oder zur&uuml;ck zum Bearbeiten.
-</div>
-
-<div ng-show="status==3">
-Danke f&uuml;r die Teilnahme.
-</div>
+				
+		<div class="finishContent" style="margin-top:4%;">
+			<input placeholder="E-Mail" type="email" ng-model="participant.mail" required>
+			<button ng-show="status==0" value="UMFRAGE STARTEN" ng-click="action='start';" type="submit" 
+					class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Umfrage starten</button>
+		</div>
 		
-		<input type="email" ng-model="participant.mail" required> 
-	
-
-	
-			<div id="buttons">
-
+		<div id="buttons">
 			<div class="question-button">
-				<input ng-show="status==0" value="UMFRAGE STARTEN" ng-click="action='start';" type="submit" 
-					class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				<div ng-show="status==2">
 					
-						
+					<div class="finishContent">
+						<p style="margin-left:300px; margin-right:300px;"> 
+							Vielen Dank! Forschungen haben gezeigt, dass berufliches Gl&uuml;ck 
+						    stark durch das Empfinden von Sinnhaftigkeit des eigenen Tuns beeinflusst wird. 
+						    Selbstverwirklichung, also eigene Ideen einzubringen und pers&ouml;nliche Fähigkeiten 
+						    einzusetzen, ist f&uuml;r viel Menschen eine Quelle von Gl&uuml;ck. Zu guter Letzt sehnen 
+						    sich Menschen danach Dinge gemeinsam zu tun, in einer Gruppe die zusammenh&auml;lt  – einer Gemeinschaft. 
+						    Diese drei Bereiche werden Ihnen deshalb gesondert dargestellt.  Haben Sie noch Fragen? Schreiben Sie uns!
+					    </p>
+					    <a style="color:green;">diegluecklicheorganisation@gmail.com</a>
+					</div>
 					
+					<div class="finishContent" style="margin-top:2%;">
+						<p>Hier können Sie ihr Feedback abgeben:</p>
+						<input id="input2">
+					</div>
+				
+				</div>
+				
+				<div class="actionButtons">
 					<input value="Zur&uuml;ck" type="submit" ng-show="status>=1 && page > 0" ng-click="action='BWD'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					<input value="Weiter" type="submit" ng-show="status==1 && page < maxPages" ng-click="action='FWD'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					<input value="Daten abschicken" type="submit" ng-show="status==2" ng-click="action='SEND'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-					
+				</div>
 			</div>
 		</div>
-		
-
-
-</form>
+	</form>
+</div>
