@@ -33,5 +33,15 @@ happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$locatio
 	
 	};
 	
+	$scope.addQuestionToSurvey = function(surveyId) {
+		
+		$location.path('/admin/' + surveyId + '/questions').replace();
+	}
+	
+	$scope.addGroupToSurvey = function(surveyId) {
+		
+		$location.path('/admin/' + surveyId + '/groups').replace();
+	}
+	
 }]);
 
