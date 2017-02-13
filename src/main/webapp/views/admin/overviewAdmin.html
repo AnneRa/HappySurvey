@@ -46,7 +46,7 @@
 	      <td class="mdl-data-table__cell--non-numeric"><span type="date">{{survey.startdat | date}}</span></td>
 	      <td class="mdl-data-table__cell--non-numeric"><span type="date">{{survey.enddat | date}}</span></td>
 	      <td class="mdl-data-table__cell--non-numeric">
-	       <a href="/HappySurvey/#/getSurvey/{{survey.link}}" target="_blank">{{survey.link}}</a></td>
+	       <a class="survey-link" href="/HappySurvey/#/getSurvey/{{survey.link}}" target="_blank">{{survey.link}}</a></td>
 	      <td>
 	      	<div class="btn-group">
 	      		<button ng-click="addGroupToSurvey(survey.id)" class="mdl-button mdl-js-button mdl-button--icon">
