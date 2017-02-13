@@ -38,7 +38,7 @@ public class Umfrage {
 	@Column(name = "enddat")
 	private String enddat;
 	
-	@OneToMany(mappedBy = "umfrage")
+	@OneToMany(mappedBy = "umfrage" , cascade = CascadeType.ALL)
 	private List<Gruppe> gruppen;
 	
 	/******************************************************************************************************
