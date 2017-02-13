@@ -6,10 +6,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +27,9 @@ public class Teilnehmer {
 	@Column(name = "mail")
 	private String mail;
 	
-	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="umfrageId")
+	private Umfrage umf;
 
 	@OneToMany(mappedBy = "teilnehmer", cascade = CascadeType.ALL)
 	private List<Antworten> antworten;
@@ -33,9 +38,10 @@ public class Teilnehmer {
 		super();
 	}
 	
-	public Teilnehmer( String mail ) {
+	public Teilnehmer( String mail, Umfrage umf ) {
 		super();
 		this.mail = mail;
+		this.umf = umf;
 		this.antworten = new ArrayList<>();
 	}
 

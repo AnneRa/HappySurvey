@@ -117,11 +117,11 @@
 						<div class="mdl-textfield mdl-js-textfield">
 							<input class="mdl-textfield__input" type="text"
 								id="mca_option{{$index + 1}}"
-								placeholder="Auswahl {{($index + 1)}}" value="{{option}}">
+								placeholder="Auswahl {{($index + 1)}}" ng-model="frage.optionen[$index]">
 
 							<button
 								class="mdl-button mdl-js-button mdl-button--icon right-floating"
-								ng-click="$parent.removeOptionClicked('{{option}}')">
+								ng-click="removeOptionClicked(frage.optionen[$index])">
 								<i class="material-icons">delete</i>
 							</button>
 						</div>

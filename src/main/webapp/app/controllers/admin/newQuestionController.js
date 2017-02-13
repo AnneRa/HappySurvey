@@ -44,7 +44,7 @@ happySurvey.controller('newQuestionController', ['$scope', '$http', '$location',
 	$scope.saveQuestion = function() {
 		
 		if ($scope.frage.optional == undefined) $scope.frage.optional = false;
-		
+	
 		if ( $scope.editMode ) {
 		
 			$http.put("http://localhost:8080/HappySurvey/api/v1/fragen/" + $scope.groupIndex , $scope.frage)

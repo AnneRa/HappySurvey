@@ -71,7 +71,7 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 		
 		console.log( JSON.stringify(ans) );
 		
-		$http.post("http://localhost:8080/HappySurvey/api/v1/setTN", ans)
+		$http.post("http://localhost:8080/HappySurvey/api/v1/saveSurvey/" + $scope.survey.id, ans)
 		.success( function ( res ) { console.log(res);} );
 		
 		

@@ -41,6 +41,9 @@ public class Umfrage {
 	@OneToMany(mappedBy = "umfrage" , cascade = CascadeType.ALL)
 	private List<Gruppe> gruppen;
 	
+	@OneToMany(mappedBy = "umf" , cascade = CascadeType.ALL)
+	private List<Teilnehmer> teilnehmer;
+	
 	/******************************************************************************************************
 	 * 
 	 */
