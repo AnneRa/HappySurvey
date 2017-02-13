@@ -262,3 +262,11 @@ div.btn-btn-group input{
 	margin-top: 2%;
 }
 
+.questionContent{
+	width:120%;
+}
+
+.questionContent .questionCard{
+	width:100%;
+}
+
