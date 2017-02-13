@@ -39,20 +39,36 @@ happySurvey.controller('surveyController', ['$scope', '$http', '$location', '$ro
 
 		if ( $scope.editMode ) {
 
-			$http.put("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview);
-			$mdToast.show( $mdToast.simple()
-				    .textContent('Umfrage wurde geändert!')
-				    .hideDelay(4000)
-			);
+			
+			
+			if($scope.umf.name && $scope.umf.beschr)
+			{
+				$http.put("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview);
+				$mdToast.show( $mdToast.simple()
+					    .textContent('Umfrage wurde geändert!')
+					    .hideDelay(4000)
+				);
+			}
+			else
+			{
+				$mdToast.show( $mdToast.simple()
+					    .textContent('Bitte füllen Sie alle Pflichtfelder aus!'));
+			}
 
 		} else {
 			
-			$http.post("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview);
-			$mdToast.show( $mdToast.simple()
-				    .textContent('Umfrage wurde erstellt!')
-				    .hideDelay(4000)
-			);
-
+			if($scope.umf.name && $scope.umf.beschr)
+			{
+				$http.post("http://localhost:8080/HappySurvey/api/v1/umfrage", $scope.umf).success(openSurveyOverview);
+				$mdToast.show( $mdToast.simple()
+					    .textContent('Umfrage wurde erstellt!')
+					    .hideDelay(4000));
+			}
+			else
+			{
+				$mdToast.show( $mdToast.simple()
+					    .textContent('Bitte füllen Sie alle Pflichtfelder aus!'));
+			}
 		}		
 	};
 
