@@ -66,9 +66,9 @@
 			</div>
 		</div>
 		
-		<div class="infoText" ng-show="status==2">
+<!-- 		<div class="infoText" ng-show="status==2">
 			Daten abschicken oder zur&uuml;ck zum Bearbeiten.
-		</div>
+		</div> -->
 		
 		<div class="infoText" ng-show="status==3">
 			Danke f&uuml;r die Teilnahme.
@@ -97,7 +97,7 @@
 					</div>
 					
 					<div class="finishContent" style="margin-top:2%;">
-						<p>Hier können Sie ihr Feedback abgeben:</p>
+						<p>Hier k&ouml;nnen Sie ihr Feedback abgeben:</p>
 						<input id="input2">
 					</div>
 				
@@ -106,7 +106,7 @@
 				<div class="actionButtons">
 					<input value="Zur&uuml;ck" type="submit" ng-show="status>=1 && page > 0" ng-click="action='BWD'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					<input value="Weiter" type="submit" ng-show="status==1 && page < maxPages" ng-click="action='FWD'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-					<input value="Daten abschicken" type="submit" ng-show="status==2" ng-click="action='SEND'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+					<input value="Zur Auswertung" type="submit" ng-show="status==2" ng-click="action='SEND'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				</div>
 			</div>
 		</div>
