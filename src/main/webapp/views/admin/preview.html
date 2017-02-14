@@ -1,3 +1,24 @@
+<div id="nav-btn">
+	<ol class="ab-nav breadcrumb">
+		<li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path"
+			ng-class="{ active: $last }"><a ng-if="!$last"
+			ng-href="#{{ breadcrumb.path }}" ng-bind="breadcrumb.label"
+			class="margin-right-xs"></a> <span ng-if="$last"
+			ng-bind="breadcrumb.label"></span></li>
+	</ol>
+	<a ng-href="#/login" class="mdl-button mdl-js-button mdl-button--icon"
+		id="logout"> <i class="material-icons">exit_to_app</i>
+	</a>
+
+</div>
+
+<div class="back-btn">
+	<a ng-href="#/admin/home"
+		class="mdl-button mdl-js-button mdl-button--fab"> <i
+		class="material-icons">arrow_back</i>
+	</a>
+</div>
+
 <div class="surveyContent">
 	<form action="javascript:void(0)" ng-submit="processInput()">
 		<div id="greetingCard" ng-hide="status>0">
@@ -15,11 +36,8 @@
 			</div>
 			
 		</div>
-			
- 			<!-- MDL Progress Bar Component -->
-			<div id="survey-progress" max="100" class="mdl-progress mdl-js-progress"></div>
+				
 		<div class="questionContent" ng-show="status==1" ng-repeat = "q in curQuestions">
-		
 			<div class="questionCard mdl-card mdl-shadow--2dp">
 			
 				<div ng-if="q.newGroup" class="mdl-card__title mdl-color--primary mdl-color-text--white">
@@ -56,60 +74,30 @@
 				
 				<!-- Drop-Down -->
 				<div class="ddAnswer" ng-if="q.type == 3">
-					<select ng-required="!q.optional" ng-options="o.id as o.text for o in q.optionen | orderBy: 'orderIndex'" ng-model="participant[q.id]">
+					<select ng-options="o.id as o.text for o in q.optionen | orderBy: 'orderIndex'" ng-model="participant[q.id]">
 					<option></option>
 					</select>
 				</div>
 				
 				<!-- Textfeld -->
 				<div class="questionInput" ng-if="q.type == 4">
-					<input ng-required="!q.optional" type="text" ng-model="participant[q.id]">
+					<input type="text" ng-model="participant[q.id]">
 				</div>
 		
 			</div>
 		</div>
-		
-<!-- 		<div class="infoText" ng-show="status==2">
-			Daten abschicken oder zur&uuml;ck zum Bearbeiten.
-		</div> -->
-		
-		<div class="infoText" ng-show="status==3">
-			Danke für die Teilnahme.
-		</div>
 				
 		<div ng-show="status==0 || status==2" class="finishContent" style="margin-top:4%;">
-			<input placeholder="E-Mail" type="email" ng-model="participant.mail" required>
 			<button ng-show="status==0" value="UMFRAGE STARTEN" ng-click="action='start';" type="submit" 
 					class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Umfrage starten</button>
 		</div>
 		
 		<div id="buttons">
 			<div class="question-button">
-				<div ng-show="status==2">
-					
-					<div class="finishContent">
-						<p style="margin-left:300px; margin-right:300px;"> 
-							Vielen Dank! Forschungen haben gezeigt, dass berufliches Glück 
-						    stark durch das Empfinden von Sinnhaftigkeit des eigenen Tuns beeinflusst wird. 
-						    Selbstverwirklichung, also eigene Ideen einzubringen und persönliche Fähigkeiten 
-						    einzusetzen, ist für viel Menschen eine Quelle von Glück. Zu guter Letzt sehnen 
-						    sich Menschen danach Dinge gemeinsam zu tun, in einer Gruppe die zusammenhält  – einer Gemeinschaft. 
-						    Diese drei Bereiche werden Ihnen deshalb gesondert dargestellt.  Haben Sie noch Fragen? Schreiben Sie uns!
-					    </p>
-					    <a style="color:green;">diegluecklicheorganisation@gmail.com</a>
-					</div>
-					
-					<div class="finishContent" style="margin-top:2%;">
-						<p>Hier können Sie ihr Feedback abgeben:</p>
-						<input id="input2">
-					</div>
-				
-				</div>
 				
 				<div class="actionButtons">
 					<input value="Zur&uuml;ck" type="submit" ng-show="status>=1 && page > 0" ng-click="action='BWD'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 					<input value="Weiter" type="submit" ng-show="status==1 && page < maxPages" ng-click="action='FWD'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
-					<input value="Daten abschicken" type="submit" ng-show="status==2" ng-click="action='SEND'" class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
 				</div>
 			</div>
 		</div>
