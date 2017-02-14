@@ -1,4 +1,3 @@
-
 happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location', '$routeParams', function($scope, $http, $location, $routeParams) {
 
 	'use strict';
@@ -78,15 +77,27 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 		
 		
 	}
-	
+
 	function switchPage( direction ){
 		$scope.page += direction;
+		var progressBar = document.getElementById('survey-progress');
+		
 		if ( $scope.page >= $scope.maxPages ) {
 			$scope.status = 2;
-		} else {
+			
+			progressBar.style.display = "none";	
+			
+		}
+		else 
+		{
 			$scope.curQuestions = $scope.questions.slice( $scope.page * maxQuestions, $scope.page * maxQuestions + maxQuestions );
 			$scope.curQuestions[0].newGroup = true;
 			$scope.status = 1;
+			
+			var percentPerQuestion = 100 / $scope.questions.length;
+			var progressPercent = percentPerQuestion * ($scope.page * maxQuestions);
+			progressBar.MaterialProgress.setProgress(progressPercent);
+			progressBar.style.display = "block";
 		}
 	};
 
@@ -106,6 +117,8 @@ happySurvey.controller('surveyIntroController', ['$scope', '$http' , '$location'
 			}
 		}
 		$scope.maxPages = Math.ceil( $scope.questions.length / maxQuestions );
+		
+		
 	})
 	
 }]);

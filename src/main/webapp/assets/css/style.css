@@ -287,3 +287,6 @@ div.btn-btn-group input{
 	color: #4ca950;
 }
 
+#survey-progress{
+	display: none;
+}
