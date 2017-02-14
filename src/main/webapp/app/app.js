@@ -1,4 +1,5 @@
-    var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
+
+var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
                     'ngAnimate', 'ngSanitize', 'ngMaterial', 'ngMessages', 'ng-breadcrumbs', 'nvd3']);
 
     happySurvey.config(config);
@@ -58,6 +59,12 @@
                    templateUrl : 'views/admin/charts.html',
                    controller: 'chartCtrl',
                    label:'Auswertung'
+           })
+           
+           .when('/admin/preview/:link', {
+        	   templateUrl: 'views/admin/preview.html',
+        	   controller: 'previewCtrl',
+        	   label: 'Vorschau'
            })
            
            .when('/', {
