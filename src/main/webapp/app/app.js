@@ -56,9 +56,9 @@
            
            .when('/admin/charts', {
                    templateUrl : 'views/admin/charts.html',
-                   controller: 'chartCtrl'
+                   controller: 'chartCtrl',
+                   label:'Auswertung'
            })
-           
            
            .when('/', {
                    redirectTo : '/login',
@@ -84,8 +84,8 @@
            })
            
            .when('/chart/:link', {
-        	   	templateUrl: 'views/participant/chartSurvey.html',
-        	   	controller: 'chartSurveyCtrl'
+                templateUrl: 'views/participant/chartSurvey.html',
+                controller: 'chartSurveyCtrl'
            })
            
            .otherwise({
