@@ -1,3 +1,4 @@
+
 happySurvey.controller('newQuestionController', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams) {
 
 	'use strict';
@@ -118,4 +119,9 @@ happySurvey.controller('newQuestionController', ['$scope', '$http', '$location',
 		}
 	
 	}
+	
+	$scope.goBackToQuestion = function(umfId){
+		$location.path('/admin/' + umfId + '/questions').replace();
+	}
+	
 }]);

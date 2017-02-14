@@ -1,3 +1,4 @@
+
 happySurvey.controller('chartCtrl', ['$scope', '$http', function ($scope, $http){
 	
 	var results;

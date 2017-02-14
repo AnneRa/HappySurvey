@@ -1,4 +1,5 @@
- happySurvey.controller('lineChartCtrl', ['$scope', function($scope){
+
+happySurvey.controller('lineChartCtrl', ['$scope', function($scope){
 	 
 	 $scope.umf = {};
 	 $scope.questions = {};
