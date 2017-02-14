@@ -54,11 +54,11 @@ header{
 /* overview admin template*/
 
 .mdl-data-table td{
-	padding: 6px 6px !important;
+	padding: 6px 10px !important;
 }
 
 .mdl-data-table th{
-	padding: 0 10px 0px 8px !important;
+	padding: 0 10px 0px 10px !important;
 }
 
 #table{
@@ -82,7 +82,7 @@ header{
 	justify-content:center; 
 }
 
-.btn-group button .icons{
+.icons{
 	color: green;
 }
 
@@ -146,7 +146,7 @@ div.btn-btn-group input{
 
 .back-btn{
 	margin: 1%;
-	padding-left: 4%;
+	padding-left: 2%;
 }
 
 #questionTypeLabel {
