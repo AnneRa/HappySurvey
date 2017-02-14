@@ -1,5 +1,9 @@
- happySurvey.controller('lineChartCtrl', ['$scope', function($scope){
-       
+
+happySurvey.controller('lineChartCtrl', ['$scope', function($scope){
+	 
+	 $scope.umf = {};
+	 $scope.questions = {};
+	 	 
 	 $scope.options = {
 	            chart: {
 	                type: 'discreteBarChart',
@@ -10,7 +14,17 @@
 	                    bottom: 50,
 	                    left: 100
 	                },
-	                x: function(d){return d.label;},
+	                x: function loadResult(surveyId) {
+	        			
+	        			$http.get("http://localhost:8080/HappySurvey/api/v1/getResults/{umfId}/" + surveyId)
+	        			.success( function (response) {
+	        				$scope.umf = response;
+	        				console.log(response);
+	        				$scope.umf.resfra = new Frage($scope.umf.resfra);
+	        				$scope.umf.gruppe = new Gruppe($scope.umf.gruppe);
+	        			})
+	        			
+	        		},
 	                y: function(d){return d.value;},
 	                showValues: false,
 	                xAxis: {
@@ -27,18 +41,19 @@
 	                key: "Cumulative Return",
 	                values: [
 	                    {
-	                        "label" : "Glück" ,
-	                        "value" : 50
+	                        "label" : "gruppen" ,
+	                        "value" : fragen
 	                    } ,
 	                    {
 	                        "label" : "Sinn" ,
-	                        "value" : 90
+	                        "value" : fragen
 	                    } ,
 	                    {
 	                        "label" : "Gemeinschaft" ,
-	                        "value" : 68
+	                        "value" : fragen
 	                    } 
 	                ]
 	            }
 	        ]
+	        
 }])

@@ -1,3 +1,4 @@
+
 happySurvey.controller('overviewAdminController', ['$scope', '$http' , '$location', '$mdToast', function($scope, $http, $location, $mdToast) {
 
 	'use strict';

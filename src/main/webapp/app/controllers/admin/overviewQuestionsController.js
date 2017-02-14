@@ -53,5 +53,8 @@ happySurvey.controller('overviewQuestionsController', ['$scope', '$http' , '$loc
 	
 	if ($routeParams.id != undefined) { loadQuestions($routeParams.id) };
 		
+	$scope.goBackToGroup = function(umfId){
+		$location.path('/admin/' + $scope.umfId + '/groups').replace();
+	}
 }]);
 

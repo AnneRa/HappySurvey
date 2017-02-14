@@ -77,7 +77,7 @@
 			Danke f&uuml;r die Teilnahme.
 		</div>
 				
-		<div class="finishContent" style="margin-top:4%;">
+		<div ng-show="status==0 || status==2" class="finishContent" style="margin-top:4%;">
 			<input placeholder="E-Mail" type="email" ng-model="participant.mail" required>
 			<button ng-show="status==0" value="UMFRAGE STARTEN" ng-click="action='start';" type="submit" 
 					class="button-color mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Umfrage starten</button>

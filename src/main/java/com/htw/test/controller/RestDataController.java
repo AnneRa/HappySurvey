@@ -105,6 +105,7 @@ public class RestDataController {
 	@RequestMapping(path = "/umfrage/{id}", method = RequestMethod.DELETE, produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public ResponseEntity<Void> deleteumfrageById(@PathVariable long id) {
+
 		Umfrage umfrage = umfrageRepository.findOne(id);
 		if (umfrage == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -417,12 +418,13 @@ public class RestDataController {
 		return ResponseEntity.status(HttpStatus.OK).body(teilnehmer);
 	}
 
-	@RequestMapping(path = "/setTN", method = RequestMethod.POST, consumes = "application/json; charset=utf-8",
+	@RequestMapping(path = "/saveSurvey/{id}", method = RequestMethod.POST, consumes = "application/json; charset=utf-8",
 			produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public ResponseEntity<Teilnehmer> addTeilnehmer(@RequestBody Teilnehmer newTN) {
+	public ResponseEntity<Teilnehmer> addTeilnehmer(@RequestBody Teilnehmer newTN, @PathVariable long id) {
 		
-		Teilnehmer tn = new Teilnehmer(newTN.getMail());
+		Umfrage umf = umfrageRepository.findOne(id);		
+		Teilnehmer tn = new Teilnehmer( newTN.getMail(), umf );
 		
 		for ( Antworten ans : newTN.getAntworten() ) {
 			Frage newQuestion = frageRepository.findOne(ans.getFrage().getId() );

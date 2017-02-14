@@ -56,7 +56,9 @@
            
            .when('/admin/charts', {
                    templateUrl : 'views/admin/charts.html',
+                   controller: 'chartCtrl'
            })
+           
            
            .when('/', {
                    redirectTo : '/login',
