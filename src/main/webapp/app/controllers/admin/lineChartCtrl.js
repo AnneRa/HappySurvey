@@ -3,9 +3,7 @@ happySurvey.controller('lineChartCtrl', ['$scope', function($scope){
 	 
 	 $scope.umf = {};
 	 $scope.questions = {};
-	 
-		
-	 
+	 	 
 	 $scope.options = {
 	            chart: {
 	                type: 'discreteBarChart',
