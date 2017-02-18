@@ -58,7 +58,7 @@ var happySurvey = angular.module('happySurvey', [ 'ngRoute', 'ngCookies',
            .when('/admin/charts', {
                    templateUrl : 'views/admin/charts.html',
                    controller: 'chartCtrl',
-                   label:'Auswertung'
+                   label:'Dashboard'
            })
            
            .when('/admin/preview/:link', {
